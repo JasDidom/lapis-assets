@@ -272,6 +272,7 @@
   function stop() { running = false; clearTimeout(timer); if (anim) cancelAnimationFrame(anim); anim = null; }
 
   main.classList.add('dt_softlow');
+  ['render-photo.webp','site-render-photo-v2.webp','photo-a.webp','photo-b.webp','photo-c.webp','photo-d.webp','photo-e.webp','photo-f.webp','site-hd-int-render.webp','site-tp-ext-render.webp'].forEach(function (f) { var im = new Image(); im.src = IMG + f; });
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) start(); else stop(); }); }, { threshold: .35 }).observe(app);
