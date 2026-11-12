@@ -113,11 +113,14 @@
     + '.dt_ins{position:absolute;left:0;top:0;z-index:58;display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 6px;border-radius:999px;background:#fff;border:1px solid #ECEAE6;box-shadow:0 10px 22px -14px rgba(23,23,23,.4);font-size:12px;line-height:1.3;color:#55524D;white-space:nowrap;opacity:0;transform:translateY(5px) scale(.97);transition:opacity .4s ease,transform .5s ' + E1 + ';pointer-events:none}.dt_ins.on{opacity:1;transform:none}.dt_ins b{color:#171717;font-weight:600}'
     + '.dt_ins i{width:18px;height:18px;border-radius:50%;background:#FDF1EC;display:grid;place-items:center;flex:none}'
     /* progressive blur: lower ~30% of the app, stronger toward the bottom */
-    + '.dt_pb{position:absolute;left:0;right:0;bottom:0;height:30%;pointer-events:none;z-index:70;border-radius:0 0 16px 16px;overflow:hidden}.dt_pb i{position:absolute;left:0;top:0;right:0;bottom:0}'
-    + '.dt_pb i:nth-child(1){-webkit-backdrop-filter:blur(.5px);backdrop-filter:blur(.5px);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 35%);mask-image:linear-gradient(to bottom,transparent 0%,#000 35%)}'
-    + '.dt_pb i:nth-child(2){-webkit-backdrop-filter:blur(1.2px);backdrop-filter:blur(1.2px);-webkit-mask-image:linear-gradient(to bottom,transparent 30%,#000 60%);mask-image:linear-gradient(to bottom,transparent 30%,#000 60%)}'
-    + '.dt_pb i:nth-child(3){-webkit-backdrop-filter:blur(2.6px);backdrop-filter:blur(2.6px);-webkit-mask-image:linear-gradient(to bottom,transparent 55%,#000 84%);mask-image:linear-gradient(to bottom,transparent 55%,#000 84%)}'
-    + '.dt_pb i:nth-child(4){-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);-webkit-mask-image:linear-gradient(to bottom,transparent 76%,#000 100%);mask-image:linear-gradient(to bottom,transparent 76%,#000 100%);background:linear-gradient(to bottom,rgba(251,250,248,0) 45%,rgba(251,250,248,.7))}'
+    + '.dt_pr[data-p]{transition:background-color .25s,opacity .3s,box-shadow .25s}.dt_pr.sel{background:#F4F2EF;box-shadow:inset 3px 0 0 #171717}.dt_pr.sel .n{font-weight:600}.dt_pr.dim{opacity:.38}'
+    + '.dt_tg{transition:opacity .3s,transform .3s,max-height .35s,margin .35s,padding .35s;max-height:120px}.dt_tg.hid{opacity:0;max-height:0!important;margin-top:0!important;margin-bottom:0!important;padding-top:0!important;padding-bottom:0!important;overflow:hidden;border-width:0!important}.dt_tg.pop{animation:dtpop .45s cubic-bezier(.2,.8,.2,1)}@keyframes dtpop{from{transform:translateY(6px);opacity:.3}to{transform:none;opacity:1}}'
+    + '.dt_lh em.lt{font-style:normal}.dt_br.dim{opacity:.35}.dt_br.pick span{font-weight:600;color:#171717}'
+    + '.dt_pb{position:absolute;left:0;right:0;bottom:0;height:24%;pointer-events:none;z-index:70;border-radius:0 0 16px 16px;overflow:hidden}.dt_pb i{position:absolute;left:0;top:0;right:0;bottom:0}'
+    + '.dt_pb i:nth-child(1){-webkit-backdrop-filter:blur(.35px);backdrop-filter:blur(.35px);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 35%);mask-image:linear-gradient(to bottom,transparent 0%,#000 35%)}'
+    + '.dt_pb i:nth-child(2){-webkit-backdrop-filter:blur(.8px);backdrop-filter:blur(.8px);-webkit-mask-image:linear-gradient(to bottom,transparent 30%,#000 60%);mask-image:linear-gradient(to bottom,transparent 30%,#000 60%)}'
+    + '.dt_pb i:nth-child(3){-webkit-backdrop-filter:blur(1.6px);backdrop-filter:blur(1.6px);-webkit-mask-image:linear-gradient(to bottom,transparent 55%,#000 84%);mask-image:linear-gradient(to bottom,transparent 55%,#000 84%)}'
+    + '.dt_pb i:nth-child(4){-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);-webkit-mask-image:linear-gradient(to bottom,transparent 76%,#000 100%);mask-image:linear-gradient(to bottom,transparent 76%,#000 100%);background:linear-gradient(to bottom,rgba(251,250,248,0) 50%,rgba(251,250,248,.55))}'
     /* pointer */
     + '.dt_cur{position:absolute;left:0;top:0;width:30px;height:30px;z-index:90;pointer-events:none;opacity:0;transition:opacity .4s;will-change:transform}.dt_cur.is-on{opacity:1}.v2_app.dt_sm .dt_cur,.v2_app.dt_sm .dt_rip{display:none}'
     + '.dt_cur svg{display:block;filter:drop-shadow(0 4px 8px rgba(0,0,0,.3));transition:transform .15s}.dt_cur:before{content:"";position:absolute;left:-9px;top:-9px;width:30px;height:30px;border-radius:50%;background:rgba(176,87,58,.18);transform:scale(.6);transition:transform .25s}.dt_cur.dn:before{transform:scale(1.2)}.dt_cur.dn svg{transform:scale(.88)}'
@@ -220,18 +223,19 @@
   }
 
   /* ---------- data: one project, "Residenze Verdi" (Parma). Last month, consistent with the Panoramica (42 visits, 6 from portals) ---------- */
-  var PO = [['immo', 'Immobiliare.it', 4830, 54, 4], ['idea', 'idealista', 2690, 25, 2], ['casa', 'Casa.it', 700, 9, 0]];
+  var PO = [['immo', 'Immobiliare.it', 4830, 54, 4], ['idea', 'idealista', 2690, 22, 2], ['casa', 'Casa.it', 700, 9, 0]], PF = -1;
   var TG = [
-    { k: 'bi', n: t('Bilocale', 'One-bed'), m: 62, p: 219000, r: t('2 locali', '1 bedroom'), s: t('2 locali · 1 bagno · balcone 8 m²', '1 bedroom · 1 bath · 8 m² balcony'), u: 6, v: 2240, c: [14, 7, 2], vi: 1 },
+    { k: 'bi', n: t('Bilocale', 'One-bed'), m: 62, p: 219000, r: t('2 locali', '1 bedroom'), s: t('2 locali · 1 bagno · balcone 8 m²', '1 bedroom · 1 bath · 8 m² balcony'), u: 6, v: 2240, c: [14, 7, 0], vi: 1 },
     { k: 'tri', n: t('Trilocale', 'Two-bed'), m: 88, p: 289000, r: t('3 locali', '2 bedrooms'), s: t('3 locali · 2 bagni · terrazzo 14 m²', '2 bedrooms · 2 baths · 14 m² terrace'), u: 8, v: 3150, c: [22, 8, 4], vi: 3 },
-    { k: 'quad', n: t('Quadrilocale', 'Three-bed'), m: 112, p: 352000, r: t('4 locali', '3 bedrooms'), s: t('4 locali · 2 bagni · terrazzo 16 m²', '3 bedrooms · 2 baths · 16 m² terrace'), u: 5, v: 1780, c: [13, 3, 2], vi: 1 },
-    { k: 'att', n: t('Attico', 'Penthouse'), m: 130, p: 445000, r: t('con terrazzo', 'with terrace'), s: t('3 locali · 2 bagni · terrazzo 48 m²', '2 bedrooms · 2 baths · 48 m² terrace'), u: 2, v: 1050, c: [5, 7, 1], vi: 1 }
+    { k: 'quad', n: t('Quadrilocale', 'Three-bed'), m: 112, p: 352000, r: t('4 locali', '3 bedrooms'), s: t('4 locali · 2 bagni · terrazzo 16 m²', '3 bedrooms · 2 baths · 16 m² terrace'), u: 5, v: 1780, c: [13, 0, 5], vi: 1 },
+    { k: 'att', n: t('Attico', 'Penthouse'), m: 130, p: 445000, r: t('con terrazzo', 'with terrace'), s: t('3 locali · 2 bagni · terrazzo 48 m²', '2 bedrooms · 2 baths · 48 m² terrace'), u: 2, v: 1050, c: [5, 7, 0], vi: 1 }
   ];
   function sum(a) { return a.reduce(function (x, y) { return x + y; }, 0); }
   function best(c) { var b = 0; c.forEach(function (v, i) { if (v > c[b]) b = i; }); return b; }
   function from(p) { return t('da ', 'from ') + eur(p); }
   function visits(n) { return n + ' ' + (n === 1 ? t('visita', 'visit') : t('visite', 'visits')); }
 
+  function tgLine(g) { var j = PF > -1 ? PF : best(g.c), n = PF > -1 ? g.c[PF] : sum(g.c); return lg(PO[j][0]) + n + ' ' + t('contatti', 'leads') + (PF > -1 ? ' · ' + t('su ', 'on ') + PO[PF][1] : ' · ' + visits(g.vi)); }
   function hd(title, sub, right) { return '<div class="dt_hd dt_in"><div><b>' + title + '</b><small>' + sub + '</small></div>' + (right || '') + '</div>'; }
 
   /* ---------- Portali · Tagli ---------- */
@@ -241,7 +245,7 @@
       + '<div class="dt_dh dt_in" style="--i:1"><div><b>' + g.n + '</b><small>' + g.s + '</small></div><div class="p"><b>' + from(g.p) + '</b><small>' + g.m + ' m²</small></div></div>'
       + '<div class="dt_dk dt_in" style="--i:2"><span>' + t('Visualizzazioni', 'Views') + num(g.v) + '</span><span>' + t('Contatti', 'Leads') + num(sum(g.c)) + '</span><span>' + t('Visite in ufficio', 'Office visits') + num(g.vi) + '</span></div>'
       + '<div class="dt_bb dt_in" style="--i:3"><small>' + t('Contatti per portale', 'Leads by portal') + '</small>'
-      + PO.map(function (p, j) { return '<div class="dt_br' + (j === b ? ' best' : '') + '">' + lg(p[0]) + '<span>' + p[1] + '</span><span class="dt_trk"><i data-w="' + Math.max(4, Math.round(g.c[j] / mx * 100)) + '"></i></span><span class="v">' + (j === b ? '<u>TOP</u>' : '') + g.c[j] + '</span></div>'; }).join('')
+      + PO.map(function (p, j) { return '<div class="dt_br' + (j === b ? ' best' : '') + (PF > -1 && j !== PF ? ' dim' : '') + (j === PF ? ' pick' : '') + '">' + lg(p[0]) + '<span>' + p[1] + '</span><span class="dt_trk"><i data-w="' + Math.max(4, Math.round(g.c[j] / mx * 100)) + '"></i></span><span class="v">' + (j === b ? '<u>TOP</u>' : '') + g.c[j] + '</span></div>'; }).join('')
       + '</div>';
   }
   function vPort() {
@@ -254,9 +258,9 @@
       + '<div class="dt_pr tot"><span class="n">' + t('Totale', 'Total') + '</span><span>' + num(sum(PO.map(function (p) { return p[2]; })), '', 240) + '</span><span>' + num(sum(PO.map(function (p) { return p[3]; })), '', 240) + '</span><span>' + num(sum(PO.map(function (p) { return p[4]; })), '', 240) + '</span></div></div>'
       + '<div class="dt_note dt_in" style="--i:3"><i>' + CHK + '</i>' + t('Stesso prezzo su tutti i portali', 'Same price on every portal') + '</div></div>';
     /* tagli */
-    h += '<div class="dt_ls"><div class="dt_lh dt_in" style="--i:2">' + t('Tagli in vendita', 'Layouts on sale') + '<span>' + sum(TG.map(function (g) { return g.u; })) + ' ' + t('unità', 'units') + '</span></div>'
+    h += '<div class="dt_ls"><div class="dt_lh dt_in" style="--i:2"><em class="lt">' + t('Tagli in vendita', 'Layouts on sale') + '</em><span>' + sum(TG.map(function (g) { return g.u; })) + ' ' + t('unità', 'units') + '</span></div>'
       + TG.map(function (g, i) {
-        return '<div class="dt_tg dt_in' + (i ? '' : ' on') + '" data-t="' + i + '" style="--i:' + (i + 3) + '"><span class="dt_th">' + plan(g.k) + '</span><div class="dt_tx"><div class="a"><b>' + g.n + '</b><i>' + from(g.p) + '</i></div><small class="b">' + g.m + ' m² · ' + g.r + '</small><div class="c">' + lg(PO[best(g.c)][0]) + sum(g.c) + ' ' + t('contatti', 'leads') + ' · ' + visits(g.vi) + '</div></div></div>';
+        return '<div class="dt_tg dt_in' + (i ? '' : ' on') + '" data-t="' + i + '" style="--i:' + (i + 3) + '"><span class="dt_th">' + plan(g.k) + '</span><div class="dt_tx"><div class="a"><b>' + g.n + '</b><i>' + from(g.p) + '</i></div><small class="b">' + g.m + ' m² · ' + g.r + '</small><div class="c">' + tgLine(g) + '</div></div></div>';
       }).join('') + '</div>';
     /* detail */
     h += '<div class="dt_card dt_det dt_in" style="--i:4">' + detail(0) + '</div></div>';
@@ -362,23 +366,39 @@
     var pano = k === 'Panoramica'; app.classList.toggle('dt_notpano', !pano);
     ins.classList.remove('on'); clearTimeout(swT);
     if (pano) { host.classList.remove('is-on'); return; }
+    PF = -1;
     function put() { host.innerHTML = V[k](); void host.offsetWidth; host.classList.add('is-on'); fill(host); }
     if (host.classList.contains('is-on')) { host.classList.remove('is-on'); swT = setTimeout(put, 280); } else put();
   }
-  function nav(k) { go(function () { return sideEl(k); }, .32, .5, 950); click(function () { show(k); }); wait(650); }
+  function nav(k) { go(function () { return sideEl(k); }, .32, .5, 760); click(function () { show(k); }); wait(350); }
   function selTg(i) {
     var det = host.querySelector('.dt_det'); if (!det) return;
     all('.dt_tg').forEach(function (r) { r.classList.toggle('on', +r.getAttribute('data-t') === i); });
     det.classList.add('sw');
     setTimeout(function () { det.innerHTML = detail(i); det.classList.remove('sw'); fill(det); }, 190);
   }
-  function tg(i, hold) { go(q('.dt_tg[data-t="' + i + '"]'), .62, .55, 750); click(function () { selTg(i); }); wait(hold); }
+  function selPortal(j) {
+    PF = j;
+    all('.dt_pr[data-p]').forEach(function (r, k) { r.classList.toggle('sel', k === j); r.classList.toggle('dim', j > -1 && k !== j); });
+    var lh = host.querySelector('.dt_lh'), shown = 0;
+    all('.dt_tg').forEach(function (r) {
+      var g = TG[+r.getAttribute('data-t')], on = j < 0 || g.c[j] > 0; if (on) shown++;
+      r.classList.toggle('hid', !on); var c = r.querySelector('.c'); if (c) c.innerHTML = tgLine(g);
+      r.classList.remove('pop'); if (on) { void r.offsetWidth; r.classList.add('pop'); }
+    });
+    if (lh) { lh.querySelector('.lt').textContent = j < 0 ? t('Tagli in vendita', 'Layouts on sale') : t('Annunci su ', 'Ads on ') + PO[j][1]; lh.querySelector('span').textContent = shown + ' ' + t('annunci live', 'live ads'); }
+    var on = host.querySelector('.dt_tg.on'), i = on ? +on.getAttribute('data-t') : 0;
+    if (j > -1 && !TG[i].c[j]) for (var x = 0; x < TG.length; x++) if (TG[x].c[j] > 0) { i = x; break; }
+    selTg(i);
+  }
+  function portal(k, hold) { go(q('.dt_pr[data-p="' + k + '"]'), .4, .5, 650); click(function () { selPortal(['immo', 'idea', 'casa'].indexOf(k)); }); wait(hold); }
+  function tg(i, hold) { go(q('.dt_tg[data-t="' + i + '"]'), .62, .55, 620); click(function () { selTg(i); }); wait(hold); }
   function filterCal(f) {
     all('.dt_chip').forEach(function (c) { c.classList.toggle('on', c.getAttribute('data-f') === f); });
     all('.dt_ev').forEach(function (e) { e.classList.toggle('off', f !== 'all' && e.getAttribute('data-t') !== f); });
     var kp = host.querySelector('[data-kp="visit"]'); if (kp) kp.classList.toggle('hl', f === 'visit');
   }
-  function chipClick(f, hold) { go(q('.dt_chip[data-f="' + f + '"]'), .5, .5, 700); click(function () { filterCal(f); }); wait(hold); }
+  function chipClick(f, hold) { go(q('.dt_chip[data-f="' + f + '"]'), .5, .5, 560); click(function () { filterCal(f); }); wait(hold); }
   function openPop() {
     var e = host.querySelector('.dt_ev[data-k]'), pop = host.querySelector('.dt_pop'); if (!e || !pop) return;
     e.classList.add('sel');
@@ -398,13 +418,13 @@
     if (left < (b.right - a.left) / s + 14) return;
     ins.style.left = Math.round(left) + 'px'; ins.style.top = Math.round((g.top - a.top + g.height / 2) / s - ins.offsetHeight / 2) + 'px'; ins.classList.add('on');
   }
-  function seg(i) { go(function () { return app.querySelectorAll('.d3_seg button')[i]; }, .5, .5, 700); click(function () { var b = app.querySelectorAll('.d3_seg button')[i]; b && b.click(); }); wait(450); }
+  function seg(i) { go(function () { return app.querySelectorAll('.d3_seg button')[i]; }, .5, .5, 560); click(function () { var b = app.querySelectorAll('.d3_seg button')[i]; b && b.click(); }); wait(450); }
   function sweep(D, from, to) {
-    LOOP += D + 700;
+    LOOP += D + 560;
     Q.push(function (n) {
       var h = app.querySelector('.d3_hit'); if (!h || !h.getBoundingClientRect().width) return n();
       var a = app.getBoundingClientRect(), b = h.getBoundingClientRect(), y = b.top + b.height * .45, s = sc();
-      glide((b.left - a.left + b.width * from) / s, (y - a.top) / s, 700, function () {
+      glide((b.left - a.left + b.width * from) / s, (y - a.top) / s, 560, function () {
         var t0 = null;
         function f(ts) {
           if (!running) return; if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / D), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, x = b.left + b.width * (from + (to - from) * e);
@@ -420,31 +440,24 @@
   function row(i) { return function () { return app.querySelectorAll('.d3_tbl .d3_r:not(.d3_h)')[i]; }; }
 
   /* ---------- script ---------- */
-  /* 1 · Panoramica: follow the visits, compare cost per channel, check the budget, read the channels */
+  /* 1 · Panoramica: follow the visits, then the cost per channel */
   act(function () { show('Panoramica'); });
-  wait(400);
-  sweep(2300, .05, .95); wait(250);
+  wait(250);
+  sweep(1700, .05, .95); wait(150);
   seg(1); act(function () { insight(1); });
-  sweep(1500, .95, .3); wait(450);
-  seg(2); act(function () { insight(0); });
-  sweep(1000, .3, .75); leave(); wait(150);
-  seg(0); wait(250);
-  go(row(0), .3, .5, 700); wait(400);
-  go(row(1), .34, .5, 380); wait(300);
-  go(row(2), .3, .5, 380); wait(450);
-  /* 2 · Portali: one building, four layouts — which one brings contacts and visits, on which portal */
-  nav('Portali'); wait(900);
-  go(q('.dt_pr[data-p="immo"]'), .5, .5, 800); wait(450);
-  go(q('.dt_pr[data-p="idea"]'), .56, .5, 420); wait(350);
-  tg(2, 2200); tg(3, 2300); tg(1, 2800);
+  sweep(1100, .95, .35); leave(); wait(500);
+  act(function () { insight(0); }); seg(0); wait(150);
+  /* 2 · Portali: pick a portal → only its ads; pick a layout → its floor plan */
+  nav('Portali'); wait(500);
+  portal('immo', 900); tg(1, 1700);
+  portal('idea', 900); tg(3, 1700);
   /* 3 · Calendario: where it lands — the visit at the sales office */
-  nav('Calendario'); wait(800);
-  chipClick('visit', 1300);
-  go(q('.dt_ev[data-k]'), .46, .56, 850); click(openPop); wait(4400);
-  go(q('.dt_pop .dt_x'), .5, .5, 650); click(closePop); wait(300);
-  chipClick('all', 800);
+  nav('Calendario'); wait(450);
+  chipClick('visit', 800);
+  go(q('.dt_ev[data-k]'), .46, .56, 700); click(openPop); wait(3200);
+  go(q('.dt_pop .dt_x'), .5, .5, 500); click(closePop); wait(200);
   /* back to the start */
-  nav('Panoramica'); wait(450);
+  nav('Panoramica'); wait(300);
   app.__dtLoop = LOOP;
 
   function step() { if (!running) return; var f = Q[qi]; qi = (qi + 1) % Q.length; f(step); }
