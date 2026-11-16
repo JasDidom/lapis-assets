@@ -76,6 +76,7 @@
     + '.dt_det{padding:12px;min-width:0;transition:opacity .18s ease}.dt_det.sw{opacity:0}'
     + '.dt_stage{position:relative;height:214px;border-radius:9px;border:1px solid #F0EEEB;background:#FAF9F7 radial-gradient(#E7E3DD 1px,transparent 1.2px) 0 0/14px 14px;display:grid;place-items:center;overflow:hidden}.dt_stage svg{width:94%;height:92%;display:block}'
     + '.dt_stage em{position:absolute;top:8px;font-style:normal;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#8A8884;background:#fff;border:1px solid #ECEAE6;border-radius:6px;padding:2px 7px;white-space:nowrap}.dt_stage em.l{left:8px}.dt_stage em.r{right:8px;letter-spacing:0;text-transform:none;color:#1E8A4C;font-size:10.5px}'
+    + '.dt_plan .lb text{paint-order:stroke;stroke:#FFFFFF;stroke-width:3px;stroke-linejoin:round}.dt_plan .m{font-size:7px;font-weight:500;letter-spacing:0;text-transform:none;fill:#A8A49D}.dt_plan .sc text{text-anchor:start;font-size:7px;letter-spacing:0;text-transform:none;fill:#8A8884}'
     + '.dt_plan text{font-family:inherit;font-size:7.6px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;fill:#8A8884;text-anchor:middle}'
     + '.dt_plan.big .w{stroke-dasharray:1 1.1;stroke-dashoffset:1.05;animation:dtdraw .9s cubic-bezier(.6,0,.2,1) forwards}.dt_plan.big .dd,.dt_plan.big .fu,.dt_plan.big .te{animation:dtfade .5s ease backwards;animation-delay:.75s}.dt_plan.big .lb{animation:dtfade .5s ease backwards;animation-delay:1s}'
     + '.dt_dh{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin:12px 2px 0;white-space:nowrap}.dt_dh b{display:block;font-size:17px;letter-spacing:-.015em;line-height:1.2}.dt_dh small{display:block;font-size:11.5px;color:#8A8884;margin-top:2px}.dt_dh .p{text-align:right}.dt_dh .p b{font-size:16px}'
@@ -146,62 +147,74 @@
     + '.dt_who .av{width:32px;height:32px;border-radius:50%;background:#FDF1EC;color:#B0573A;display:grid;place-items:center;font-size:11px;font-weight:700;flex:none}'
     + '.dt_who p{margin:0;font-size:11.5px;color:#73726E;line-height:1.4;white-space:nowrap}.dt_who p b{display:block;font-size:13px;color:#171717}'
     + '.dt_jr{margin-top:14px}.dt_host .dt_pop .dt_with{margin:14px 0 0;padding-top:11px;border-top:1px solid #F0EEEB;font-size:11px;color:#8A8884}'
+    /* google-calendar look */
+    + '.dt_cal .h{flex-direction:column;justify-content:center;align-items:flex-start;gap:1px;height:50px;padding:0 10px}.dt_cal .h small{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#8A8884}.dt_cal .h b{font-size:18px;font-weight:500;line-height:1.1;color:#171717}.dt_cal .h:first-child small{font-size:9px;letter-spacing:0;text-transform:none;color:#B5B2AC}'
+    + '.dt_cal .h.td small{color:#B0573A}.dt_cal .h.td b{display:inline-grid;place-items:center;width:28px;height:28px;padding:0;border-radius:50%;background:#B0573A;color:#fff;font-size:15px}'
+    + '.dt_cal .t{text-align:right;padding:4px 8px 0 0;font-size:10px}'
+    + '.dt_gc{width:328px;padding:8px 8px 14px 14px;border-radius:12px}.dt_gc .gc_bar{display:flex;justify-content:flex-end;gap:2px;margin-bottom:4px}.dt_gc .gc_bar>svg,.dt_gc .dt_x{width:28px;height:28px;padding:7px;border-radius:50%;color:#55524D;display:block;box-sizing:border-box}.dt_gc .dt_x svg{width:14px;height:14px;display:block}.dt_gc .dt_x{padding:7px}'
+    + '.gc_r{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;align-items:start;padding:6px 8px 6px 0}.gc_r>svg{width:18px;height:18px;color:#73726E;margin-top:1px}.gc_r b{display:block;font-size:12.5px;font-weight:500;color:#171717;line-height:1.35}.gc_r small{display:block;font-size:11.5px;color:#73726E;line-height:1.4}.gc_r small.d{font-size:12px;color:#3D3D3D}'
+    + '.gc_t{align-items:center;padding-bottom:10px}.gc_sq{width:14px;height:14px;border-radius:4px;background:#2EBD6B;margin:0 4px}.gc_t h6{font-size:17px;font-weight:500;letter-spacing:-.01em;line-height:1.25;color:#171717;margin:0}.gc_t p{font-size:12px;color:#55524D;margin:3px 0 0}'
+    + '.gc_p{display:flex;align-items:center;gap:9px;margin-top:8px}.gc_p>span{min-width:0}.gc_p small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gc_av{position:relative;width:28px;height:28px;border-radius:50%;background:#FDF1EC;color:#B0573A;font-style:normal;font-size:10px;font-weight:700;display:grid;place-items:center;flex:none}.gc_av.k{background:#171717;color:#fff}.gc_av svg{position:absolute;right:-3px;bottom:-3px;width:13px;height:13px;padding:1.5px;border-radius:50%;background:#fff;box-sizing:border-box;stroke:#1E8A4C}'
+    + '.gc_rsvp{display:flex;align-items:center;gap:6px;margin:10px 8px 0 0;padding-top:12px;border-top:1px solid #F0EEEB;font-size:12px;color:#55524D}.gc_rsvp span{margin-right:auto}.gc_rsvp em{font-style:normal;padding:5px 12px;border-radius:999px;border:1px solid #E3DFD8;color:#3D3D3D;font-weight:500}.gc_rsvp em.on{background:#EAF7EF;border-color:#BFE5CD;color:#1E8A4C}'
     /* a lighter, calmer pointer */
     + '.dt_cur{width:26px;height:26px}.dt_cur svg{width:26px;height:26px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18))}'
     + '@media (prefers-reduced-motion:reduce){.dt_lh span:before{animation:none!important;opacity:1;transform:none}.dt_host{filter:none;transform:none}}';
   var st = document.createElement('style'); st.id = 'lpdashtour'; st.textContent = css; document.head.appendChild(st);
 
-  /* ---------- floor plans (inline SVG, slightly irregular strokes for a hand-drawn feel) ---------- */
+  /* ---------- floor plans: real scale (1 m = 15 units, same scale for every layout), distinct layouts ---------- */
   function fr(x, y, w, h, r) { return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + (r || 0) + '"/>'; }
   function fc(x, y, r) { return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '"/>'; }
   function bed(x, y, w, h) { return fr(x, y, w, h, 2) + fr(x + 3, y + 3, w - 6, Math.round(h * .22), 2); }
-  var PLN = {
-    bi: {
-      s: 11,
-      o: [[40, 30], [280, 30], [280, 170], [40, 170]],
-      t: [[40, 170], [150, 170], [150, 196], [40, 196]],
-      w: [[170, 30, 170, 170], [170, 100, 280, 100], [215, 100, 215, 170]],
-      g: [[170, 118, 170, 150]],
-      d: [[180, 170, 204, 170, -1, 1], [180, 100, 200, 100, -1], [215, 112, 215, 130, 1]],
-      n: [[70, 30, 130, 30], [200, 30, 250, 30], [280, 118, 280, 150], [58, 170, 132, 170]],
-      f: fr(46, 36, 100, 11, 1) + fc(64, 41.5, 3) + fc(76, 41.5, 3) + fc(138, 82, 11) + fr(56, 128, 62, 18, 5) + bed(212, 50, 40, 44) + fr(258, 108, 16, 34, 6),
-      l: [[96, 64, 'cu'], [100, 116, 'so'], [232, 43, 'ca'], [240, 160, 'ba'], [95, 187, 'bl']]
-    },
-    tri: {
-      s: 23,
-      o: [[30, 24], [290, 24], [290, 160], [30, 160]],
-      t: [[30, 160], [160, 160], [160, 192], [30, 192]],
-      w: [[30, 70, 115, 70], [160, 24, 160, 160], [160, 84, 290, 84], [160, 106, 290, 106], [235, 24, 235, 84], [240, 106, 240, 160]],
-      g: [[160, 87, 160, 103]],
-      d: [[170, 84, 188, 84, -1], [245, 84, 261, 84, -1], [170, 106, 188, 106, 1], [250, 106, 266, 106, 1], [290, 87, 290, 103, -1, 1]],
-      n: [[50, 24, 95, 24], [180, 24, 220, 24], [250, 24, 275, 24], [180, 160, 225, 160], [30, 95, 30, 140], [50, 160, 140, 160]],
-      f: fr(36, 30, 74, 10, 1) + fc(52, 35, 3) + fc(63, 35, 3) + fr(48, 104, 58, 17, 5) + fc(132, 134, 10) + bed(200, 43, 30, 34) + fr(270, 44, 14, 30, 6) + bed(198, 112, 34, 32) + fr(274, 112, 12, 26, 5),
-      l: [[72, 56, 'cu'], [92, 92, 'so'], [205, 37, 'ca'], [262, 37, 'ba'], [212, 154, 'ca'], [262, 154, 'ba'], [95, 180, 'te']]
-    },
-    quad: {
-      s: 37,
-      o: [[24, 22], [296, 22], [296, 192], [196, 192], [196, 150], [24, 150]],
-      t: [[24, 150], [150, 150], [150, 188], [24, 188]],
-      w: [[24, 60, 110, 60], [140, 22, 140, 150], [140, 94, 296, 94], [140, 114, 296, 114], [200, 22, 200, 94], [240, 22, 240, 94], [196, 114, 196, 150]],
-      g: [[140, 96, 140, 112]],
-      d: [[150, 94, 166, 94, -1], [210, 94, 224, 94, -1], [250, 94, 266, 94, -1], [150, 114, 164, 114, 1], [206, 114, 222, 114, 1], [296, 96, 296, 112, -1, 1]],
-      n: [[44, 22, 90, 22], [155, 22, 185, 22], [212, 22, 230, 22], [255, 22, 282, 22], [24, 80, 24, 130], [44, 150, 130, 150], [296, 130, 296, 175], [220, 192, 270, 192]],
-      f: fr(30, 28, 74, 10, 1) + fc(46, 33, 3) + fc(57, 33, 3) + fr(36, 90, 58, 17, 5) + fc(112, 126, 10) + bed(166, 41, 28, 34) + fr(224, 42, 11, 28, 5) + bed(264, 41, 26, 34) + fr(178, 118, 12, 18, 4) + bed(244, 124, 38, 40),
-      l: [[66, 52, 'cu'], [80, 78, 'so'], [170, 35, 'ca'], [220, 35, 'ba'], [268, 35, 'ca'], [176, 145, 'ba'], [246, 184, 'ca'], [87, 173, 'te']]
-    },
-    att: {
-      s: 53,
-      o: [[60, 50], [296, 50], [296, 176], [60, 176]],
-      t: [[20, 14], [296, 14], [296, 50], [60, 50], [60, 176], [20, 176]],
-      w: [[60, 130, 140, 130], [180, 50, 180, 176], [180, 102, 296, 102], [180, 122, 296, 122], [250, 50, 250, 102], [244, 122, 244, 176]],
-      g: [[180, 104, 180, 120]],
-      d: [[190, 102, 206, 102, -1], [258, 102, 272, 102, -1], [190, 122, 206, 122, 1], [254, 122, 268, 122, 1], [296, 104, 296, 120, -1, 1]],
-      n: [[80, 50, 160, 50], [195, 50, 235, 50], [60, 65, 60, 115], [60, 142, 60, 166], [80, 176, 125, 176], [195, 176, 230, 176], [296, 60, 296, 88]],
-      f: fr(76, 80, 60, 17, 5) + fc(152, 108, 11) + fr(66, 160, 68, 10, 1) + fc(80, 165, 3) + fc(91, 165, 3) + bed(214, 68, 30, 30) + fr(278, 68, 12, 26, 5) + bed(210, 128, 28, 30) + fr(278, 128, 12, 26, 5) + fc(33, 28, 6) + fc(33, 160, 6) + fc(281, 31, 6) + fr(96, 22, 44, 14, 4),
-      l: [[120, 68, 'so'], [100, 146, 'cu'], [215, 63, 'ca'], [273, 63, 'ba'], [214, 170, 'ca'], [268, 170, 'ba'], [200, 36, 'te']]
-    }
+  var PS = 15;
+  /* metres: o outer, t terrace/balcony, w inner walls, g open passages, d doors [hinge→end, swing, exterior], n windows, f furniture, l labels [x, y, room, m², vertical] */
+  var PLM = {
+    bi: { s: 11,
+      o: [[0, 0], [8.6, 0], [8.6, 7.2], [0, 7.2]], t: [[0, 7.2], [5.5, 7.2], [5.5, 8.6], [0, 8.6]],
+      w: [[5, 0, 5, 7.2], [5, 4.4, 8.6, 4.4]], g: [],
+      d: [[5, 2.6, 5, 3.4, 1], [5, 5.3, 5, 6.1, 1], [3.6, 0, 4.5, 0, 1, 1]],
+      n: [[0.6, 0, 3.0, 0], [6.0, 0, 8.0, 0], [8.6, 0.8, 8.6, 3.4], [0, 1.2, 0, 4.6], [0.6, 7.2, 4.6, 7.2], [6.0, 7.2, 7.8, 7.2]],
+      f: [['r', 4.25, 0.4, 0.6, 2.0, 1], ['c', 2.2, 2.2, 0.55], ['r', 0.8, 5.5, 2.6, 0.85, 4], ['r', 1.5, 4.3, 1.2, 0.6, 3], ['b', 6.0, 0.5, 1.7, 2.1], ['r', 8.0, 2.9, 0.45, 1.3, 1], ['r', 6.9, 4.6, 1.55, 0.75, 4], ['c', 5.6, 6.7, 0.25], ['r', 5.25, 4.6, 0.8, 0.45, 2]],
+      l: [[2.5, 3.5, 'so', 36], [6.85, 3.6, 'ca', 16], [7.2, 6.2, 'ba', 10], [2.75, 8.0, 'bl', 8]] },
+    tri: { s: 23,
+      o: [[0, 0], [11, 0], [11, 8], [0, 8]], t: [[-1.8, 0], [0, 0], [0, 7.8], [-1.8, 7.8]],
+      w: [[6, 0, 6, 8], [0, 5, 6, 5], [4.4, 5, 4.4, 8], [6, 3.6, 11, 3.6], [6, 4.6, 11, 4.6], [8.6, 4.6, 8.6, 8]],
+      g: [[0.4, 5, 3.8, 5], [6, 3.7, 6, 4.5]],
+      d: [[7.0, 3.6, 7.8, 3.6, -1], [6.3, 4.6, 7.1, 4.6, 1], [9.0, 4.6, 9.8, 4.6, 1], [4.6, 5, 5.4, 5, 1], [11, 3.7, 11, 4.5, -1, 1]],
+      n: [[1, 0, 5, 0], [7, 0, 10, 0], [11, 0.8, 11, 2.8], [0, 0.8, 0, 4.4], [0.6, 8, 3.8, 8], [6.6, 8, 8.2, 8], [9.4, 8, 10.4, 8]],
+      f: [['r', 1.2, 0.4, 3.0, 0.9, 4], ['r', 2.1, 1.8, 1.2, 0.6, 3], ['c', 4.9, 3.0, 0.6], ['r', 0.15, 5.3, 0.6, 2.5, 1], ['c', 2.5, 6.5, 0.55], ['b', 7.6, 0.5, 1.8, 2.1], ['r', 10.3, 0.6, 0.5, 2.4, 1], ['b', 6.4, 5.5, 1.0, 2.0], ['r', 7.6, 7.3, 0.9, 0.5, 1], ['r', 9.0, 6.9, 1.7, 0.8, 4], ['c', 10.4, 5.2, 0.25], ['r', 9.0, 4.85, 0.8, 0.45, 2], ['r', 4.6, 7.0, 1.2, 0.8, 1], ['c', 5.6, 5.8, 0.25]],
+      l: [[3.1, 3.0, 'so', 30], [2.4, 5.85, 'cu', 13], [5.2, 6.6, 'ba', 5], [8.5, 3.0, 'ca', 18], [8.0, 6.25, 'ca', 9], [9.8, 5.9, 'ba', 8], [-0.9, 3.9, 'te', 14, 1]] },
+    quad: { s: 37,
+      o: [[0, 0], [12.4, 0], [12.4, 9], [0, 9]], t: [[0, 9], [6.6, 9], [6.6, 11.4], [0, 11.4]],
+      w: [[6.6, 0, 6.6, 4.0], [6.6, 5.2, 6.6, 9], [0, 5.4, 5.0, 5.4], [3.4, 5.4, 3.4, 9], [5.0, 5.4, 5.0, 9], [6.6, 4.0, 12.4, 4.0], [6.6, 5.2, 12.4, 5.2], [10.2, 0, 10.2, 4.0], [10.0, 5.2, 10.0, 9]],
+      g: [],
+      d: [[2.0, 5.4, 2.8, 5.4, 1], [5.0, 6.2, 5.0, 7.0, -1], [7.2, 4.0, 8.0, 4.0, -1], [10.6, 4.0, 11.3, 4.0, -1], [6.6, 6.0, 6.6, 6.8, 1], [10.6, 5.2, 11.3, 5.2, 1], [12.4, 4.2, 12.4, 5.0, -1, 1]],
+      n: [[0.8, 0, 5.8, 0], [7.4, 0, 9.6, 0], [10.8, 0, 11.8, 0], [0, 1, 0, 4.6], [0, 6.2, 0, 8.2], [0.8, 9, 5.8, 9], [7.2, 9, 9.4, 9], [10.6, 9, 11.8, 9], [12.4, 6, 12.4, 8.2]],
+      f: [['r', 0.9, 1.0, 2.6, 0.8, 2], ['r', 4.2, 0.8, 1.6, 0.9, 3], ['r', 1.0, 3.7, 3.0, 0.9, 4], ['r', 4.5, 3.4, 0.9, 0.9, 4], ['b', 0.6, 6.85, 1.6, 2.0], ['r', 3.6, 8.0, 1.2, 0.8, 1], ['c', 4.2, 6.0, 0.25], ['b', 7.6, 0.5, 1.8, 2.1], ['r', 9.6, 0.5, 0.45, 2.2, 1], ['r', 10.4, 0.25, 0.75, 1.7, 4], ['c', 11.9, 3.3, 0.25], ['r', 11.55, 0.3, 0.6, 0.8, 2], ['b', 7.4, 6.75, 1.6, 2.0], ['r', 10.3, 7.9, 1.6, 0.6, 1], ['c', 11.1, 7.45, 0.3]],
+      l: [[3.3, 2.6, 'so', 36], [1.7, 6.1, 'ca', 12], [4.2, 7.3, 'ba', 6], [8.45, 3.3, 'ca', 14], [11.4, 2.75, 'ba', 9], [8.3, 5.85, 'ca', 13], [11.2, 6.6, 'st', 9], [3.3, 10.45, 'te', 16]] },
+    att: { s: 53,
+      o: [[0, 0], [13.4, 0], [13.4, 9.7], [0, 9.7]], t: [[0, -1.8], [15.4, -1.8], [15.4, 9.7], [13.4, 9.7], [13.4, 0], [0, 0]],
+      w: [[7.4, 0, 7.4, 9.7], [0, 6.0, 7.4, 6.0], [4.0, 6.0, 4.0, 9.7], [5.6, 6.0, 5.6, 9.7], [7.4, 4.6, 13.4, 4.6], [10.6, 4.6, 10.6, 9.7], [10.6, 7.0, 13.4, 7.0]],
+      g: [[0.4, 6, 3.6, 6], [5.7, 6.0, 7.3, 6.0]],
+      d: [[7.4, 2.0, 7.4, 2.8, 1], [7.4, 7.6, 7.4, 8.4, 1], [5.6, 7.0, 5.6, 7.8, -1], [11.2, 4.6, 11.9, 4.6, 1], [10.6, 7.8, 10.6, 8.6, 1], [5.9, 9.7, 6.8, 9.7, -1, 1]],
+      n: [[0.8, 0, 6.6, 0], [8.2, 0, 12.6, 0], [13.4, 0.8, 13.4, 3.8], [13.4, 7.6, 13.4, 9.0], [0, 1, 0, 5], [0.6, 9.7, 3.4, 9.7], [7.9, 9.7, 10.0, 9.7]],
+      f: [['r', 1.2, 3.9, 3.4, 0.95, 4], ['r', 2.2, 2.7, 1.4, 0.7, 3], ['r', 5.3, 3.5, 0.9, 0.9, 3], ['r', 1.8, 0.6, 2.4, 1.0, 3], ['r', 1.0, 7.5, 2.4, 0.85, 2], ['b', 9.4, 0.6, 1.9, 2.2], ['r', 12.6, 0.6, 0.5, 2.6, 1], ['b', 8.0, 5.4, 1.7, 2.1], ['r', 4.2, 8.7, 1.2, 0.8, 1], ['c', 4.8, 6.6, 0.25], ['r', 12.55, 4.8, 0.7, 1.7, 4], ['r', 10.8, 4.8, 0.8, 0.45, 2], ['c', 11.2, 6.5, 0.25], ['r', 11.0, 8.9, 2.2, 0.55, 1], ['r', 2.2, -1.5, 1.6, 0.6, 3], ['r', 4.2, -1.5, 1.6, 0.6, 3], ['c', 14.4, 1.2, 0.35], ['c', 14.4, 8.6, 0.35], ['c', 12.4, -0.9, 0.35]],
+      l: [[5.0, 1.5, 'so', 44], [2.0, 6.85, 'cu', 15], [4.8, 7.65, 'ba', 6], [8.55, 3.9, 'ca', 28], [11.65, 5.95, 'ba', 7], [9.05, 8.75, 'ca', 16], [12.0, 8.0, 'gu', 8], [8.5, -0.75, 'te', 48]] }
   };
-  var ROOM = { so: t('Soggiorno', 'Living'), cu: t('Cucina', 'Kitchen'), ca: t('Camera', 'Bedroom'), ba: t('Bagno', 'Bath'), te: t('Terrazzo', 'Terrace'), bl: t('Balcone', 'Balcony') };
+  var PLN = {};
+  (function () {
+    for (var k in PLM) {
+      var p = PLM[k], xs = [], ys = [];
+      p.o.concat(p.t).forEach(function (q) { xs.push(q[0]); ys.push(q[1]); });
+      var mx = Math.min.apply(0, xs), my = Math.min.apply(0, ys), W = (Math.max.apply(0, xs) - mx) * PS, H = (Math.max.apply(0, ys) - my) * PS;
+      var ox = (320 - W) / 2 - mx * PS, oy = (206 - H) / 2 - my * PS + 2;
+      var X = function (v) { return Math.round((v * PS + ox) * 10) / 10; }, Y = function (v) { return Math.round((v * PS + oy) * 10) / 10; }, L = function (v) { return Math.round(v * PS * 10) / 10; };
+      var pt = function (q) { return [X(q[0]), Y(q[1])]; }, sg = function (a) { return [X(a[0]), Y(a[1]), X(a[2]), Y(a[3])].concat(a.slice(4)); };
+      PLN[k] = { s: p.s, o: p.o.map(pt), t: p.t.map(pt), w: p.w.map(sg), g: p.g.map(sg), d: p.d.map(sg), n: p.n.map(sg),
+        f: p.f.map(function (a) { return a[0] === 'c' ? fc(X(a[1]), Y(a[2]), L(a[3])) : a[0] === 'b' ? bed(X(a[1]), Y(a[2]), L(a[3]), L(a[4])) : fr(X(a[1]), Y(a[2]), L(a[3]), L(a[4]), a[5]); }).join(''),
+        l: p.l.map(function (a) { return [X(a[0]), Y(a[1]), a[2], a[3], a[4]]; }) };
+    }
+  })();
+  var ROOM = { so: t('Soggiorno', 'Living'), cu: t('Cucina', 'Kitchen'), ca: t('Camera', 'Bedroom'), ba: t('Bagno', 'Bath'), te: t('Terrazzo', 'Terrace'), bl: t('Balcone', 'Balcony'), st: t('Studio', 'Study'), gu: t('Cabina', 'Closet')};
   var sd = 1;
   function rnd() { sd = (sd * 9301 + 49297) % 233280; return sd / 233280 - .5; }
   function r1(n) { return Math.round(n * 10) / 10; }
@@ -235,7 +248,8 @@
     });
     if (big) p.n.forEach(function (a) { h += '<path d="' + ln(a) + '" stroke="#fff" stroke-width="3"/><path d="' + ln(a) + '" stroke="#2A2826" stroke-width=".8"/>'; });
     h += '</g>';
-    if (big) h += '<g class="lb">' + p.l.map(function (a) { return '<text x="' + a[0] + '" y="' + a[1] + '">' + ROOM[a[2]] + '</text>'; }).join('') + '</g>';
+    if (big) h += '<g class="lb">' + p.l.map(function (a) { var tr = a[4] ? ' transform="rotate(-90 ' + a[0] + ' ' + a[1] + ')"' : ''; return '<text x="' + a[0] + '" y="' + a[1] + '"' + tr + '>' + ROOM[a[2]] + '<tspan class="m" x="' + a[0] + '" dy="8.5">' + a[3] + ' m²</tspan></text>'; }).join('') + '</g>'
+      + '<g class="sc"><path d="M10 203H40M10 200.5V205.5M25 201.5V204.5M40 200.5V205.5" stroke="#8A8884" stroke-width=".9" fill="none"/><text x="44" y="205.5">2 m</text></g>';
     return h + '</svg>';
   }
 
@@ -303,7 +317,7 @@
     h += '<div class="dt_card dt_kp dt_in" style="--i:1"><span data-kp="visit"><small>' + t('Visite questa settimana', 'Visits this week') + '</small><p>' + num(nv) + '<em>+2</em></p></span>'
       + '<span><small>' + t('Appuntamenti confermati', 'Confirmed appointments') + '</small><p>' + num(ne - nt, '', 80) + '<i>/ ' + ne + '</i></p></span>'
       + '<span><small>' + t('Tasso contatto → visita', 'Lead → visit rate') + '</small><p>' + num(12, '%', 160) + '<em>+3 pt</em></p></span></div>';
-    h += '<div class="dt_card dt_cal dt_in" style="--i:2"><span class="h"></span>' + D.map(function (d, i) { return '<span class="h' + (i === 3 ? ' td' : '') + '"><b>' + d[0] + '</b>' + d[1] + '</span>'; }).join('');
+    h += '<div class="dt_card dt_cal dt_in" style="--i:2"><span class="h"><small>GMT+1</small></span>' + D.map(function (d, i) { return '<span class="h' + (i === 3 ? ' td' : '') + '"><small>' + d[1] + '</small><b>' + d[0] + '</b></span>'; }).join('');
     H.forEach(function (hr, r) {
       h += '<span class="t">' + hr + '</span>';
       for (var c = 0; c < 5; c++) {
@@ -315,11 +329,17 @@
     h += '</div>';
     /* detail popover */
     var tri = TG[1];
-    h += '<div class="dt_pop"><div class="dt_pt" style="--i:0"><h6>' + t('Visita in ufficio vendite', 'Sales-office visit') + '</h6><span class="dt_x"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>'
-      + '<div class="dt_pw" style="--i:1">' + t('Giovedì 12 · 10:30', 'Thursday 12 · 10:30') + '<span class="dt_ok">' + CHK + t('Confermata', 'Confirmed') + '</span></div>'
-      + '<div class="dt_who" style="--i:2"><span class="av">MR</span><p><b>Marco R.</b>' + t('Trilocale', '2-bed') + ' · ' + tri.m + ' m² · ' + t('budget 280–310k €', 'budget €280–310k') + '</p></div>'
-      + '<div class="dt_jr" style="--i:3"><span><b>' + t('Clic sul Reel', 'Reel click') + '</b>' + t('9 giorni fa', '9 days ago') + '</span><span><b>' + t('Contatto', 'Lead') + '</b>' + t('8 giorni fa', '8 days ago') + '</span><span class="k"><b>' + t('Visita', 'Visit') + '</b>' + t('oggi', 'today') + '</span></div>'
-      + '<p class="dt_with" style="--i:4">' + t('Con Giulia V., consulente vendite', 'With Giulia V., sales consultant') + '</p></div>';
+    var I = function (d) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + d + '</svg>'; };
+    h += '<div class="dt_pop dt_gc">'
+      + '<div class="gc_bar" style="--i:0">' + I('<path d="M4 20h4L19 9l-4-4L4 16z"/>') + I('<path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"/>') + I('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>') + I('<circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/>') + '<span class="dt_x">' + I('<path d="M6 6l12 12M18 6L6 18"/>') + '</span></div>'
+      + '<div class="gc_r gc_t" style="--i:1"><i class="gc_sq"></i><div><h6>' + t('Visita in ufficio vendite · Marco R.', 'Sales-office visit · Marco R.') + '</h6><p>' + t('Giovedì 12 novembre · 10:30 – 11:15', 'Thursday 12 November · 10:30 – 11:15') + '</p></div></div>'
+      + '<div class="gc_r" style="--i:2">' + I('<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>') + '<div><b>' + t('Ufficio vendite Residenze Verdi', 'Residenze Verdi sales office') + '</b><small>Parma</small></div></div>'
+      + '<div class="gc_r" style="--i:3">' + I('<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 4.5a3.2 3.2 0 0 1 0 6.2M18 14c2 .7 3 2.8 3 6"/>') + '<div><b>' + t('2 invitati', '2 guests') + '</b><small>' + t('2 sì', '2 yes') + '</small>'
+      + '<span class="gc_p"><i class="gc_av">MR' + CHK + '</i><span><b>Marco R.</b><small>' + t('Trilocale', '2-bed') + ' · ' + tri.m + ' m² · ' + t('budget 280–310k €', 'budget €280–310k') + '</small></span></span>'
+      + '<span class="gc_p"><i class="gc_av k">GV' + CHK + '</i><span><b>Giulia V.</b><small>' + t('Organizzatore · consulente vendite', 'Organiser · sales consultant') + '</small></span></span></div></div>'
+      + '<div class="gc_r" style="--i:4">' + I('<path d="M5 6h14M5 12h14M5 18h9"/>') + '<div><b>' + t('Da dove arriva', 'Where they came from') + '</b><small>' + t('Reel dal cantiere → contatto 8 giorni fa → visita oggi', 'Site Reel → lead 8 days ago → visit today') + '</small></div></div>'
+      + '<div class="gc_r" style="--i:5">' + I('<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0"/>') + '<div><small class="d">' + t('30 minuti prima', '30 minutes before') + '</small></div></div>'
+      + '<div class="gc_rsvp" style="--i:6"><span>' + t('Parteciperà?', 'Going?') + '</span><em class="on">' + t('Sì', 'Yes') + '</em><em>No</em><em>' + t('Forse', 'Maybe') + '</em></div></div>';
     return h;
   }
   var V = { Portali: vPort, Calendario: vCal };
