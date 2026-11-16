@@ -142,7 +142,7 @@
     /* a lighter, calmer pointer */
     + '.dt_cur{width:26px;height:26px}.dt_cur svg{width:26px;height:26px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18))}'
     /* satellite windows */
-    + '.dt_sats{position:absolute;display:none;pointer-events:none;z-index:3}.dt_sats.on{display:block}'
+    + '.dt_sats{position:absolute;display:none;pointer-events:none;z-index:75}.dt_sats.on{display:block}'
     + '.dt_sat{position:absolute;background:#fff;border-radius:12px;box-shadow:0 28px 56px -28px rgba(23,23,23,.35),0 0 0 1px #ECEAE6;font-size:12px;line-height:1.35;color:#171717;text-align:left;overflow:hidden;opacity:0;transform:translateY(10px);animation:dtsat .7s ' + E1 + ' .5s forwards}'
     + '@keyframes dtsat{to{opacity:1;transform:none}}'
     + '.dt_sh{display:flex;align-items:center;gap:8px;height:30px;padding:0 10px;border-bottom:1px solid #F1EFEC;font-size:11.5px;font-weight:500;color:#55524D}.dt_sh span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
