@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase (v6 · Attio pass: satellite windows, streamed text, live states) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -136,32 +136,19 @@
     /* scene change: a soft focus pull instead of a hard cut */
     + '.dt_host{filter:blur(5px);transform:translateY(6px)}.dt_host.is-on{filter:none;transform:none;transition:opacity .45s ease,filter .5s ease,transform .6s ' + E1 + '}'
     /* live states */
-    + '.dt_lh span:before,.dt_lv:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#2EBD6B;margin-right:6px;vertical-align:1px;animation:dtlive 2s ease-out infinite}'
+    + '.dt_lh span:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#2EBD6B;margin-right:6px;vertical-align:1px;animation:dtlive 2s ease-out infinite}'
     + '@keyframes dtlive{0%{box-shadow:0 0 0 0 rgba(46,189,107,.45)}70%,100%{box-shadow:0 0 0 6px rgba(46,189,107,0)}}'
     + '.dt_ins .dt_ty{font-style:normal}.dt_ty:after,.dt_caret:after{content:"";display:inline-block;width:1px;height:.95em;margin-left:1px;vertical-align:-1px;background:currentColor;animation:dtblink .55s steps(1) infinite}@keyframes dtblink{50%{opacity:0}}'
+    /* seamless swap between views (host stays opaque, content cross-fades) */
+    + '.dt_host>*{transition:opacity .26s ease,filter .26s ease}.dt_host.sw>*{opacity:0;filter:blur(3px)}'
+    /* simple visit card */
+    + '.dt_pop{width:280px;padding:16px 18px 16px}.dt_who{display:flex;align-items:center;gap:10px;margin-top:14px;padding:10px 12px;border-radius:10px;background:#F7F6F4}'
+    + '.dt_who .av{width:32px;height:32px;border-radius:50%;background:#FDF1EC;color:#B0573A;display:grid;place-items:center;font-size:11px;font-weight:700;flex:none}'
+    + '.dt_who p{margin:0;font-size:11.5px;color:#73726E;line-height:1.4;white-space:nowrap}.dt_who p b{display:block;font-size:13px;color:#171717}'
+    + '.dt_jr{margin-top:14px}.dt_with{margin:12px 0 0;font-size:11px;color:#8A8884}'
     /* a lighter, calmer pointer */
     + '.dt_cur{width:26px;height:26px}.dt_cur svg{width:26px;height:26px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18))}'
-    /* satellite windows */
-    + '.dt_sats{position:absolute;display:none;pointer-events:none;z-index:75}.dt_sats.on{display:block}'
-    + '.dt_sat{position:absolute;background:#fff;border-radius:12px;box-shadow:0 28px 56px -28px rgba(23,23,23,.35),0 0 0 1px #ECEAE6;font-size:12px;line-height:1.35;color:#171717;text-align:left;overflow:hidden;opacity:0;transform:translateY(10px);animation:dtsat .7s ' + E1 + ' .5s forwards}'
-    + '@keyframes dtsat{to{opacity:1;transform:none}}'
-    + '.dt_sh{display:flex;align-items:center;gap:8px;height:30px;padding:0 10px;border-bottom:1px solid #F1EFEC;font-size:11.5px;font-weight:500;color:#55524D}.dt_sh span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
-    + '.dt_dots{display:flex;gap:4px;flex:none}.dt_dots b{width:7px;height:7px;border-radius:50%;background:#E4E1DC}'
-    + '.dt_lv{font-style:normal;font-size:10.5px;font-weight:600;color:#1E8A4C;display:inline-flex;align-items:center}'
-    + '.dt_satL{left:calc(-1 * var(--gl));bottom:56px;width:min(250px,calc(var(--gl) + 90px))}'
-    + '.dt_feed{padding:6px;min-height:156px}.dt_ld{display:flex;align-items:center;gap:8px;padding:7px 6px;border-radius:8px;animation:dtld .55s ' + E1 + ' both}.dt_ld+.dt_ld{border-top:1px solid #F4F2EF}'
-    + '@keyframes dtld{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}'
-    + '.dt_ld .av{width:26px;height:26px;border-radius:50%;background:#F4F2EF;color:#55524D;display:grid;place-items:center;font-size:9.5px;font-weight:700;flex:none}.dt_ld:first-child .av{background:#FDF1EC;color:#B0573A}'
-    + '.dt_ld p{flex:1;min-width:0;margin:0}.dt_ld p b{display:block;font-size:12px;font-weight:600}.dt_ld p span{display:flex;align-items:center;gap:5px;font-size:11px;color:#8A8884;white-space:nowrap;overflow:hidden}'
-    + '.dt_sat .dt_ic{width:14px;height:14px;border-radius:4px;box-shadow:none;margin:0}.dt_sat .dt_ic svg{width:8px;height:8px}'
-    + '.dt_ld em{font-style:normal;font-size:10.5px;color:#B5B2AC;white-space:nowrap;display:inline-flex;align-items:center;gap:3px}.dt_ld.ok em{color:#1E8A4C;background:#EAF6EF;padding:2px 7px 2px 5px;border-radius:999px;font-weight:600;animation:dtld .45s ' + E1 + '}.dt_ld.ok em svg{width:10px;height:10px}'
-    + '.dt_satR{right:calc(-1 * var(--gr));top:96px;width:min(212px,calc(var(--gr) + 70px))}'
-    + '.dt_rl{position:relative;height:150px;overflow:hidden;background:#EEE}.dt_rl img{width:100%;height:100%;object-fit:cover;display:block;animation:dtkb 14s ease-in-out infinite alternate}@keyframes dtkb{to{transform:scale(1.08) translate(-2%,-1%)}}'
-    + '.dt_sp{position:absolute;left:8px;top:8px;font-size:10px;color:#fff;background:rgba(0,0,0,.35);padding:2px 7px;border-radius:999px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}'
-    + '.dt_toast{position:absolute;right:8px;bottom:8px;font-size:11px;font-weight:600;color:#171717;background:#fff;padding:4px 9px;border-radius:999px;box-shadow:0 8px 18px -10px rgba(0,0,0,.5);opacity:0}.dt_toast.on{animation:dttoast 2.6s ' + E1 + ' forwards}'
-    + '@keyframes dttoast{0%{opacity:0;transform:translateY(6px)}14%,80%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-4px)}}'
-    + '.dt_rf{padding:9px 10px 10px}.dt_rf p{margin:0;font-size:11px;color:#8A8884;line-height:1.35}.dt_rf p b{display:block;color:#171717;font-size:12px;font-weight:600}.dt_cta{display:block;margin-top:8px;text-align:center;font-size:11px;font-weight:600;background:#171717;color:#fff;border-radius:7px;padding:6px 0}'
-    + '@media (prefers-reduced-motion:reduce){.dt_sat,.dt_ld,.dt_rl img,.dt_lh span:before,.dt_lv:before{animation:none!important;opacity:1;transform:none}.dt_host{filter:none;transform:none}}';
+    + '@media (prefers-reduced-motion:reduce){.dt_lh span:before{animation:none!important;opacity:1;transform:none}.dt_host{filter:none;transform:none}}';
   var st = document.createElement('style'); st.id = 'lpdashtour'; st.textContent = css; document.head.appendChild(st);
 
   /* ---------- floor plans (inline SVG, slightly irregular strokes for a hand-drawn feel) ---------- */
@@ -329,13 +316,10 @@
     /* detail popover */
     var tri = TG[1];
     h += '<div class="dt_pop"><div class="dt_pt" style="--i:0"><h6>' + t('Visita in ufficio vendite', 'Sales-office visit') + '</h6><span class="dt_x"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>'
-      + '<div class="dt_pw" style="--i:1">' + t('Giovedì 12 · 10:30 – 11:15', 'Thursday 12 · 10:30 – 11:15') + '<span class="dt_ok">' + CHK + t('Confermata', 'Confirmed') + '</span></div>'
-      + '<div class="dt_pp" style="--i:2"><span class="avs"><span style="background:#FDF1EC;color:#B0573A">MR</span><span style="background:#171717;color:#fff">GV</span></span><p><b>Marco R.</b> ' + t('incontra', 'meets') + ' <b>Giulia V.</b><br>' + t('consulente vendite', 'sales consultant') + '</p></div>'
-      + '<div class="dt_pi" style="--i:3"><span class="dt_th">' + plan('tri') + '</span><p>' + t('Interessato a', 'Interested in') + '<b>' + tri.n + ' · ' + tri.m + ' m²</b>' + from(tri.p) + '</p></div>'
-      + '<div class="dt_dl" style="--i:4"><span>Budget</span><b>' + t('280 – 310k €', '€280 – 310k') + '</b>'
-      + '<span>' + t('Fonte', 'Source') + '</span><b>' + ICO.ig + t('Instagram · Reels dal cantiere', 'Instagram · Reels from the site') + '</b>'
-      + '<span>' + t('Note', 'Notes') + '</span><b>' + t('Prima casa, vuole vedere l’esposizione', 'First home, wants to see the orientation') + '</b></div>'
-      + '<div class="dt_jr" style="--i:5"><span><b>' + t('Clic sul Reel', 'Reel click') + '</b>' + t('9 giorni fa', '9 days ago') + '</span><span><b>' + t('Contatto', 'Lead') + '</b>' + t('8 giorni fa', '8 days ago') + '</span><span class="k"><b>' + t('Visita', 'Visit') + '</b>' + t('oggi, 10:30', 'today, 10:30') + '</span></div></div>';
+      + '<div class="dt_pw" style="--i:1">' + t('Giovedì 12 · 10:30', 'Thursday 12 · 10:30') + '<span class="dt_ok">' + CHK + t('Confermata', 'Confirmed') + '</span></div>'
+      + '<div class="dt_who" style="--i:2"><span class="av">MR</span><p><b>Marco R.</b>' + t('Trilocale', '2-bed') + ' · ' + tri.m + ' m² · ' + t('budget 280–310k €', 'budget €280–310k') + '</p></div>'
+      + '<div class="dt_jr" style="--i:3"><span><b>' + t('Clic sul Reel', 'Reel click') + '</b>' + t('9 giorni fa', '9 days ago') + '</span><span><b>' + t('Contatto', 'Lead') + '</b>' + t('8 giorni fa', '8 days ago') + '</span><span class="k"><b>' + t('Visita', 'Visit') + '</b>' + t('oggi', 'today') + '</span></div>'
+      + '<p class="dt_with" style="--i:4">' + t('Con Giulia V., consulente vendite', 'With Giulia V., sales consultant') + '</p></div>';
     return h;
   }
   var V = { Portali: vPort, Calendario: vCal };
@@ -365,41 +349,6 @@
     TY.push(id);
   }
 
-  /* ---------- satellite windows around the app (desktop, only when the side gutter has room) ---------- */
-  var SAT = (function () {
-    var rail = app.parentElement, wrap = document.createElement('div'); wrap.className = 'dt_sats'; wrap.setAttribute('aria-hidden', 'true');
-    var dots = '<i class="dt_dots"><b></b><b></b><b></b></i>';
-    var LEADS = [
-      { n: 'Marco R.', a: 'MR', ic: ICO.ig, s: t('Reel dal cantiere', 'Reel from the site'), g: t('Trilocale', '2-bed') },
-      { n: 'Sara T.', a: 'ST', ic: ICO.immo, s: 'Immobiliare.it', g: t('Bilocale', '1-bed') },
-      { n: 'Elena M.', a: 'EM', ic: ICO.idea, s: 'idealista', g: t('Attico', 'Penthouse') }
-    ];
-    wrap.innerHTML = '<div class="dt_sat dt_satL"><div class="dt_sh">' + dots + '<span>' + t('Contatti in arrivo', 'Incoming leads') + '</span><em class="dt_lv">Live</em></div><div class="dt_feed"></div></div>'
-      + '<div class="dt_sat dt_satR"><div class="dt_sh">' + dots + '<span>Reel · Residenze Verdi</span></div>'
-      + '<div class="dt_rl"><img alt="" src="' + IMG + 'render-photo.webp"><span class="dt_sp">' + t('Sponsorizzato', 'Sponsored') + '</span><span class="dt_toast">+1 ' + t('contatto', 'lead') + '</span></div>'
-      + '<div class="dt_rf"><p><b>Residenze Verdi</b>' + t('Trilocali con giardino privato', '2-beds with a private garden') + '</p><span class="dt_cta">' + t('Prenota una visita', 'Book a visit') + '</span></div></div>';
-    var feed = wrap.querySelector('.dt_feed'), toast = wrap.querySelector('.dt_toast'), rows = [];
-    function lead(k) {
-      var L = LEADS[k], r = document.createElement('div'); r.className = 'dt_ld'; r.__k = k;
-      r.innerHTML = '<span class="av">' + L.a + '</span><p><b>' + L.n + '</b><span>' + L.ic + L.s + ' · ' + L.g + '</span></p><em>' + t('ora', 'now') + '</em>';
-      rows.forEach(function (x) { if (!x.classList.contains('ok')) x.querySelector('em').textContent = '2 min'; });
-      feed.insertBefore(r, feed.firstChild); rows.unshift(r);
-      while (rows.length > 3) { var o = rows.pop(); if (o.parentNode) o.parentNode.removeChild(o); }
-      if (k === 0) { toast.classList.remove('on'); void toast.offsetWidth; toast.classList.add('on'); }
-    }
-    function visit() { rows.forEach(function (x) { if (x.__k === 0 && !x.classList.contains('ok')) { x.classList.add('ok'); x.querySelector('em').innerHTML = CHK + t('Visita fissata', 'Visit booked'); } }); }
-    function reset() { feed.innerHTML = ''; rows = []; }
-    function fit() {
-      var a = app.getBoundingClientRect(), vw = document.documentElement.clientWidth, gl = a.left, gr = vw - a.right;
-      var ok = Math.min(gl, gr) >= 170 && !app.classList.contains('dt_sm');
-      wrap.classList.toggle('on', ok); if (!ok) return;
-      wrap.style.left = app.offsetLeft + 'px'; wrap.style.top = app.offsetTop + 'px'; wrap.style.width = app.offsetWidth + 'px'; wrap.style.height = app.offsetHeight + 'px';
-      wrap.style.setProperty('--gl', Math.round(gl - 24) + 'px'); wrap.style.setProperty('--gr', Math.round(gr - 24) + 'px');
-    }
-    if (getComputedStyle(rail).position === 'static') rail.style.position = 'relative';
-    rail.appendChild(wrap); fit(); window.addEventListener('resize', fit);
-    return { lead: lead, visit: visit, reset: reset };
-  })();
   /* ---------- pointer engine ---------- */
   var P = { x: 0, y: 0 }, anim = null, hv = null, hn = 0;
   var HOV = '.dt_tg,.dt_pr[data-p],.dt_chip,.dt_ev,.dt_x,.d3_tbl .d3_r,.v2_side>span.lp-v2_side_span,.d3_seg button';
@@ -441,9 +390,9 @@
     if (pano) { host.classList.remove('is-on'); return; }
     PF = -1;
     function put() { host.innerHTML = V[k](); void host.offsetWidth; host.classList.add('is-on'); fill(host); }
-    if (host.classList.contains('is-on')) { host.classList.remove('is-on'); swT = setTimeout(put, 280); } else put();
+    if (host.classList.contains('is-on')) { host.classList.add('sw'); swT = setTimeout(function () { host.innerHTML = V[k](); void host.offsetWidth; host.classList.remove('sw'); fill(host); }, 260); } else put();
   }
-  function nav(k) { go(function () { return sideEl(k); }, .32, .5, 760); click(function () { show(k); }); wait(350); }
+  function nav(k) { go(function () { return sideEl(k); }, .32, .5, 920); click(function () { show(k); }); wait(350); }
   function selTg(i) {
     var det = host.querySelector('.dt_det'); if (!det) return;
     all('.dt_tg').forEach(function (r) { r.classList.toggle('on', +r.getAttribute('data-t') === i); });
@@ -464,14 +413,14 @@
     if (j > -1 && !TG[i].c[j]) for (var x = 0; x < TG.length; x++) if (TG[x].c[j] > 0) { i = x; break; }
     selTg(i);
   }
-  function portal(k, hold) { go(q('.dt_pr[data-p="' + k + '"]'), .4, .5, 650); click(function () { selPortal(['immo', 'idea', 'casa'].indexOf(k)); }); wait(hold); }
-  function tg(i, hold) { go(q('.dt_tg[data-t="' + i + '"]'), .62, .55, 620); click(function () { selTg(i); }); wait(hold); }
+  function portal(k, hold) { go(q('.dt_pr[data-p="' + k + '"]'), .4, .5, 800); click(function () { selPortal(['immo', 'idea', 'casa'].indexOf(k)); }); wait(hold); }
+  function tg(i, hold) { go(q('.dt_tg[data-t="' + i + '"]'), .62, .55, 760); click(function () { selTg(i); }); wait(hold); }
   function filterCal(f) {
     all('.dt_chip').forEach(function (c) { c.classList.toggle('on', c.getAttribute('data-f') === f); });
     all('.dt_ev').forEach(function (e) { e.classList.toggle('off', f !== 'all' && e.getAttribute('data-t') !== f); });
     var kp = host.querySelector('[data-kp="visit"]'); if (kp) kp.classList.toggle('hl', f === 'visit');
   }
-  function chipClick(f, hold) { go(q('.dt_chip[data-f="' + f + '"]'), .5, .5, 560); click(function () { filterCal(f); }); wait(hold); }
+  function chipClick(f, hold) { go(q('.dt_chip[data-f="' + f + '"]'), .5, .5, 700); click(function () { filterCal(f); }); wait(hold); }
   function openPop() {
     var e = host.querySelector('.dt_ev[data-k]'), pop = host.querySelector('.dt_pop'); if (!e || !pop) return;
     e.classList.add('sel');
@@ -481,8 +430,6 @@
     if (left < 8) left = 8;
     if (top > mx) top = mx; if (top < 8) top = 8;
     pop.style.left = Math.round(left) + 'px'; pop.style.top = Math.round(top) + 'px'; pop.classList.add('on');
-    var nb = pop.querySelectorAll('.dt_dl b'), nt = nb[nb.length - 1]; if (nt) { if (!nt.__t) nt.__t = nt.textContent; nt.textContent = ''; nt.classList.add('dt_caret'); type(nt, nt.__t, 22, 520, function () { nt.classList.remove('dt_caret'); }); }
-    SAT.visit();
   }
   function closePop() { var p = host.querySelector('.dt_pop'); if (p) p.classList.remove('on'); var e = host.querySelector('.dt_ev.sel'); if (e) e.classList.remove('sel'); }
   function insight(on) {
@@ -516,21 +463,18 @@
 
   /* ---------- script ---------- */
   /* 1 · Panoramica: follow the visits, then the cost per channel */
-  act(function () { show('Panoramica'); SAT.reset(); });
+  act(function () { show('Panoramica'); });
   wait(250);
-  sweep(1700, .05, .95); wait(150);
-  seg(1); act(function () { insight(1); });
-  sweep(1100, .95, .35); act(function () { SAT.lead(0); }); leave(); wait(700);
-  act(function () { insight(0); }); seg(0); wait(150);
+  sweep(2200, .05, .95); wait(900); leave();
   /* 2 · Portali: pick a portal → only its ads; pick a layout → its floor plan */
   nav('Portali'); wait(500);
-  portal('immo', 900); act(function () { SAT.lead(1); }); tg(1, 1800);
-  portal('idea', 900); act(function () { SAT.lead(2); }); tg(3, 1800);
+  portal('immo', 900); tg(1, 1900);
+  portal('idea', 900); tg(3, 1900);
   /* 3 · Calendario: where it lands — the visit at the sales office */
   nav('Calendario'); wait(450);
   chipClick('visit', 800);
-  go(q('.dt_ev[data-k]'), .46, .56, 700); click(openPop); wait(3600);
-  go(q('.dt_pop .dt_x'), .5, .5, 500); click(closePop); wait(200);
+  go(q('.dt_ev[data-k]'), .46, .56, 820); click(openPop); wait(3400);
+  go(q('.dt_pop .dt_x'), .5, .5, 640); click(closePop); wait(200);
   /* back to the start */
   nav('Panoramica'); wait(300);
   app.__dtLoop = LOOP;
