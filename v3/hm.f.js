@@ -1419,11 +1419,12 @@ addEventListener('resize',fit);fit();})();
 
 ;
 (function(){var mq=matchMedia('(max-width:767px)'),d=document;
+(function(){var st=d.createElement('style');st.textContent="@media (max-width:767px){[data-lp-root=\"hm\"] [data-c~=\"v2_app\"]{grid-template-columns:minmax(0,1fr)!important}[data-lp-root=\"hm\"] [data-c~=\"v2_app\"]>[data-c~=\"v2_side\"]{display:none!important}}";d.head.appendChild(st)})();
 function fit(){[].forEach.call(d.querySelectorAll('[data-lp-root="hm"] [data-c~="am_stage"],[data-lp-root="hm"] [data-c~="v2_mock"],[data-lp-root="hm"] [data-c~="v2_app"]'),function(el){
 if(!mq.matches){['width','max-width','min-width','zoom'].forEach(function(p){el.style.removeProperty(p)});return}
-var app=el.matches('[data-c~="v2_app"]'),f=el.closest('[data-c~="v2_f"]'),W=app?1160:el.matches('[data-c~="am_stage"]')?966:(f&&/(^|\s)is-w(\s|$)/.test(f.getAttribute('data-c')||'')?743:491);
+var app=el.matches('[data-c~="v2_app"]'),f=el.closest('[data-c~="v2_f"]'),W=app?640:el.matches('[data-c~="am_stage"]')?966:(f&&/(^|\s)is-w(\s|$)/.test(f.getAttribute('data-c')||'')?743:491);
 el.style.removeProperty('zoom');var p=el.parentElement,cs=getComputedStyle(p),a=p.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-parseFloat(getComputedStyle(el).marginLeft||0)-parseFloat(getComputedStyle(el).marginRight||0);
-el.style.setProperty('width',W+'px','important');el.style.setProperty('max-width','none','important');el.style.setProperty('min-width','0','important');el.style.zoom=(app?a/740:Math.min(1,a/W)).toFixed(4)})}
+el.style.setProperty('width',W+'px','important');el.style.setProperty('max-width','none','important');el.style.setProperty('min-width','0','important');el.style.zoom=(app?a/640:Math.min(1,a/W)).toFixed(4)})}
 fit();addEventListener('resize',fit);addEventListener('load',fit);if(mq.addEventListener)mq.addEventListener('change',fit);
 var am=d.getElementById('am');if(am){var pns=[].slice.call(am.querySelectorAll('[data-c~="am_pn"]'));
 function allOn(){if(!mq.matches)return;pns.forEach(function(p){if(!p.classList.contains('is-on'))p.classList.add('is-on')})}
