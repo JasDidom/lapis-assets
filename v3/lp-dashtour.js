@@ -76,7 +76,7 @@
     + '.dt_det{padding:12px;min-width:0;transition:opacity .18s ease}.dt_det.sw{opacity:0}'
     + '.dt_stage{position:relative;height:214px;border-radius:9px;border:1px solid #F0EEEB;background:#FAF9F7 radial-gradient(#E7E3DD 1px,transparent 1.2px) 0 0/14px 14px;display:grid;place-items:center;overflow:hidden}.dt_stage svg{width:94%;height:92%;display:block}'
     + '.dt_stage em{position:absolute;top:8px;font-style:normal;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#8A8884;background:#fff;border:1px solid #ECEAE6;border-radius:6px;padding:2px 7px;white-space:nowrap}.dt_stage em.l{left:8px}.dt_stage em.r{right:8px;letter-spacing:0;text-transform:none;color:#1E8A4C;font-size:10.5px}'
-    + '.dt_plan .lb text{paint-order:stroke;stroke:#FFFFFF;stroke-width:3px;stroke-linejoin:round}.dt_plan .m{font-size:7px;font-weight:500;letter-spacing:0;text-transform:none;fill:#A8A49D}.dt_plan .sc text{text-anchor:start;font-size:7px;letter-spacing:0;text-transform:none;fill:#8A8884}'
+    + '.dt_plan.big .lb text{font-size:8.8px}.dt_plan .lb text{paint-order:stroke;stroke:#FFFFFF;stroke-width:3px;stroke-linejoin:round}.dt_plan .m{font-size:8px;font-weight:500;letter-spacing:0;text-transform:none;fill:#A8A49D}.dt_plan .sc text{text-anchor:start;font-size:7.5px;letter-spacing:0;text-transform:none;fill:#8A8884}'
     + '.dt_plan text{font-family:inherit;font-size:7.6px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;fill:#8A8884;text-anchor:middle}'
     + '.dt_plan.big .w{stroke-dasharray:1 1.1;stroke-dashoffset:1.05;animation:dtdraw .9s cubic-bezier(.6,0,.2,1) forwards}.dt_plan.big .dd,.dt_plan.big .fu,.dt_plan.big .te{animation:dtfade .5s ease backwards;animation-delay:.75s}.dt_plan.big .lb{animation:dtfade .5s ease backwards;animation-delay:1s}'
     + '.dt_dh{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin:12px 2px 0;white-space:nowrap}.dt_dh b{display:block;font-size:17px;letter-spacing:-.015em;line-height:1.2}.dt_dh small{display:block;font-size:11.5px;color:#8A8884;margin-top:2px}.dt_dh .p{text-align:right}.dt_dh .p b{font-size:16px}'
@@ -248,7 +248,7 @@
     });
     if (big) p.n.forEach(function (a) { h += '<path d="' + ln(a) + '" stroke="#fff" stroke-width="3"/><path d="' + ln(a) + '" stroke="#2A2826" stroke-width=".8"/>'; });
     h += '</g>';
-    if (big) h += '<g class="lb">' + p.l.map(function (a) { var tr = a[4] ? ' transform="rotate(-90 ' + a[0] + ' ' + a[1] + ')"' : ''; return '<text x="' + a[0] + '" y="' + a[1] + '"' + tr + '>' + ROOM[a[2]] + '<tspan class="m" x="' + a[0] + '" dy="8.5">' + a[3] + ' m²</tspan></text>'; }).join('') + '</g>'
+    if (big) h += '<g class="lb">' + p.l.map(function (a) { var tr = a[4] ? ' transform="rotate(-90 ' + a[0] + ' ' + a[1] + ')"' : ''; return '<text x="' + a[0] + '" y="' + a[1] + '"' + tr + '>' + ROOM[a[2]] + '<tspan class="m" x="' + a[0] + '" dy="9.5">' + a[3] + ' m²</tspan></text>'; }).join('') + '</g>'
       + '<g class="sc"><path d="M10 203H40M10 200.5V205.5M25 201.5V204.5M40 200.5V205.5" stroke="#8A8884" stroke-width=".9" fill="none"/><text x="44" y="205.5">2 m</text></g>';
     return h + '</svg>';
   }
