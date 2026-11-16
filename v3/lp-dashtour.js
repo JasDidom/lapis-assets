@@ -142,10 +142,10 @@
     /* seamless swap between views (host stays opaque, content cross-fades) */
     + '.dt_host>*{transition:opacity .26s ease,filter .26s ease}.dt_host.sw>*{opacity:0;filter:blur(3px)}'
     /* simple visit card */
-    + '.dt_pop{width:280px;padding:16px 18px 16px}.dt_who{display:flex;align-items:center;gap:10px;margin-top:14px;padding:10px 12px;border-radius:10px;background:#F7F6F4}'
+    + '.dt_pop{width:300px;padding:16px 18px 16px}.dt_who{display:flex;align-items:center;gap:10px;margin-top:14px;padding:10px 12px;border-radius:10px;background:#F7F6F4}'
     + '.dt_who .av{width:32px;height:32px;border-radius:50%;background:#FDF1EC;color:#B0573A;display:grid;place-items:center;font-size:11px;font-weight:700;flex:none}'
     + '.dt_who p{margin:0;font-size:11.5px;color:#73726E;line-height:1.4;white-space:nowrap}.dt_who p b{display:block;font-size:13px;color:#171717}'
-    + '.dt_jr{margin-top:14px}.dt_with{margin:12px 0 0;font-size:11px;color:#8A8884}'
+    + '.dt_jr{margin-top:14px}.dt_host .dt_pop .dt_with{margin:14px 0 0;padding-top:11px;border-top:1px solid #F0EEEB;font-size:11px;color:#8A8884}'
     /* a lighter, calmer pointer */
     + '.dt_cur{width:26px;height:26px}.dt_cur svg{width:26px;height:26px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18))}'
     + '@media (prefers-reduced-motion:reduce){.dt_lh span:before{animation:none!important;opacity:1;transform:none}.dt_host{filter:none;transform:none}}';
