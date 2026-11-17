@@ -504,7 +504,7 @@
   function stop() { running = false; clearTimeout(timer); TY.forEach(clearTimeout); TY = []; if (anim) cancelAnimationFrame(anim); anim = null; hover(1); }
 
   var pre = new Image(); pre.src = IMG + 'render-photo.webp';
-  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { show('Panoramica'); return; }
+  if (window.matchMedia && (matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(max-width:767px)').matches)) { show('Panoramica'); return; }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) start(); else stop(); }); }, { threshold: .35 }).observe(app);
   } else start();
