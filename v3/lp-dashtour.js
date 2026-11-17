@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v8.5 (adds Landing step) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v8.5.1 (adds Landing step) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -171,9 +171,9 @@
     + '.dt_lt .pa{flex:1;position:relative;background:#E9E6E1 center/cover no-repeat}.dt_lt .pa b{position:absolute;left:9px;bottom:24px;color:#fff;font-size:12px;text-shadow:0 1px 6px rgba(0,0,0,.45)}.dt_lt .pa em{position:absolute;left:9px;bottom:8px;font-style:normal;font-size:8.5px;background:#fff;border-radius:999px;padding:2px 7px;color:#171717}'
     + '.dt_lt .pb{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:6px}.dt_lt .pb span{background:#fff;border:1px solid #F0EEEB;border-radius:6px;display:grid;place-items:center;overflow:hidden;min-height:0}.dt_lt .pb svg{height:34px;width:auto;max-width:90%}'
     + '.dt_lt .pc{flex:1;display:flex;min-height:0}.dt_lt .pc figure{width:44%;background:#E9E6E1 center/cover no-repeat}.dt_lt .pc div{flex:1;padding:7px;display:flex;flex-direction:column;gap:5px;background:#fff}.dt_lt .pc b{font-size:10px}'
-    + '.dt_lt .pc .d{display:flex;gap:3px}.dt_lt .pc .d i{flex:1;height:17px;border:1px solid #ECEAE6;border-radius:5px}.dt_lt .pc .d i.on{background:#171717;border-color:#171717}.dt_lt .pc .k{margin-top:auto;height:15px;border-radius:999px;background:#B0573A}'
+    + '.dt_lt .pc .d{display:flex;gap:3px}.dt_lt .pc .d i{flex:1;height:17px;border:1px solid #ECEAE6;border-radius:5px;display:grid;place-items:center;font-style:normal;font-size:8px;color:#55524D;line-height:1}.dt_lt .pc .d i.on{background:#171717;border-color:#171717;color:#fff}.dt_lt .pc .k{margin-top:auto;height:15px;border-radius:999px;background:#B0573A}'
     + '.dt_lk{display:grid;grid-template-columns:repeat(3,1fr);margin-top:10px;border:1px solid #F0EEEB;border-radius:10px}.dt_lk span{padding:7px 9px;font-size:10.5px;color:#8A8884;white-space:nowrap}.dt_lk span+span{border-left:1px solid #F0EEEB}.dt_lk b{display:block;font-size:15px;color:#171717;letter-spacing:-.01em;margin-top:1px}'
-    + '.dt_lc .dt_trk{margin-top:10px}.dt_lc.best .dt_trk i{background:#171717}'
+    + '.dt_lc .dt_trk{display:block;height:6px;width:auto;margin-top:10px}.dt_lc.best .dt_trk i{background:#171717}'
     + '.dt_lw{opacity:0;transform:translateY(4px);transition:opacity .4s ease,transform .5s ' + E1 + '}.dt_lw.on{opacity:1;transform:none}'
     + '@media (max-width:767px){.dt_lp{gap:6px}.dt_lc{padding:7px}.dt_lt{height:84px}.dt_lk span{padding:5px}.dt_lk span:not(:last-child){display:none}.dt_lh2 b{font-size:11px}}';
   var st = document.createElement('style'); st.id = 'lpdashtour'; st.textContent = css; document.head.appendChild(st);
@@ -370,7 +370,7 @@
     var h = '<div class="dt_lt"><div class="br"><i></i><i></i><i></i><span></span></div>';
     if (i === 0) h += '<div class="pa" style="background-image:url(' + IMG + 'site-hd-ext-render.webp)"><b>Residenze Verdi</b><em>' + t('Scopri il progetto', 'Discover the project') + '</em></div>';
     else if (i === 1) h += '<div class="pb">' + ['bi', 'tri', 'quad', 'att'].map(function (k) { return '<span>' + plan(k) + '</span>'; }).join('') + '</div>';
-    else h += '<div class="pc"><figure style="background-image:url(' + IMG + 'site-hd-int-render.webp)"></figure><div><b>' + t('Prenota la visita', 'Book a visit') + '</b><span class="d"><i></i><i class="on"></i><i></i></span><span class="d"><i></i><i class="on"></i><i></i></span><span class="k"></span></div></div>';
+    else h += '<div class="pc"><figure style="background-image:url(' + IMG + 'site-hd-int-render.webp)"></figure><div><b>' + t('Prenota la visita', 'Book a visit') + '</b><span class="d"><i>24</i><i class="on">25</i><i>27</i></span><span class="d"><i>10:30</i><i class="on">11:30</i><i>15:00</i></span><span class="k"></span></div></div>';
     return h + '</div>';
   }
   function vLand() {
