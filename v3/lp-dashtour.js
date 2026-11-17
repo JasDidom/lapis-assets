@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v8.6.1 (Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v8.6.2 (Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -181,9 +181,10 @@
   css += '.dt_cg{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:12px}'
     + '.dt_ct{padding:6px 12px;display:flex;flex-direction:column}.dt_ch,.dt_cr{display:grid;grid-template-columns:minmax(0,1fr) 62px 58px 46px 64px;gap:8px;align-items:center;white-space:nowrap}'
     + '.dt_ch{height:34px;font-size:11px;color:#8A8884;border-bottom:1px solid #F0EEEB}.dt_ch span:not(:first-child),.dt_cr>span:not(:first-child){text-align:right}'
-    + '.dt_cr{flex:1;min-height:52px;max-height:96px;font-size:12.5px;border-bottom:1px solid #F4F2EF;margin:0 -12px;padding:0 12px;transition:background-color .25s}.dt_cr:last-child{border-bottom:0}.dt_cr.dt_hv{background:#FAF9F7}.dt_cr.on{background:#F4F2EF}'
+    + '.dt_cr{flex:1;min-height:50px;max-height:64px;font-size:12.5px;border-bottom:1px solid #F4F2EF;margin:0 -12px;padding:0 12px;transition:background-color .25s}.dt_cr:last-child{border-bottom:0}.dt_cr.dt_hv{background:#FAF9F7}.dt_cr.on{background:#F4F2EF}'
     + '.dt_cr .n{display:flex;align-items:center;gap:9px;min-width:0}.dt_cr .n div{min-width:0}.dt_cr .n b{display:block;font-size:12.5px;overflow:hidden;text-overflow:ellipsis}.dt_cr .n small{display:block;font-size:11px;color:#8A8884}'
     + '.dt_cr .v{font-weight:600}.dt_cr u{text-decoration:none;font-size:9px;font-weight:700;color:#B0573A;background:#FDF1EC;border-radius:999px;padding:1px 5px;margin-right:4px}'
+    + '.dt_cb{margin-top:auto;padding:12px 0 4px;border-top:1px solid #F0EEEB}.dt_cb>small{display:block;font-size:11px;color:#8A8884;font-weight:500;margin:0 2px 6px}.dt_cb .dt_br{grid-template-columns:20px minmax(0,150px) minmax(0,1fr) 52px;height:28px}.dt_cb .dt_br .dt_ic{width:18px;height:18px}.dt_cb .dt_br span:nth-child(2){overflow:hidden;text-overflow:ellipsis}'
     + '.dt_cd{padding:12px;display:flex;flex-direction:column;min-height:0}.dt_cd>b{font-size:13px}.dt_cd>small{display:block;font-size:11px;color:#8A8884;margin-top:1px}'
     + '.dt_cv{flex:1;min-height:0;margin-top:10px;border:1px solid #F0EEEB;border-radius:9px;background:#FAF9F7;display:grid;place-items:center;overflow:hidden;padding:10px}'
     + '.dt_reel{height:100%;max-height:230px;aspect-ratio:9/16;border-radius:10px;background:#ccc center/cover no-repeat;position:relative;box-shadow:0 8px 22px -12px rgba(0,0,0,.35)}.dt_reel i{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center}.dt_reel i:after{content:"";border-left:9px solid #171717;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:2px}.dt_reel span{position:absolute;left:8px;right:8px;bottom:8px;color:#fff;font-size:10px;line-height:1.25;text-shadow:0 1px 4px rgba(0,0,0,.5)}'
@@ -422,7 +423,8 @@
   function vCamp() {
     var h = '<div class="dt_fx">' + hd(t('Campagne', 'Campaigns'), 'Residenze Verdi · ' + t('Meta e Google, misurate fino alla visita', 'Meta and Google, measured to the visit'), '<span class="dt_rng">' + t('Ultimo mese', 'Last month') + '</span>') + '<div class="dt_cg">';
     h += '<div class="dt_card dt_ct dt_in" style="--i:1"><div class="dt_ch"><span>' + t('Campagna', 'Campaign') + '</span><span>' + t('Spesa', 'Spend') + '</span><span>' + t('Contatti', 'Leads') + '</span><span>' + t('Visite', 'Visits') + '</span><span>€/' + t('visita', 'visit') + '</span></div>'
-      + CP.map(function (c, i) { return '<div class="dt_cr' + (i ? '' : ' on') + '" data-c="' + i + '"><span class="n">' + ICO[c[0]] + '<div><b>' + c[1] + '</b><small>' + c[2] + '</small></div></span><span>' + eur(c[3]) + '</span><span>' + c[4] + '</span><span>' + c[5] + '</span><span class="v">' + (i ? '' : '<u>TOP</u>') + eur(c[6]) + '</span></div>'; }).join('') + '</div>';
+      + CP.map(function (c, i) { return '<div class="dt_cr' + (i ? '' : ' on') + '" data-c="' + i + '"><span class="n">' + ICO[c[0]] + '<div><b>' + c[1] + '</b><small>' + c[2] + '</small></div></span><span>' + eur(c[3]) + '</span><span>' + c[4] + '</span><span>' + c[5] + '</span><span class="v">' + (i ? '' : '<u>TOP</u>') + eur(c[6]) + '</span></div>'; }).join('')
+      + '<div class="dt_cb"><small>' + t('Costo per visita · più corta è meglio', 'Cost per visit · shorter is better') + '</small>' + CP.map(function (c, i) { return '<div class="dt_br' + (i ? '' : ' best') + '">' + ICO[c[0]] + '<span>' + c[1] + '</span><span class="dt_trk"><i data-w="' + Math.round(c[6] / 86 * 100) + '"></i></span><span class="v">' + eur(c[6]) + '</span></div>'; }).join('') + '</div></div>';
     h += '<div class="dt_card dt_cd dt_in" style="--i:2">' + cpDet(0) + '</div></div></div>';
     return h;
   }
@@ -588,7 +590,7 @@
   /* 1 · Panoramica: three calm stops on the chart, then the best channel */
   act(function () { show('Panoramica'); });
   wait(300);
-  pointAt(.06, 1300); pointAt(.27, 1300); pointAt(.47, 1600); leave();
+  pointAt(.06, 1300); pointAt(.27, 1300); pointAt(.42, 1600); leave();
   go(row(0), .3, .5, 800); wait(1100);
   /* 2 · Campagne: the Reel brings visits at the lowest cost; then Search */
   nav('Campagne'); wait(500);
