@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v8.5 (adds Landing step) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -159,6 +159,23 @@
     /* a lighter, calmer pointer */
     + '.dt_cur{width:26px;height:26px}.dt_cur svg{width:26px;height:26px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18))}'
     + '@media (prefers-reduced-motion:reduce){.dt_lh span:before{animation:none!important;opacity:1;transform:none}.dt_host{filter:none;transform:none}}';
+
+  /* ---------- Landing · A/B/C (v8.5) ---------- */
+  css += '.dt_lp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}'
+    + '.dt_lc{padding:12px;transition:border-color .3s,box-shadow .3s,background-color .25s}.dt_lc.dt_hv:not(.on){background:#FDFCFB}.dt_lc.on{border-color:#171717;box-shadow:0 12px 28px -20px rgba(23,23,23,.5)}'
+    + '.dt_lh2{display:flex;align-items:center;gap:8px;margin-bottom:10px;white-space:nowrap}.dt_lh2 b{font-size:13px;overflow:hidden;text-overflow:ellipsis}'
+    + '.dt_lv{width:20px;height:20px;border-radius:6px;background:#F1EFEC;display:grid;place-items:center;font-size:11px;font-weight:700;color:#55524D;flex:none;transition:background-color .3s,color .3s}.dt_lc.on .dt_lv{background:#171717;color:#fff}'
+    + '.dt_lh2 u{margin-left:auto;text-decoration:none;font-size:9.5px;font-weight:700;letter-spacing:.03em;color:#B0573A;background:#FDF1EC;border-radius:999px;padding:2px 7px}'
+    + '.dt_lt{height:128px;border:1px solid #F0EEEB;border-radius:9px;overflow:hidden;background:#FAF9F7;display:flex;flex-direction:column}'
+    + '.dt_lt .br{height:16px;display:flex;align-items:center;gap:3px;padding:0 7px;border-bottom:1px solid #F0EEEB;background:#fff;flex:none}.dt_lt .br i{width:4px;height:4px;border-radius:50%;background:#DDD9D3}.dt_lt .br span{margin-left:5px;height:7px;flex:1;border-radius:4px;background:#F3F1EE}'
+    + '.dt_lt .pa{flex:1;position:relative;background:#E9E6E1 center/cover no-repeat}.dt_lt .pa b{position:absolute;left:9px;bottom:24px;color:#fff;font-size:12px;text-shadow:0 1px 6px rgba(0,0,0,.45)}.dt_lt .pa em{position:absolute;left:9px;bottom:8px;font-style:normal;font-size:8.5px;background:#fff;border-radius:999px;padding:2px 7px;color:#171717}'
+    + '.dt_lt .pb{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:6px}.dt_lt .pb span{background:#fff;border:1px solid #F0EEEB;border-radius:6px;display:grid;place-items:center;overflow:hidden;min-height:0}.dt_lt .pb svg{height:34px;width:auto;max-width:90%}'
+    + '.dt_lt .pc{flex:1;display:flex;min-height:0}.dt_lt .pc figure{width:44%;background:#E9E6E1 center/cover no-repeat}.dt_lt .pc div{flex:1;padding:7px;display:flex;flex-direction:column;gap:5px;background:#fff}.dt_lt .pc b{font-size:10px}'
+    + '.dt_lt .pc .d{display:flex;gap:3px}.dt_lt .pc .d i{flex:1;height:17px;border:1px solid #ECEAE6;border-radius:5px}.dt_lt .pc .d i.on{background:#171717;border-color:#171717}.dt_lt .pc .k{margin-top:auto;height:15px;border-radius:999px;background:#B0573A}'
+    + '.dt_lk{display:grid;grid-template-columns:repeat(3,1fr);margin-top:10px;border:1px solid #F0EEEB;border-radius:10px}.dt_lk span{padding:7px 9px;font-size:10.5px;color:#8A8884;white-space:nowrap}.dt_lk span+span{border-left:1px solid #F0EEEB}.dt_lk b{display:block;font-size:15px;color:#171717;letter-spacing:-.01em;margin-top:1px}'
+    + '.dt_lc .dt_trk{margin-top:10px}.dt_lc.best .dt_trk i{background:#171717}'
+    + '.dt_lw{opacity:0;transform:translateY(4px);transition:opacity .4s ease,transform .5s ' + E1 + '}.dt_lw.on{opacity:1;transform:none}'
+    + '@media (max-width:767px){.dt_lp{gap:6px}.dt_lc{padding:7px}.dt_lt{height:84px}.dt_lk span{padding:5px}.dt_lk span:not(:last-child){display:none}.dt_lh2 b{font-size:11px}}';
   var st = document.createElement('style'); st.id = 'lpdashtour'; st.textContent = css; document.head.appendChild(st);
 
   /* ---------- floor plans: real scale (1 m = 15 units, same scale for every layout), distinct layouts ---------- */
@@ -342,7 +359,33 @@
       + '<div class="gc_rsvp" style="--i:6"><span>' + t('Parteciperà?', 'Going?') + '</span><em class="on">' + t('Sì', 'Yes') + '</em><em>No</em><em>' + t('Forse', 'Maybe') + '</em></div></div>';
     return h;
   }
-  var V = { Portali: vPort, Calendario: vCal };
+
+  /* ---------- Landing · tre versioni, stesso budget ---------- */
+  var LP = [
+    ['A', t('Render in apertura', 'Render first'), 1240, 26, t('2,1%', '2.1%'), 36],
+    ['B', t('Planimetrie in evidenza', 'Floor plans first'), 1310, 44, t('3,4%', '3.4%'), 59],
+    ['C', t('Visita in due clic', 'Visit in two clicks'), 1270, 74, t('5,8%', '5.8%'), 100]
+  ];
+  function lpThumb(i) {
+    var h = '<div class="dt_lt"><div class="br"><i></i><i></i><i></i><span></span></div>';
+    if (i === 0) h += '<div class="pa" style="background-image:url(' + IMG + 'site-hd-ext-render.webp)"><b>Residenze Verdi</b><em>' + t('Scopri il progetto', 'Discover the project') + '</em></div>';
+    else if (i === 1) h += '<div class="pb">' + ['bi', 'tri', 'quad', 'att'].map(function (k) { return '<span>' + plan(k) + '</span>'; }).join('') + '</div>';
+    else h += '<div class="pc"><figure style="background-image:url(' + IMG + 'site-hd-int-render.webp)"></figure><div><b>' + t('Prenota la visita', 'Book a visit') + '</b><span class="d"><i></i><i class="on"></i><i></i></span><span class="d"><i></i><i class="on"></i><i></i></span><span class="k"></span></div></div>';
+    return h + '</div>';
+  }
+  function vLand() {
+    var h = hd(t('Landing page', 'Landing pages'), 'Residenze Verdi · ' + t('3 versioni, traffico diviso in parti uguali', '3 versions, traffic split evenly'), '<span class="dt_rng">' + t('Ultimo mese', 'Last month') + '</span>') + '<div class="dt_lp">';
+    h += LP.map(function (v, i) {
+      return '<div class="dt_card dt_lc dt_in' + (i === 2 ? ' best' : '') + '" data-l="' + i + '" style="--i:' + (i + 1) + '">'
+        + '<div class="dt_lh2"><span class="dt_lv">' + v[0] + '</span><b>' + v[1] + '</b>' + (i === 2 ? '<u>TOP</u>' : '') + '</div>'
+        + lpThumb(i)
+        + '<div class="dt_lk"><span>' + t('Visitatori', 'Visitors') + num(v[2], '', i * 80) + '</span><span>' + t('Contatti', 'Leads') + num(v[3], '', i * 80) + '</span><span>' + t('Conversione', 'Conversion') + '<b>' + v[4] + '</b></span></div>'
+        + '<span class="dt_trk"><i data-w="' + v[5] + '"></i></span></div>';
+    }).join('') + '</div>';
+    h += '<div class="dt_note dt_lw"><i>' + CHK + '</i>' + t('Il budget passa alla versione C: quasi 3 volte i contatti della A, stesso traffico', 'Budget moves to version C: almost 3x the leads of A, same traffic') + '</div>';
+    return h;
+  }
+  var V = { Portali: vPort, Landing: vLand, Calendario: vCal };
 
   /* ---------- DOM ---------- */
   var defs = document.createElement('div'); defs.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
@@ -440,6 +483,11 @@
     all('.dt_ev').forEach(function (e) { e.classList.toggle('off', f !== 'all' && e.getAttribute('data-t') !== f); });
     var kp = host.querySelector('[data-kp="visit"]'); if (kp) kp.classList.toggle('hl', f === 'visit');
   }
+  function selLp(i, win) {
+    all('.dt_lc').forEach(function (c) { c.classList.toggle('on', +c.getAttribute('data-l') === i); });
+    if (win) { var n = host.querySelector('.dt_lw'); if (n) n.classList.add('on'); }
+  }
+  function lp(i, hold, win) { go(q('.dt_lc[data-l="' + i + '"]'), .5, .42, 780); click(function () { selLp(i, win); }); wait(hold); }
   function chipClick(f, hold) { go(q('.dt_chip[data-f="' + f + '"]'), .5, .5, 700); click(function () { filterCal(f); }); wait(hold); }
   function openPop() {
     var e = host.querySelector('.dt_ev[data-k]'), pop = host.querySelector('.dt_pop'); if (!e || !pop) return;
@@ -490,6 +538,9 @@
   nav('Portali'); wait(500);
   portal('immo', 900); tg(1, 1900);
   portal('idea', 900); tg(3, 1900);
+  /* 3 · Landing: three versions, same budget → the winner gets it */
+  nav('Landing'); wait(700);
+  lp(0, 900); lp(1, 900); lp(2, 2600, 1);
   /* 3 · Calendario: where it lands — the visit at the sales office */
   nav('Calendario'); wait(450);
   chipClick('visit', 800);
