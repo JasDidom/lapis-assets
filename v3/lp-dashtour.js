@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v8.6.0 (Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v8.6.1 (Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -181,7 +181,7 @@
   css += '.dt_cg{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:12px}'
     + '.dt_ct{padding:6px 12px;display:flex;flex-direction:column}.dt_ch,.dt_cr{display:grid;grid-template-columns:minmax(0,1fr) 62px 58px 46px 64px;gap:8px;align-items:center;white-space:nowrap}'
     + '.dt_ch{height:34px;font-size:11px;color:#8A8884;border-bottom:1px solid #F0EEEB}.dt_ch span:not(:first-child),.dt_cr>span:not(:first-child){text-align:right}'
-    + '.dt_cr{height:58px;font-size:12.5px;border-bottom:1px solid #F4F2EF;margin:0 -12px;padding:0 12px;transition:background-color .25s}.dt_cr:last-child{border-bottom:0}.dt_cr.dt_hv{background:#FAF9F7}.dt_cr.on{background:#F4F2EF}'
+    + '.dt_cr{flex:1;min-height:52px;max-height:96px;font-size:12.5px;border-bottom:1px solid #F4F2EF;margin:0 -12px;padding:0 12px;transition:background-color .25s}.dt_cr:last-child{border-bottom:0}.dt_cr.dt_hv{background:#FAF9F7}.dt_cr.on{background:#F4F2EF}'
     + '.dt_cr .n{display:flex;align-items:center;gap:9px;min-width:0}.dt_cr .n div{min-width:0}.dt_cr .n b{display:block;font-size:12.5px;overflow:hidden;text-overflow:ellipsis}.dt_cr .n small{display:block;font-size:11px;color:#8A8884}'
     + '.dt_cr .v{font-weight:600}.dt_cr u{text-decoration:none;font-size:9px;font-weight:700;color:#B0573A;background:#FDF1EC;border-radius:999px;padding:1px 5px;margin-right:4px}'
     + '.dt_cd{padding:12px;display:flex;flex-direction:column;min-height:0}.dt_cd>b{font-size:13px}.dt_cd>small{display:block;font-size:11px;color:#8A8884;margin-top:1px}'
@@ -588,7 +588,7 @@
   /* 1 · Panoramica: three calm stops on the chart, then the best channel */
   act(function () { show('Panoramica'); });
   wait(300);
-  pointAt(.18, 1300); pointAt(.55, 1300); pointAt(.9, 1500); leave();
+  pointAt(.06, 1300); pointAt(.27, 1300); pointAt(.47, 1600); leave();
   go(row(0), .3, .5, 800); wait(1100);
   /* 2 · Campagne: the Reel brings visits at the lowest cost; then Search */
   nav('Campagne'); wait(500);
