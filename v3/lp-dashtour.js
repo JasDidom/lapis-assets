@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v9.1.0 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v9.1.1 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -580,14 +580,14 @@
   nav('Campagne'); wait(700);
   look(function () { return host.querySelectorAll('.dx_k>div')[3]; }, .3, .62, 1100);
   cp(0, 900);
-  look(function () { return host.querySelectorAll('.dx_f')[3]; }, .62, .5, 1900, 900);
+  look(function () { return host.querySelectorAll('.dx_f')[3].querySelector('b'); }, .6, .7, 1900, 900);
   nav('Portali'); wait(700);
   look(function () { return host.querySelectorAll('.dx_k>div')[2]; }, .22, .62, 900);
   portal('immo', 1300); tg(1, 900);
   look(q('.dx_pl .dt_stage'), .52, .55, 1700, 900);
   nav('Landing'); wait(900);
   lp(0, 900); lp(1, 900); lp(2, 700, 1);
-  look(function () { return host.querySelector('.dx_col[data-l="2"] .dx_ml .cv'); }, .86, .5, 2400, 900);
+  look(function () { return host.querySelector('.dx_col[data-l="2"] .dx_ml .cv b'); }, .2, .7, 2400, 900);
   nav('Panoramica'); wait(300);
   app.__dtLoop = LOOP;
 
