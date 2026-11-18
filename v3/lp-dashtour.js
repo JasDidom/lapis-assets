@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v9.1.2 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v9.1.3 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -599,7 +599,7 @@
   /* keep the chart tooltip inside its card: whenever the chart moves it, flip it to the left of the line if it would overflow */
   (function () {
     var done = 0;
-    function fix(tp) { var pl = tp.parentNode; if (pl) tp.classList.toggle('dt_flip', tp.offsetLeft + tp.offsetWidth > pl.offsetWidth + 14); }
+    function fix(tp) { var pl = tp.parentNode, l = parseFloat(tp.style.left); if (isNaN(l)) l = tp.offsetLeft; if (pl) tp.classList.toggle('dt_flip', l + tp.offsetWidth > pl.offsetWidth + 14); }
     function bind() {
       var tp = app.querySelector('.d3_tip'); if (!tp || done) return !!done; done = 1;
       if ('MutationObserver' in window) new MutationObserver(function () { fix(tp); }).observe(tp, { attributes: true, attributeFilter: ['style'] });
