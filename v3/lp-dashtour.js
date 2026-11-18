@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v9.2.0 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v9.2.1 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -531,6 +531,8 @@
     say(CP[i].n + t(' porta visite a ', ' brings visits at ') + eur(CP[i].cv));
   }
   function cp(i, hold) { go(q('.dx_r[data-c="' + i + '"]'), .93, .5, 820); click(function () { selCp(i); }); wait(hold); }
+  /* park the chart tooltip where the pointer will arrive next, so it never sits somewhere the pointer is not */
+  function pinAt(fx) { var h = app.querySelector('.d3_hit'); if (!h) return; var b = h.getBoundingClientRect(); if (!b.width) return; try { h.dispatchEvent(new PointerEvent('pointermove', { clientX: b.left + b.width * fx, clientY: b.top + b.height * .45, bubbles: true })); } catch (e) {} }
   function look(getEl, fx, fy, hold, ms) { go(getEl, fx, fy, ms || 820); wait(hold); }
   function pointAt(fx, hold) {
     LOOP += 700 + hold;
@@ -574,9 +576,9 @@
      2 Campagne   · which campaign does that?   read the cost per visit, click the cheapest one, follow its funnel down to the office visit
      3 Portali    · and the portals?            click the portal with most visits, then the layout with most leads, look at its plan
      4 Landing    · where does the click land?  compare A, B, C; stop on the winner's conversion rate */
-  act(function () { show('Panoramica'); });
-  wait(400);
-  sweep(3000, .02, .98); wait(1700); leave();
+  act(function () { pinAt(.02); show('Panoramica'); });
+  wait(250);
+  sweep(3000, .02, .98); wait(1700);
   nav('Campagne'); wait(700);
   look(function () { return host.querySelectorAll('.dx_k>div')[3]; }, .3, .62, 1100);
   cp(0, 900);
@@ -588,7 +590,7 @@
   nav('Landing'); wait(900);
   lp(0, 900); lp(1, 900); lp(2, 700, 1);
   look(function () { return host.querySelector('.dx_col[data-l="2"] .dx_ml .cv b'); }, .2, .7, 2400, 900);
-  nav('Panoramica'); wait(300);
+  go(function () { return sideEl('Panoramica'); }, .32, .5, 920); click(function () { pinAt(.02); show('Panoramica'); }); wait(250);
   app.__dtLoop = LOOP;
 
   function step() { if (!running) return; var f = Q[qi]; qi = (qi + 1) % Q.length; f(step); }
