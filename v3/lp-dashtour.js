@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v8.6.2 (Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v9.0.0 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -44,7 +44,6 @@
   var css = ''
     + '.v2_dashsec .v2_app{position:relative}.v2_main{position:relative}'
     + '.v2_side>span.on{background:#EFECE8!important;color:#171717!important}.v2_side>span.lp-v2_side_span{transition:background-color .25s,color .25s}.v2_side>span.dt_hv:not(.on){background:#F4F2EF}'
-    + '.v2_app.dt_notpano .v2_bar{visibility:hidden}'
     + '.d3_tbl .d3_r{transition:background-color .25s}.d3_tbl .d3_r.dt_hv{background:#F6F4F1}.d3_seg button.dt_hv{color:#171717}'
     /* overlay host */
     + '.dt_host{position:absolute;left:0;top:0;right:0;bottom:0;padding:14px 16px 18px;background:#FBFAF8!important;opacity:0;visibility:hidden;transition:opacity .28s ease,visibility 0s .28s;overflow:hidden;z-index:60;font-size:13px;line-height:1.35;color:#171717;box-sizing:border-box;font-variant-numeric:tabular-nums;text-align:left}'
@@ -85,31 +84,6 @@
     + '.dt_br{display:grid;grid-template-columns:16px 82px minmax(0,1fr) 58px;gap:8px;align-items:center;height:26px;font-size:12px;padding:0 2px;white-space:nowrap}.dt_br .dt_ic{width:16px;height:16px;border-radius:5px}'
     + '.dt_trk{height:6px;border-radius:3px;background:#F1EFEC;overflow:hidden}.dt_trk i{display:block;height:100%;width:0;border-radius:3px;background:#D5D0C8;transition:width 1s ' + E1 + '}.dt_br.best .dt_trk i{background:#171717}'
     + '.dt_br .v{display:flex;align-items:center;justify-content:flex-end;gap:5px;font-weight:600}.dt_br .v u{text-decoration:none;font-size:9.5px;font-weight:700;letter-spacing:.03em;color:#B0573A;background:#FDF1EC;border-radius:999px;padding:1px 6px}'
-    /* calendario */
-    + '.dt_kp{display:grid;grid-template-columns:repeat(3,1fr);height:64px;margin-bottom:12px;overflow:hidden}.dt_kp>span{padding:10px 16px;display:flex;flex-direction:column;justify-content:center;transition:background-color .35s;white-space:nowrap}.dt_kp>span+span{border-left:1px solid #F0EEEB}.dt_kp>span.hl{background:#F4FBF6}'
-    + '.dt_kp small{font-size:11.5px;color:#8A8884}.dt_kp p{display:flex;align-items:baseline;gap:7px}.dt_kp p b{font-size:21px;letter-spacing:-.02em;line-height:1.2}.dt_kp p i{font-style:normal;font-size:12px;color:#8A8884}.dt_kp p em{font-style:normal;font-size:11px;font-weight:600;color:#1E8A4C;background:#EAF7EF;border-radius:999px;padding:1px 7px}'
-    + '.dt_cal{position:relative;display:grid;grid-template-columns:46px repeat(5,minmax(0,1fr));overflow:hidden}'
-    + '.dt_cal .h{height:34px;padding:0 10px;display:flex;align-items:center;gap:6px;font-size:11.5px;color:#73726E;font-weight:500;white-space:nowrap}.dt_cal .h+.h{border-left:1px solid #F3F1EE}.dt_cal .h b{font-size:12.5px;color:#171717}.dt_cal .h.td b{background:#B0573A;color:#fff;border-radius:6px;padding:1px 6px}.dt_cal .h.td{color:#B0573A}'
-    + '.dt_cal .t{height:78px;border-top:1px solid #F3F1EE;font-size:10.5px;color:#B5B2AC;padding:6px 0 0 10px}.dt_cal .c{position:relative;height:78px;border-top:1px solid #F3F1EE;border-left:1px solid #F3F1EE}.dt_cal .c.td{background:#FEFCFA}'
-    + '.dt_now{position:absolute;left:-1px;right:0;top:60px;height:1.5px;background:#B0573A;z-index:2}.dt_now:before{content:"";position:absolute;left:-3px;top:-2.75px;width:7px;height:7px;border-radius:50%;background:#B0573A}'
-    + '.dt_ev{position:absolute;left:5px;right:5px;top:6px;height:52px;border-radius:8px;padding:0 7px 0 10px;display:flex;gap:7px;align-items:center;background:#EAF7EF;box-shadow:inset 3px 0 0 #2EBD6B;font-size:11.5px;line-height:1.25;z-index:1;transition:opacity .45s ease,filter .45s ease,box-shadow .25s,transform .25s;animation:dtpop .5s ' + E1 + ' backwards;animation-delay:calc(var(--i,0)*40ms + 280ms)}'
-    + '.dt_ev.call{background:#EEF3FE;box-shadow:inset 3px 0 0 #4C7BF3;height:44px}.dt_ev.tbc{background:#FFF9EE;box-shadow:none;border:1px dashed #E3B45C;height:48px;padding-left:8px}'
-    + '.dt_ev.dt_hv{transform:translateY(-1px);box-shadow:inset 3px 0 0 #2EBD6B,0 8px 16px -10px rgba(23,23,23,.35)}.dt_ev.off{opacity:.16;filter:blur(1.2px)}.dt_ev.sel{transform:none;box-shadow:0 0 0 2px #171717,0 12px 24px -14px rgba(23,23,23,.5)}'
-    + '.dt_av{width:22px;height:22px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:8.5px;font-weight:700;color:#55524D;flex:none;box-shadow:0 0 0 1px rgba(23,23,23,.06)}'
-    + '.dt_ev p{flex:1;min-width:0}.dt_ev p b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dt_ev p small{display:block;font-size:10.5px;color:#55524D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
-    + '.dt_ev>.dt_ic{width:16px;height:16px;border-radius:5px}.dt_ev>.dt_ic svg{width:10px;height:10px}'
-    /* popover */
-    + '.dt_pop{position:absolute;z-index:5;left:0;top:0;width:304px;background:#fff;border-radius:14px;box-shadow:0 30px 60px -28px rgba(23,23,23,.55),0 8px 20px -14px rgba(23,23,23,.25),0 0 0 1px #ECEAE6;padding:14px 16px 16px;opacity:0;visibility:hidden;transform:translateY(8px) scale(.97);transform-origin:100% 20%;transition:opacity .25s,transform .3s,visibility 0s .3s;pointer-events:none}'
-    + '.dt_pop.on{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .45s ' + E1 + '}'
-    + '.dt_pop>*{opacity:0;transform:translateY(5px);transition:opacity .2s,transform .2s}.dt_pop.on>*{opacity:1;transform:none;transition:opacity .4s ease,transform .5s ' + E1 + ';transition-delay:calc(var(--i,0)*55ms + 90ms)}'
-    + '.dt_pt{display:flex;justify-content:space-between;align-items:center;gap:8px}.dt_pt h6{font-size:14.5px;font-weight:600;letter-spacing:-.01em;color:#171717;white-space:nowrap;line-height:1.3}'
-    + '.dt_x{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;color:#8A8884;flex:none;transition:background-color .2s,color .2s}.dt_x.dt_hv{background:#F1EFEC;color:#171717}'
-    + '.dt_pw{display:flex;justify-content:space-between;align-items:center;margin-top:3px;font-size:11.5px;color:#8A8884;white-space:nowrap}.dt_ok{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;color:#1E8A4C;background:#EAF7EF;border-radius:999px;padding:2px 8px 2px 6px}.dt_ok svg{width:10px;height:10px}'
-    + '.dt_pp{display:flex;align-items:center;gap:10px;margin-top:12px;padding:9px 10px;border-radius:10px;background:#F7F6F4}.dt_pp .avs{display:flex;flex:none}.dt_pp .avs span{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:700;border:2px solid #F7F6F4}.dt_pp .avs span+span{margin-left:-9px}.dt_pp p{font-size:11.5px;line-height:1.35;color:#73726E;white-space:nowrap}.dt_pp p b{color:#171717}'
-    + '.dt_pi{display:flex;align-items:center;gap:10px;margin-top:8px;padding:8px 10px;border:1px solid #F0EEEB;border-radius:10px}.dt_pi .dt_th{width:48px;height:40px}.dt_pi .dt_th svg{width:40px;height:27px}.dt_pi p{font-size:11px;color:#8A8884;line-height:1.35;white-space:nowrap}.dt_pi p b{display:block;font-size:12.5px;color:#171717}'
-    + '.dt_dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 14px;margin-top:11px;font-size:12px}.dt_dl span{color:#8A8884;white-space:nowrap}.dt_dl b{font-weight:500;color:#171717;display:flex;align-items:center;gap:6px;min-width:0}.dt_dl b .dt_ic{width:15px;height:15px;border-radius:5px}.dt_dl b .dt_ic svg{width:9px;height:9px}'
-    + '.dt_jr{display:grid;grid-template-columns:repeat(3,1fr);margin-top:13px;padding-top:12px;border-top:1px solid #F0EEEB;position:relative}.dt_jr:before{content:"";position:absolute;left:4px;right:33%;top:15px;height:1px;background:#E3DFD8}'
-    + '.dt_jr span{position:relative;font-size:10.5px;color:#8A8884;line-height:1.3;padding-top:12px;white-space:nowrap}.dt_jr span:before{content:"";position:absolute;left:0;top:0;width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1.5px #B5B2AC}.dt_jr span b{display:block;color:#171717;font-size:11px}.dt_jr span.k:before{background:#2EBD6B;box-shadow:0 0 0 3px #EAF7EF}'
     /* insight chip on Panoramica */
     + '.dt_ins{position:absolute;left:0;top:0;z-index:58;display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 6px;border-radius:999px;background:#fff;border:1px solid #ECEAE6;box-shadow:0 10px 22px -14px rgba(23,23,23,.4);font-size:12px;line-height:1.3;color:#55524D;white-space:nowrap;opacity:0;transform:translateY(5px) scale(.97);transition:opacity .4s ease,transform .5s ' + E1 + ';pointer-events:none}.dt_ins.on{opacity:1;transform:none}.dt_ins b{color:#171717;font-weight:600}'
     + '.dt_ins i{width:18px;height:18px;border-radius:50%;background:#FDF1EC;display:grid;place-items:center;flex:none}'
@@ -160,37 +134,79 @@
     + '.dt_cur{width:26px;height:26px}.dt_cur svg{width:26px;height:26px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18))}'
     + '@media (prefers-reduced-motion:reduce){.dt_lh span:before{animation:none!important;opacity:1;transform:none}.dt_host{filter:none;transform:none}}';
 
-  /* ---------- Landing · A/B/C (v8.5) ---------- */
-  css += '.dt_lp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}'
-    + '.dt_lc{padding:12px;transition:border-color .3s,box-shadow .3s,background-color .25s}.dt_lc.dt_hv:not(.on){background:#FDFCFB}.dt_lc.on{border-color:#171717;box-shadow:0 12px 28px -20px rgba(23,23,23,.5)}'
-    + '.dt_lh2{display:flex;align-items:center;gap:8px;margin-bottom:10px;white-space:nowrap}.dt_lh2 b{font-size:13px;overflow:hidden;text-overflow:ellipsis}'
-    + '.dt_lv{width:20px;height:20px;border-radius:6px;background:#F1EFEC;display:grid;place-items:center;font-size:11px;font-weight:700;color:#55524D;flex:none;transition:background-color .3s,color .3s}.dt_lc.on .dt_lv{background:#171717;color:#fff}'
-    + '.dt_lh2 u{margin-left:auto;text-decoration:none;font-size:9.5px;font-weight:700;letter-spacing:.03em;color:#B0573A;background:#FDF1EC;border-radius:999px;padding:2px 7px}'
-    + '.dt_fx{display:flex;flex-direction:column;height:100%}.dt_fx>.dt_hd{flex:none}.dt_lp{flex:1;min-height:0}.dt_lc{display:flex;flex-direction:column;min-height:0}'
-    + '.dt_lt{flex:1;min-height:150px;border:1px solid #F0EEEB;border-radius:9px;overflow:hidden;background:#FAF9F7;display:flex;flex-direction:column}'
-    + '.dt_lt .br{height:16px;display:flex;align-items:center;gap:3px;padding:0 7px;border-bottom:1px solid #F0EEEB;background:#fff;flex:none}.dt_lt .br i{width:4px;height:4px;border-radius:50%;background:#DDD9D3}.dt_lt .br span{margin-left:5px;height:7px;flex:1;border-radius:4px;background:#F3F1EE}'
-    + '.dt_lt .pa{flex:1;position:relative;background:#E9E6E1 center/cover no-repeat}.dt_lt .pa b{position:absolute;left:12px;bottom:30px;color:#fff;font-size:15px;text-shadow:0 1px 6px rgba(0,0,0,.45)}.dt_lt .pa em{position:absolute;left:12px;bottom:11px;font-style:normal;font-size:9.5px;background:#fff;border-radius:999px;padding:2px 7px;color:#171717}'
-    + '.dt_lt .pb{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:6px}.dt_lt .pb span{background:#fff;border:1px solid #F0EEEB;border-radius:6px;display:grid;place-items:center;overflow:hidden;min-height:0}.dt_lt .pb svg{height:62%;width:auto;max-width:90%}'
-    + '.dt_lt .pc{flex:1;display:flex;min-height:0}.dt_lt .pc figure{width:44%;background:#E9E6E1 center/cover no-repeat}.dt_lt .pc div{flex:1;padding:10px;display:flex;flex-direction:column;gap:7px;background:#fff}.dt_lt .pc b{font-size:12px}'
-    + '.dt_lt .pc .d{display:flex;gap:3px}.dt_lt .pc .d i{flex:1;height:24px;border:1px solid #ECEAE6;border-radius:5px;display:grid;place-items:center;font-style:normal;font-size:9.5px;color:#55524D;line-height:1}.dt_lt .pc .d i.on{background:#171717;border-color:#171717;color:#fff}.dt_lt .pc .k{margin-top:auto;height:22px;border-radius:999px;background:#B0573A}'
-    + '.dt_lk{display:flex;flex-direction:column;margin-top:12px;border-top:1px solid #F0EEEB}.dt_lk span{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:8px 2px;border-bottom:1px solid #F0EEEB;font-size:12px;color:#8A8884;white-space:nowrap}.dt_lk b{font-size:14px;color:#171717;letter-spacing:-.01em}.dt_lk span.cv b{font-size:17px}.dt_lc.best .dt_lk span.cv b{color:#171717}'
-    + '.dt_lc .dt_trk{display:block;height:6px;width:auto;margin-top:10px}.dt_lc.best .dt_trk i{background:#171717}'
-    + '.dt_lw{opacity:0;transform:translateY(4px);transition:opacity .4s ease,transform .5s ' + E1 + '}.dt_lw.on{opacity:1;transform:none}'
-    + '@media (max-width:767px){.dt_lp{gap:6px}.dt_lc{padding:7px}.dt_lt{height:84px}.dt_lk span{padding:5px}.dt_lk span:not(:last-child){display:none}.dt_lh2 b{font-size:11px}}';
+  /* ---------- v9 · one system for every view: strip + KPI band + workspace (same gridlines as Panoramica) ---------- */
+  css += '.dt_host{top:44px;padding:12px 16px 18px}.dt_pb{transition:opacity .35s ease}.v2_app.dt_notpano .dt_pb{opacity:0}'
+    + '.dx{display:flex;flex-direction:column;gap:10px;height:100%}'
+    + '.dx_p{background:#fff;border:1px solid #ECEAE6;border-radius:12px;overflow:hidden;min-height:0}.dx_p1{flex:none}.dx_p2{flex:1;display:flex;flex-direction:column}'
+    + '.dx_ov{display:flex;align-items:center;justify-content:space-between;gap:12px;height:40px;padding:0 12px;border-bottom:1px solid #ECEAE6;font-size:13px;white-space:nowrap}'
+    + '.dx_ovl{display:flex;align-items:center;gap:7px;color:#171717;min-width:0}.dx_ovl svg{width:15px;height:14px;color:#8A8580;flex:none}.dx_ovl em{font-style:normal;color:#B5B0AA}.dt_host .dx_ovl b{font-weight:500}.dx_ovr{font-size:12px;color:#9A958F}'
+    /* KPI band */
+    + '.dx_k{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.dx_k>div{position:relative;padding:13px 16px 14px;min-width:0}.dx_k>div+div{border-left:1px solid #F1EFEC}'
+    + '.dx_k small{display:block;font-size:12px;color:#8A8580;white-space:nowrap}.dx_k p{display:flex;align-items:center;gap:9px;margin-top:5px;white-space:nowrap}.dt_host .dx_k p>b{font-size:26px;font-weight:600;letter-spacing:-.03em;line-height:1.15;color:#171717}'
+    + '.dx_dl{font-style:normal;font-size:11px;font-weight:600;border-radius:999px;padding:2px 7px;line-height:1.35;white-space:nowrap}.dx_dl.g{color:#16873F;background:#E9F6EE}.dx_dl.r{color:#C2410C;background:#FDEEE7}.dx_dl.n{color:#8A8580;background:#F3F1EE}'
+    + '.dx_sp{position:absolute;right:16px;bottom:17px;width:68px;height:30px;overflow:visible}.dx_sp path{stroke:#B9B3A9;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:dtdraw 1.1s cubic-bezier(.6,0,.2,1) .15s forwards}.dx_sp circle{fill:#B0573A;animation:dtfade .4s ease 1.1s backwards}'
+    /* tables */
+    + '.dx_t{display:flex;flex-direction:column;flex:none}'
+    + '.dx_r{display:grid;align-items:center;height:44px;padding:0 6px;border-bottom:1px solid #F1EFEC;font-size:13px;white-space:nowrap;transition:background-color .25s,opacity .3s}.dx_t .dx_r:last-child{border-bottom:0}'
+    + '.dx_r.h{height:34px;font-size:12px;color:#9A958F}.dx_r>span{min-width:0;padding:0 8px;overflow:hidden;text-overflow:ellipsis}.dx_r>span.num{text-align:right}.dx_r .i{color:#B5B0AA}'
+    + '.dx_r.dt_hv{background:#FAF9F7}.dx_r.on{background:#F6F4F1}.dx_r.dim{opacity:.38}.dt_host .dx_r.tot{font-weight:600}'
+    + '.dx_r .n{display:flex;align-items:center;gap:10px;font-weight:500}.dx_r .n .dt_ic{width:22px;height:22px;border-radius:7px}.dx_r .n small{font-weight:400;color:#9A958F;font-size:12px}'
+    + '.dx_box{display:inline-flex;align-items:center;height:26px;padding:0 8px;border:1px solid #ECEAE6;border-radius:8px;background:#fff;font-weight:500}'
+    + '.dx_a{font-style:normal;font-size:12px;display:inline-block;width:30px;text-align:left;margin-left:8px}.dx_a.g{color:#16A34A}.dx_a.r{color:#DC2626}.dx_a.z{color:#B5B0AA}'
+    + '.dx_tag{display:inline-block;font-style:normal;font-size:11.5px;line-height:1.35;padding:2px 8px;border-radius:6px}.dx_tag.so{background:#FDEEE7;color:#D2562D}.dx_tag.se{background:#E7F5EC;color:#1E8A4C}.dx_tag.po{background:#E9F0FE;color:#3B6FE0}'
+    + '.dx_ok{font-style:normal;display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#16873F}'
+    + '.dx_tc .dx_r{grid-template-columns:28px minmax(0,1fr) 104px 100px 96px 88px 116px 136px}'
+    + '.dx_tp .dx_r{grid-template-columns:28px minmax(0,1fr) 116px 136px 100px 124px 88px 136px}'
+    + '.dx_tt .dx_r{grid-template-columns:minmax(0,1fr) 108px 86px 82px 66px;height:50px}.dx_tt .dx_r.h{height:32px}.dx_tt{border-top:1px solid #F1EFEC}'
+    /* workspace split (same 575 | rest as Panoramica) */
+    + '.dx_s{flex:1;min-height:0;display:grid;grid-template-columns:575px minmax(0,1fr);border-top:1px solid #ECEAE6}.dx_s>div{min-width:0;min-height:0;display:flex;flex-direction:column}.dx_s>div+div{border-left:1px solid #ECEAE6}'
+    + '.dx_sw{transition:opacity .2s ease}.dx_sw.sw{opacity:0}'
+    + '.dx_th{flex:none;padding:14px 14px 12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;white-space:nowrap}.dt_host .dx_th b{display:block;font-size:14px;font-weight:600;letter-spacing:-.005em;line-height:1.3}.dx_th small{display:block;font-size:11px;color:#9A958F;margin-top:3px}'
+    + '.dx_st{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#16873F;background:#E9F6EE;border-radius:999px;padding:3px 9px 3px 8px}.dx_st:before{content:"";width:6px;height:6px;border-radius:50%;background:#2EBD6B}'
+    /* funnel */
+    + '.dx_fn{padding:4px 14px 0;display:flex;flex-direction:column;gap:13px}'
+    + '.dx_f{display:grid;grid-template-columns:116px minmax(0,1fr) 64px 54px;gap:12px;align-items:center;font-size:12.5px;white-space:nowrap}.dx_f>span:first-child{color:#55524D}'
+    + '.dx_fb{display:block;height:34px;border-radius:8px;background:#F6F4F1;overflow:hidden}.dx_fb i{display:block;height:100%;width:0;border-radius:8px;transition:width 1.1s ' + E1 + '}'
+    + '.dx_f:nth-child(1) .dx_fb i{background:#DDD8D0}.dx_f:nth-child(2) .dx_fb i{background:#B9B3A9}.dx_f:nth-child(3) .dx_fb i{background:#55524D}.dx_f:nth-child(4) .dx_fb i{background:#B0573A}'
+    + '.dt_host .dx_f>b{text-align:right;font-size:14px}.dx_f em{font-style:normal;font-size:11px;color:#8A8580;background:#F3F1EE;border-radius:999px;padding:2px 0;text-align:center}.dx_f em.z{background:none}'
+    + '.dx_s .dt_note{margin:18px 14px 0;align-self:flex-start}'
+    /* ad preview */
+    + '.dx_ad{flex:1;min-height:0;display:flex;gap:14px;padding:0 14px 14px}.dx_ad.v{flex-direction:column;gap:10px}'
+    + '.dx_ad .pv{min-height:0;border:1px solid #F1EFEC;border-radius:10px;background:#FBFAF8;display:grid;place-items:center;padding:10px;overflow:hidden}.dx_ad.h .pv{width:146px;flex:none;padding:8px}.dx_ad.v .pv{flex:1}'
+    + '.dx_fa{display:flex;flex-direction:column;flex:1;min-width:0;justify-content:center}.dx_fa span{display:flex;justify-content:space-between;align-items:center;gap:8px;height:36px;border-top:1px solid #F1EFEC;font-size:12.5px;white-space:nowrap}.dx_fa span:first-child{border-top:0}.dx_fa small{color:#8A8580}'
+    + '.dx_ad.v .dx_fa{flex:none;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);column-gap:20px}.dx_ad.v .dx_fa span:nth-child(2){border-top:0}'
+    + '.dx_reel{height:100%;aspect-ratio:9/16;max-width:100%;border-radius:9px;background:#ccc center/cover no-repeat;position:relative;overflow:hidden}.dx_reel:before{content:"";position:absolute;left:0;right:0;top:0;bottom:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.6))}'
+    + '.dx_reel i{position:absolute;left:50%;top:44%;width:32px;height:32px;margin:-16px 0 0 -16px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}.dx_reel i:after{content:"";border-left:9px solid #171717;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px}'
+    + '.dx_reel span{position:absolute;left:9px;right:9px;bottom:9px;color:#fff;font-size:10.5px;font-weight:500;line-height:1.25;white-space:normal}'
+    + '.dx_sad{width:100%;background:#fff;border:1px solid #ECEAE6;border-radius:9px;padding:12px 14px;text-align:left;white-space:normal}.dx_sad small{display:block;font-size:10.5px;color:#55524D}.dt_host .dx_sad b{display:block;font-size:14px;color:#1A0DAB;font-weight:500;margin:4px 0}.dx_sad p{font-size:11px;color:#55524D;line-height:1.4}'
+    + '.dx_car{display:flex;gap:8px;width:100%;height:100%}.dx_car span{flex:1;background:#fff center/cover no-repeat;border:1px solid #ECEAE6;border-radius:8px;display:grid;place-items:center;min-height:0}.dx_car svg{width:78%;height:auto;max-height:80%}'
+    /* portali · tagli + planimetria */
+    + '.dx_pt{width:46px;height:36px;border-radius:7px;background:#FBFAF8;border:1px solid #F1EFEC;display:grid;place-items:center;flex:none}.dx_pt svg{width:36px;height:26px;display:block}.dx_r.on .dx_pt{background:#fff;border-color:#DDD8D0}'
+    + '.dx_r .n .dx_nm{display:flex;flex-direction:column;line-height:1.3;min-width:0}'
+    + '.dx_pl{flex:1;min-height:0;padding:14px;display:flex;flex-direction:column}.dx_pl .dt_stage{flex:1;min-height:110px;height:auto}'
+    + '.dx_ph{flex:none;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-top:12px;white-space:nowrap}.dt_host .dx_ph b{display:block;font-size:15px;letter-spacing:-.01em}.dx_ph small{display:block;font-size:11px;color:#9A958F;margin-top:2px}'
+    + '.dx_bs{flex:none;margin-top:10px;padding-top:8px;border-top:1px solid #F1EFEC}.dx_b3{display:grid;grid-template-columns:18px 98px minmax(0,1fr) 26px;gap:8px;align-items:center;height:24px;font-size:12px;white-space:nowrap;transition:opacity .3s}.dx_b3 .dt_ic{width:16px;height:16px;border-radius:5px}'
+    + '.dx_b3 .dx_fb,.dx_lf .dx_fb{height:6px;border-radius:3px;background:#F1EFEC}.dx_b3 .dx_fb i,.dx_lf .dx_fb i{border-radius:3px;background:#CFC9C0}.dx_b3.best .dx_fb i,.dx_col.best .dx_lf .dx_fb i{background:#171717}.dx_b3 b{text-align:right}.dx_b3.dim{opacity:.35}'
+    /* landing · three versions */
+    + '.dx_cols{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}'
+    + '.dx_col{display:flex;flex-direction:column;min-width:0;min-height:0;padding:0 16px 14px;transition:background-color .35s}.dx_col+.dx_col{border-left:1px solid #ECEAE6}.dx_col.dt_hv{background:#FDFCFB}.dx_col.on{background:#FAF9F7}'
+    + '.dx_ch{display:flex;align-items:center;gap:10px;height:60px;flex:none;white-space:nowrap}.dt_host .dx_ch b{display:block;font-size:14px;font-weight:600;line-height:1.25}.dx_ch small{display:block;font-size:11px;color:#9A958F;margin-top:2px}'
+    + '.dx_lv{width:26px;height:26px;border-radius:8px;background:#F3F1EE;display:grid;place-items:center;font-size:12px;font-weight:700;color:#55524D;flex:none;transition:background-color .3s,color .3s}.dx_col.on .dx_lv{background:#171717;color:#fff}'
+    + '.dx_win{margin-left:auto;text-decoration:none;font-size:11px;font-weight:600;color:#B0573A;background:#FDF1EC;border-radius:999px;padding:3px 9px;opacity:0;transform:translateY(3px) scale(.96);transition:opacity .4s ease,transform .5s ' + E1 + '}.dx_col.win .dx_win{opacity:1;transform:none}'
+    + '.dx_bw{flex:1;min-height:0;display:flex;flex-direction:column;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px #ECEAE6,0 10px 24px -20px rgba(23,23,23,.35);transition:box-shadow .35s,transform .45s ' + E1 + '}.dx_col.on .dx_bw{box-shadow:0 0 0 1.5px #171717,0 18px 34px -22px rgba(23,23,23,.55);transform:translateY(-2px)}'
+    + '.dx_bw .br{height:24px;flex:none;display:flex;align-items:center;gap:4px;padding:0 9px;border-bottom:1px solid #F1EFEC;background:#FBFAF8}.dx_bw .br i{width:6px;height:6px;border-radius:50%;background:#DDD9D3}.dx_bw .br span{margin-left:8px;flex:1;height:14px;border-radius:5px;background:#F1EFEC;font-size:9px;line-height:14px;color:#9A958F;padding:0 7px;overflow:hidden;white-space:nowrap}'
+    + '.dx_m{flex:1;min-height:0;display:flex;flex-direction:column;font-size:10px;line-height:1.3}'
+    + '.dx_m.a .he{flex:1;position:relative;background:#DDD center/cover no-repeat;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;min-height:0}.dx_m.a .he:before{content:"";position:absolute;left:0;right:0;top:0;bottom:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.6))}'
+    + '.dt_host .dx_m.a .he b{position:relative;color:#fff;font-size:15px;line-height:1.15;letter-spacing:-.01em}.dx_m.a .he em{position:relative;align-self:flex-start;margin-top:8px;font-style:normal;font-size:9.5px;font-weight:600;color:#171717;background:#fff;border-radius:999px;padding:4px 10px}'
+    + '.dx_m.a .ln{flex:none;padding:10px 12px 11px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.dx_m.a .ln span{font-size:9px;color:#8A8580;white-space:nowrap}.dt_host .dx_m.a .ln b{display:block;font-size:11.5px;color:#171717}'
+    + '.dx_m.b{padding:11px 12px 12px;gap:8px}.dt_host .dx_m.b>b{font-size:12.5px;letter-spacing:-.01em}.dx_m.b>small{font-size:9.5px;color:#8A8580;margin-top:-6px}'
+    + '.dx_m.b .g{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:7px}.dx_m.b .g span{border:1px solid #F1EFEC;border-radius:8px;background:#FBFAF8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:0;padding:5px;font-size:8.5px;color:#8A8580;white-space:nowrap;overflow:hidden}.dx_m.b .g svg{height:50%;width:auto;max-width:84%;flex:none}.dt_host .dx_m.b .g b{font-size:9.5px;color:#171717}'
+    + '.dx_m.c{flex-direction:row}.dx_m.c figure{width:42%;background:#DDD center/cover no-repeat}.dx_m.c>div{flex:1;min-width:0;padding:12px 11px;display:flex;flex-direction:column;gap:7px}.dt_host .dx_m.c b.t{font-size:12.5px;letter-spacing:-.01em}.dx_m.c small{font-size:9px;color:#8A8580;margin-top:-5px}'
+    + '.dx_m.c .d{display:flex;gap:4px}.dx_m.c .d i{flex:1;height:26px;border:1px solid #ECEAE6;border-radius:7px;display:grid;place-items:center;font-style:normal;font-size:9px;color:#55524D;line-height:1.05;text-align:center}.dx_m.c .d i.on{background:#171717;border-color:#171717;color:#fff}'
+    + '.dx_m.c .f{height:26px;border:1px solid #ECEAE6;border-radius:7px;display:flex;align-items:center;padding:0 9px;font-size:9px;color:#B5B0AA}.dx_m.c .k{margin-top:auto;height:28px;border-radius:999px;background:#B0573A;color:#fff;font-size:9.5px;font-weight:600;display:grid;place-items:center}.dx_m.c .s{font-size:8.5px;color:#9A958F;text-align:center}'
+    + '.dx_ml{flex:none;margin-top:12px}.dx_ml span{display:flex;align-items:center;justify-content:space-between;height:34px;border-top:1px solid #F1EFEC;font-size:12.5px;color:#8A8580;white-space:nowrap}.dx_ml span:first-child{border-top:0}.dt_host .dx_ml b{font-size:14px;color:#171717;font-weight:600}.dt_host .dx_ml .cv b{font-size:19px;letter-spacing:-.02em}'
+    + '.dx_lf{flex:none;display:flex;align-items:center;gap:10px;height:26px;margin-top:2px}.dx_lf .dx_fb{flex:1}';
 
-  css += '.dt_cg{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:12px}'
-    + '.dt_ct{padding:6px 12px;display:flex;flex-direction:column}.dt_ch,.dt_cr{display:grid;grid-template-columns:minmax(0,1fr) 62px 58px 46px 64px;gap:8px;align-items:center;white-space:nowrap}'
-    + '.dt_ch{height:34px;font-size:11px;color:#8A8884;border-bottom:1px solid #F0EEEB}.dt_ch span:not(:first-child),.dt_cr>span:not(:first-child){text-align:right}'
-    + '.dt_cr{flex:1;min-height:50px;max-height:64px;font-size:12.5px;border-bottom:1px solid #F4F2EF;margin:0 -12px;padding:0 12px;transition:background-color .25s}.dt_cr:last-child{border-bottom:0}.dt_cr.dt_hv{background:#FAF9F7}.dt_cr.on{background:#F4F2EF}'
-    + '.dt_cr .n{display:flex;align-items:center;gap:9px;min-width:0}.dt_cr .n div{min-width:0}.dt_cr .n b{display:block;font-size:12.5px;overflow:hidden;text-overflow:ellipsis}.dt_cr .n small{display:block;font-size:11px;color:#8A8884}'
-    + '.dt_cr .v{font-weight:600}.dt_cr u{text-decoration:none;font-size:9px;font-weight:700;color:#B0573A;background:#FDF1EC;border-radius:999px;padding:1px 5px;margin-right:4px}'
-    + '.dt_cb{margin-top:auto;padding:12px 0 4px;border-top:1px solid #F0EEEB}.dt_cb>small{display:block;font-size:11px;color:#8A8884;font-weight:500;margin:0 2px 6px}.dt_cb .dt_br{grid-template-columns:20px minmax(0,150px) minmax(0,1fr) 52px;height:28px}.dt_cb .dt_br .dt_ic{width:18px;height:18px}.dt_cb .dt_br span:nth-child(2){overflow:hidden;text-overflow:ellipsis}'
-    + '.dt_cd{padding:12px;display:flex;flex-direction:column;min-height:0}.dt_cd>b{font-size:13px}.dt_cd>small{display:block;font-size:11px;color:#8A8884;margin-top:1px}'
-    + '.dt_cv{flex:1;min-height:0;margin-top:10px;border:1px solid #F0EEEB;border-radius:9px;background:#FAF9F7;display:grid;place-items:center;overflow:hidden;padding:10px}'
-    + '.dt_reel{height:100%;max-height:230px;aspect-ratio:9/16;border-radius:10px;background:#ccc center/cover no-repeat;position:relative;box-shadow:0 8px 22px -12px rgba(0,0,0,.35)}.dt_reel i{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center}.dt_reel i:after{content:"";border-left:9px solid #171717;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:2px}.dt_reel span{position:absolute;left:8px;right:8px;bottom:8px;color:#fff;font-size:10px;line-height:1.25;text-shadow:0 1px 4px rgba(0,0,0,.5)}'
-    + '.dt_ad{width:100%;background:#fff;border:1px solid #ECEAE6;border-radius:9px;padding:12px}.dt_ad small{display:block;font-size:10px;color:#55524D}.dt_ad b{display:block;font-size:13px;color:#1A0DAB;font-weight:500;margin:4px 0}.dt_ad p{font-size:10.5px;color:#55524D;line-height:1.4}'
-    + '.dt_car{display:flex;gap:6px;width:100%}.dt_car span{flex:1;aspect-ratio:4/5;background:#fff;border:1px solid #ECEAE6;border-radius:8px;display:grid;place-items:center}.dt_car svg{width:80%;height:auto}'
-    + '.dt_ck{display:grid;grid-template-columns:1fr 1fr;margin-top:10px;border:1px solid #F0EEEB;border-radius:10px}.dt_ck span{padding:7px 10px;font-size:10.5px;color:#8A8884}.dt_ck span:nth-child(2n){border-left:1px solid #F0EEEB}.dt_ck span:nth-child(n+3){border-top:1px solid #F0EEEB}.dt_ck b{display:block;font-size:15px;color:#171717;margin-top:1px}';
   var st = document.createElement('style'); st.id = 'lpdashtour'; st.textContent = css; document.head.appendChild(st);
 
   /* ---------- floor plans: real scale (1 m = 15 units, same scale for every layout), distinct layouts ---------- */
@@ -301,134 +317,110 @@
   function tgLine(g) { var j = PF > -1 ? PF : best(g.c), n = PF > -1 ? g.c[PF] : sum(g.c); return lg(PO[j][0]) + n + ' ' + t('contatti', 'leads') + (PF > -1 ? ' · ' + t('su ', 'on ') + PO[PF][1] : ' · ' + visits(g.vi)); }
   function hd(title, sub, right) { return '<div class="dt_hd dt_in"><div><b>' + title + '</b><small>' + sub + '</small></div>' + (right || '') + '</div>'; }
 
-  /* ---------- Portali · Tagli ---------- */
-  function detail(i) {
-    var g = TG[i], b = best(g.c), mx = g.c[b];
-    return '<div class="dt_stage dt_in" style="--i:0"><em class="l">' + t('Planimetria', 'Floor plan') + '</em><em class="r">' + g.u + ' ' + t('disponibili', 'available') + '</em>' + plan(g.k, 1) + '</div>'
-      + '<div class="dt_dh dt_in" style="--i:1"><div><b>' + g.n + '</b><small>' + g.s + '</small></div><div class="p"><b>' + from(g.p) + '</b><small>' + g.m + ' m²</small></div></div>'
-      + '<div class="dt_dk dt_in" style="--i:2"><span>' + t('Visualizzazioni', 'Views') + num(g.v) + '</span><span>' + t('Contatti', 'Leads') + num(sum(g.c)) + '</span><span>' + t('Visite in ufficio', 'Office visits') + num(g.vi) + '</span></div>'
-      + '<div class="dt_bb dt_in" style="--i:3"><small>' + t('Contatti per portale', 'Leads by portal') + '</small>'
-      + PO.map(function (p, j) { return '<div class="dt_br' + (j === b ? ' best' : '') + (PF > -1 && j !== PF ? ' dim' : '') + (j === PF ? ' pick' : '') + '">' + lg(p[0]) + '<span>' + p[1] + '</span><span class="dt_trk"><i data-w="' + Math.max(4, Math.round(g.c[j] / mx * 100)) + '"></i></span><span class="v">' + (j === b ? '<u>TOP</u>' : '') + g.c[j] + '</span></div>'; }).join('')
-      + '</div>';
+  /* ---------- v9 · shared building blocks ---------- */
+  function sico(k) { var s = sideEl(k), v = s && s.querySelector('svg'); return v ? v.outerHTML : ''; }
+  function dec(v, n) { v = v.toFixed(n == null ? 1 : n); return EN ? v : v.replace('.', ','); }
+  function pct(a, b, n) { return dec(a / b * 100, n) + '%'; }
+  function spark(a) {
+    var mn = Math.min.apply(null, a), mx = Math.max.apply(null, a), n = a.length, d = '', x = 0, y = 0;
+    for (var i = 0; i < n; i++) { x = (i / (n - 1) * 62 + 3).toFixed(1); y = (26 - (a[i] - mn) / ((mx - mn) || 1) * 22).toFixed(1); d += (i ? 'L' : 'M') + x + ' ' + y; }
+    return '<svg class="dx_sp" viewBox="0 0 68 30" fill="none" aria-hidden="true"><path pathLength="1" d="' + d + '"/><circle cx="' + x + '" cy="' + y + '" r="2.4"/></svg>';
   }
-  function vPort() {
-    var h = hd(t('Portali', 'Portals'), 'Residenze Verdi · ' + t('4 tagli in vendita, stesso edificio', '4 layouts on sale, same building'), '<span class="dt_rng">' + t('Ultimo mese', 'Last month') + '</span>') + '<div class="dt_pg">';
-    /* building */
-    h += '<div><div class="dt_card dt_bld dt_in" style="--i:1"><figure class="dt_bph" style="background-image:url(' + IMG + 'render-photo.webp)"><span class="dt_live">' + t('Live su 3 portali', 'Live on 3 portals') + '</span></figure>'
-      + '<div class="dt_bi"><div><b>Residenze Verdi</b><small>' + t('Parma · consegna 2027', 'Parma · handover 2027') + '</small></div><span class="dt_lgs">' + lg('immo') + lg('idea') + lg('casa') + '</span></div>'
-      + '<div class="dt_pr h"><span class="n">' + t('Portale', 'Portal') + '</span><span>' + t('Viste', 'Views') + '</span><span>' + t('Contatti', 'Leads') + '</span><span>' + t('Visite', 'Visits') + '</span></div>'
-      + PO.map(function (p, j) { return '<div class="dt_pr" data-p="' + p[0] + '"><span class="n">' + lg(p[0]) + p[1] + '</span><span>' + num(p[2], '', j * 80) + '</span><span>' + num(p[3], '', j * 80) + '</span><span>' + num(p[4], '', j * 80) + '</span></div>'; }).join('')
-      + '<div class="dt_pr tot"><span class="n">' + t('Totale', 'Total') + '</span><span>' + num(sum(PO.map(function (p) { return p[2]; })), '', 240) + '</span><span>' + num(sum(PO.map(function (p) { return p[3]; })), '', 240) + '</span><span>' + num(sum(PO.map(function (p) { return p[4]; })), '', 240) + '</span></div></div>'
-      + '<div class="dt_note dt_in" style="--i:3"><i>' + CHK + '</i>' + t('Stesso prezzo su tutti i portali', 'Same price on every portal') + '</div></div>';
-    /* tagli */
-    h += '<div class="dt_ls"><div class="dt_lh dt_in" style="--i:2"><em class="lt">' + t('Tagli in vendita', 'Layouts on sale') + '</em><span>' + sum(TG.map(function (g) { return g.u; })) + ' ' + t('unità', 'units') + '</span></div>'
-      + TG.map(function (g, i) {
-        return '<div class="dt_tg dt_in' + (i ? '' : ' on') + '" data-t="' + i + '" style="--i:' + (i + 3) + '"><span class="dt_th">' + plan(g.k) + '</span><div class="dt_tx"><div class="a"><b>' + g.n + '</b><i>' + from(g.p) + '</i></div><small class="b">' + g.m + ' m² · ' + g.r + '</small><div class="c">' + tgLine(g) + '</div></div></div>';
-      }).join('') + '</div>';
-    /* detail */
-    h += '<div class="dt_card dt_det dt_in" style="--i:4">' + detail(0) + '</div></div>';
-    return h;
+  function kpi(label, val, dl, cls, sp) { return '<div><small>' + label + '</small><p>' + val + (dl ? '<em class="dx_dl ' + cls + '">' + dl + '</em>' : '') + '</p>' + (sp ? spark(sp) : '') + '</div>'; }
+  function shell(k, title, insight, kpis, body) {
+    return '<div class="dx"><div class="dx_p dx_p1"><div class="dx_ov"><span class="dx_ovl">' + sico(k) + title + '<em>·</em><b>' + insight + '</b></span><span class="dx_ovr">' + t('Ultimo mese · variazione su maggio', 'Last month · change vs May') + '</span></div><div class="dx_k">' + kpis.join('') + '</div></div><div class="dx_p dx_p2">' + body + '</div></div>';
   }
+  function arw(d) { return d ? '<i class="dx_a ' + (d[2] ? 'g' : 'r') + '">' + (d[0] === 'u' ? '↗' : '↘') + ' ' + d[1] + '</i>' : '<i class="dx_a z">–</i>'; }
+  function th(title, sub, right) { return '<div class="dx_th"><div><b>' + title + '</b><small>' + sub + '</small></div>' + (right || '') + '</div>'; }
 
-  /* ---------- Calendario · Visite ---------- */
-  var EVS = {
-    '0-0': ['visit', 'AG', 'Anna G.', 'ig'], '0-2': ['call', 'PR', 'Paolo R.', 'g'], '0-4': ['visit', 'SB', 'Stefano B.', 'g'],
-    '1-1': ['tbc', 'EM', 'Elena M.', 'fb'], '1-3': ['visit', 'SP', 'Sara P.', 'g'],
-    '2-0': ['visit', 'LB', 'Luca B.', 'ig'], '2-2': ['visit', 'CF', 'Chiara F.', 'immo'], '2-4': ['call', 'DT', 'Davide T.', 'idea'],
-    '3-1': ['visit', 'MR', 'Marco R.', 'ig'], '3-3': ['visit', 'FC', 'Francesca C.', 'fb'], '3-5': ['tbc', 'GN', 'Giorgio N.', 'immo'],
-    '4-0': ['visit', 'AL', 'Andrea L.', 'g'], '4-2': ['visit', 'VM', 'Valentina M.', 'gpt']
-  };
-  function vCal() {
-    var D = [[9, t('Lun', 'Mon')], [10, t('Mar', 'Tue')], [11, t('Mer', 'Wed')], [12, t('Gio', 'Thu')], [13, t('Ven', 'Fri')]], H = ['09:00', '10:30', '12:00', '14:30', '16:00', '17:30'];
-    var TY = { visit: t('Visita', 'Visit'), call: 'Call', tbc: t('Da confermare', 'To confirm') };
-    var F = [['all', t('Tutti', 'All'), ''], ['visit', t('Visite', 'Visits'), '#2EBD6B'], ['call', 'Call', '#4C7BF3'], ['tbc', t('Da confermare', 'To confirm'), '#E0A43A']];
-    var nv = 0, nt = 0, ne = 0, k, n = 0;
-    for (k in EVS) { ne++; if (EVS[k][0] === 'visit') nv++; if (EVS[k][0] === 'tbc') nt++; }
-    var h = hd(t('Calendario', 'Calendar'), 'Residenze Verdi · ' + t('ufficio vendite, settimana 9 – 13', 'sales office, week 9 – 13'),
-      '<div class="dt_chips">' + F.map(function (c) { return '<span class="dt_chip' + (c[0] === 'all' ? ' on' : '') + '" data-f="' + c[0] + '">' + (c[2] ? '<i style="background:' + c[2] + '"></i>' : '') + c[1] + '</span>'; }).join('') + '</div>');
-    h += '<div class="dt_card dt_kp dt_in" style="--i:1"><span data-kp="visit"><small>' + t('Visite questa settimana', 'Visits this week') + '</small><p>' + num(nv) + '<em>+2</em></p></span>'
-      + '<span><small>' + t('Appuntamenti confermati', 'Confirmed appointments') + '</small><p>' + num(ne - nt, '', 80) + '<i>/ ' + ne + '</i></p></span>'
-      + '<span><small>' + t('Tasso contatto → visita', 'Lead → visit rate') + '</small><p>' + num(12, '%', 160) + '<em>+3 pt</em></p></span></div>';
-    h += '<div class="dt_card dt_cal dt_in" style="--i:2"><span class="h"><small>GMT+1</small></span>' + D.map(function (d, i) { return '<span class="h' + (i === 3 ? ' td' : '') + '"><small>' + d[1] + '</small><b>' + d[0] + '</b></span>'; }).join('');
-    H.forEach(function (hr, r) {
-      h += '<span class="t">' + hr + '</span>';
-      for (var c = 0; c < 5; c++) {
-        var e = EVS[c + '-' + r];
-        h += '<span class="c' + (c === 3 ? ' td' : '') + '">' + (c === 3 && r === 0 ? '<i class="dt_now"></i>' : '')
-          + (e ? '<span class="dt_ev ' + e[0] + '" data-t="' + e[0] + '"' + (c === 3 && r === 1 ? ' data-k="1"' : '') + ' style="--i:' + (n++) + '"><span class="dt_av">' + e[1] + '</span><p><b>' + e[2] + '</b><small>' + TY[e[0]] + (e[0] === 'tbc' ? '' : ' · ' + hr) + '</small></p>' + ICO[e[3]] + '</span>' : '') + '</span>';
-      }
-    });
-    h += '</div>';
-    /* detail popover */
-    var tri = TG[1];
-    var I = function (d) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + d + '</svg>'; };
-    h += '<div class="dt_pop dt_gc">'
-      + '<div class="gc_bar" style="--i:0">' + I('<path d="M4 20h4L19 9l-4-4L4 16z"/>') + I('<path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"/>') + I('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>') + I('<circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/>') + '<span class="dt_x">' + I('<path d="M6 6l12 12M18 6L6 18"/>') + '</span></div>'
-      + '<div class="gc_r gc_t" style="--i:1"><i class="gc_sq"></i><div><h6>' + t('Visita in ufficio vendite · Marco R.', 'Sales-office visit · Marco R.') + '</h6><p>' + t('Giovedì 12 novembre · 10:30 – 11:15', 'Thursday 12 November · 10:30 – 11:15') + '</p></div></div>'
-      + '<div class="gc_r" style="--i:2">' + I('<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>') + '<div><b>' + t('Ufficio vendite Residenze Verdi', 'Residenze Verdi sales office') + '</b><small>Parma</small></div></div>'
-      + '<div class="gc_r" style="--i:3">' + I('<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 4.5a3.2 3.2 0 0 1 0 6.2M18 14c2 .7 3 2.8 3 6"/>') + '<div><b>' + t('2 invitati', '2 guests') + '</b><small>' + t('2 sì', '2 yes') + '</small>'
-      + '<span class="gc_p"><i class="gc_av">MR' + CHK + '</i><span><b>Marco R.</b><small>' + t('Trilocale', '2-bed') + ' · ' + tri.m + ' m² · ' + t('budget 280–310k €', 'budget €280–310k') + '</small></span></span>'
-      + '<span class="gc_p"><i class="gc_av k">GV' + CHK + '</i><span><b>Giulia V.</b><small>' + t('Organizzatore · consulente vendite', 'Organiser · sales consultant') + '</small></span></span></div></div>'
-      + '<div class="gc_r" style="--i:4">' + I('<path d="M5 6h14M5 12h14M5 18h9"/>') + '<div><b>' + t('Da dove arriva', 'Where they came from') + '</b><small>' + t('Reel dal cantiere → contatto 8 giorni fa → visita oggi', 'Site Reel → lead 8 days ago → visit today') + '</small></div></div>'
-      + '<div class="gc_r" style="--i:5">' + I('<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0"/>') + '<div><small class="d">' + t('30 minuti prima', '30 minutes before') + '</small></div></div>'
-      + '<div class="gc_rsvp" style="--i:6"><span>' + t('Parteciperà?', 'Going?') + '</span><em class="on">' + t('Sì', 'Yes') + '</em><em>No</em><em>' + t('Forse', 'Maybe') + '</em></div></div>';
-    return h;
-  }
-
-  /* ---------- Landing · tre versioni, stesso budget ---------- */
-  var LP = [
-    ['A', t('Render in apertura', 'Render first'), 1240, 26, t('2,1%', '2.1%'), 36],
-    ['B', t('Planimetrie in evidenza', 'Floor plans first'), 1310, 44, t('3,4%', '3.4%'), 59],
-    ['C', t('Visita in due clic', 'Visit in two clicks'), 1270, 74, t('5,8%', '5.8%'), 100]
-  ];
-  function lpThumb(i) {
-    var h = '<div class="dt_lt"><div class="br"><i></i><i></i><i></i><span></span></div>';
-    if (i === 0) h += '<div class="pa" style="background-image:url(' + IMG + 'site-hd-ext-render.webp)"><b>Residenze Verdi</b><em>' + t('Scopri il progetto', 'Discover the project') + '</em></div>';
-    else if (i === 1) h += '<div class="pb">' + ['bi', 'tri', 'quad', 'att'].map(function (k) { return '<span>' + plan(k) + '</span>'; }).join('') + '</div>';
-    else h += '<div class="pc"><figure style="background-image:url(' + IMG + 'site-hd-int-render.webp)"></figure><div><b>' + t('Prenota la visita', 'Book a visit') + '</b><span class="d"><i>24</i><i class="on">25</i><i>27</i></span><span class="d"><i>10:30</i><i class="on">11:30</i><i>15:00</i></span><span class="k"></span></div></div>';
-    return h + '</div>';
-  }
-  function vLand() {
-    var h = '<div class="dt_fx">' + hd(t('Landing page', 'Landing pages'), 'Residenze Verdi · ' + t('3 versioni, traffico diviso in parti uguali', '3 versions, traffic split evenly'), '<span class="dt_rng">' + t('Ultimo mese', 'Last month') + '</span>') + '<div class="dt_lp">';
-    h += LP.map(function (v, i) {
-      return '<div class="dt_card dt_lc dt_in' + (i === 2 ? ' best' : '') + '" data-l="' + i + '" style="--i:' + (i + 1) + '">'
-        + '<div class="dt_lh2"><span class="dt_lv">' + v[0] + '</span><b>' + v[1] + '</b>' + (i === 2 ? '<u>TOP</u>' : '') + '</div>'
-        + lpThumb(i)
-        + '<div class="dt_lk"><span>' + t('Visitatori', 'Visitors') + num(v[2], '', i * 80) + '</span><span>' + t('Contatti', 'Leads') + num(v[3], '', i * 80) + '</span><span class="cv">' + t('Conversione', 'Conversion') + '<b>' + v[4] + '</b></span></div>'
-        + '<span class="dt_trk"><i data-w="' + v[5] + '"></i></span></div>';
-    }).join('') + '</div>';
-    h += '<div class="dt_note dt_lw"><i>' + CHK + '</i>' + t('Il budget passa alla versione C: quasi 3 volte i contatti della A, stesso traffico', 'Budget moves to version C: almost 3x the leads of A, same traffic') + '</div></div>';
-    return h;
-  }
-
-  /* ---------- Campagne · Meta + Google (somma = Panoramica: Meta 21 visite, Google 12) ---------- */
+  /* ---------- Campagne (Meta 21 visite a 62 €, Google 12 a 74 €: come in Panoramica) ---------- */
   var CP = [
-    ['ig', t('Reel dal cantiere', 'Site Reel'), 'Meta · Reel', 648, 96, 12, 54],
-    ['fb', t('Carosello planimetrie', 'Floor-plan carousel'), 'Meta · ' + t('Carosello', 'Carousel'), 657, 71, 9, 73],
-    ['g', t('Ricerca “nuove costruzioni”', 'Search “new builds”'), 'Google · ' + t('Ricerca', 'Search'), 544, 58, 8, 68],
-    ['g', 'Performance Max', 'Google · PMax', 344, 41, 4, 86]
+    { ic: 'ig', n: t('Reel dal cantiere', 'Site Reel'), ty: 'Reel', tg: 'so', pl: 'Meta', sp: 648, le: 96, vi: 12, cv: 54, d: ['d', 6, 1], im: 48200, cl: 2410 },
+    { ic: 'fb', n: t('Carosello planimetrie', 'Floor-plan carousel'), ty: t('Carosello', 'Carousel'), tg: 'so', pl: 'Meta', sp: 657, le: 71, vi: 9, cv: 73, d: ['u', 3, 0], im: 39600, cl: 1580 },
+    { ic: 'g', n: t('Ricerca “nuove costruzioni”', 'Search “new builds”'), ty: t('Ricerca', 'Search'), tg: 'se', pl: 'Google', sp: 544, le: 58, vi: 8, cv: 68, d: ['d', 2, 1], im: 9850, cl: 870 },
+    { ic: 'g', n: 'Performance Max', ty: 'PMax', tg: 'se', pl: 'Google', sp: 344, le: 41, vi: 4, cv: 86, d: null, im: 21300, cl: 640 }
   ];
-  function cpPrev(i) {
-    if (i === 0) return '<div class="dt_reel" style="background-image:url(' + IMG + 'site-hd-ext-render.webp)"><i></i><span>' + t('Il cantiere a 3 mesi dalla consegna', 'The site, 3 months from handover') + '</span></div>';
-    if (i === 1) return '<div class="dt_car">' + ['bi', 'tri', 'att'].map(function (k) { return '<span>' + plan(k) + '</span>'; }).join('') + '</div>';
-    if (i === 2) return '<div class="dt_ad"><small>' + t('Sponsorizzato', 'Sponsored') + ' · residenzeverdi.it</small><b>' + t('Nuove costruzioni a Parma · Classe A', 'New builds in Parma · Class A') + '</b><p>' + t('Bilocali, trilocali e attici da 219.000 €. Prenota la visita in ufficio vendite.', 'One-beds to penthouses from €219,000. Book a sales-office visit.') + '</p></div>';
-    return '<div class="dt_car"><span style="background:url(' + IMG + 'site-hd-int-render.webp) center/cover"></span><span style="background:url(' + IMG + 'site-hd-ext-render.webp) center/cover"></span></div>';
+  function cpFun(i) {
+    var c = CP[i], w2 = Math.min(72, Math.round(38 + c.cl / c.im * 330)), w3 = Math.round(w2 * (.42 + c.le / c.cl * 2.6)), w4 = Math.round(w3 * (.28 + c.vi / c.le * 1.5));
+    var S = [[t('Impression', 'Impressions'), c.im, 100, ''], [t('Clic', 'Clicks'), c.cl, w2, pct(c.cl, c.im)], [t('Contatti', 'Leads'), c.le, w3, pct(c.le, c.cl)], [t('Visite in ufficio', 'Office visits'), c.vi, w4, pct(c.vi, c.le)]];
+    return th(t('Dal clic alla visita', 'From click to visit'), c.n + ' · ' + c.pl)
+      + '<div class="dx_fn">' + S.map(function (s, j) { return '<div class="dx_f dt_in" style="--i:' + j + '"><span>' + s[0] + '</span><span class="dx_fb"><i class="dx_w" data-w="' + s[2] + '"></i></span><b>' + fmt(s[1]) + '</b><em' + (s[3] ? '>' + s[3] : ' class="z">') + '</em></div>'; }).join('') + '</div>'
+      + '<div class="dt_note dt_in" style="--i:4"><i>' + CHK + '</i>' + t('1 visita ogni ', '1 visit every ') + Math.round(c.le / c.vi) + t(' contatti · ', ' leads · ') + eur(c.cv) + t(' per visita', ' per visit') + '</div>';
   }
-  function cpDet(i) {
-    var c = CP[i];
-    return '<b class="dt_in" style="--i:0">' + c[1] + '</b><small class="dt_in" style="--i:0">' + c[2] + ' · ' + t('attiva', 'active') + '</small>'
-      + '<div class="dt_cv dt_in" style="--i:1">' + cpPrev(i) + '</div>'
-      + '<div class="dt_ck dt_in" style="--i:2"><span>' + t('Spesa', 'Spend') + num(c[3], ' €') + '</span><span>' + t('Contatti', 'Leads') + num(c[4]) + '</span><span>' + t('Visite in ufficio', 'Office visits') + num(c[5]) + '</span><span>' + t('Costo per visita', 'Cost per visit') + num(c[6], ' €') + '</span></div>';
+  function cpAd(i) {
+    var c = CP[i], P, F, lay = 'v', ctr = ['CTR', pct(c.cl, c.im)], cpc = ['CPC', dec(c.sp / c.cl, 2) + ' €'];
+    if (i === 0) { lay = 'h'; P = '<div class="dx_reel" style="background-image:url(' + IMG + 'site-hd-ext-render.webp)"><i></i><span>' + t('Il cantiere a 3 mesi dalla consegna', 'The site, 3 months from handover') + '</span></div>'; F = [[t('Formato', 'Format'), 'Reel 9:16'], [t('Durata', 'Length'), '0:21'], ctr, cpc, [t('Frequenza', 'Frequency'), dec(1.8)]]; }
+    else if (i === 1) { P = '<div class="dx_car">' + ['bi', 'tri', 'att'].map(function (k) { return '<span>' + plan(k) + '</span>'; }).join('') + '</div>'; F = [[t('Formato', 'Format'), t('4 schede', '4 cards')], [t('Frequenza', 'Frequency'), dec(2.1)], ctr, cpc]; }
+    else if (i === 2) { P = '<div class="dx_sad"><small>' + t('Sponsorizzato', 'Sponsored') + ' · residenzeverdi.it</small><b>' + t('Nuove costruzioni a Parma · Classe A', 'New builds in Parma · Class A') + '</b><p>' + t('Bilocali, trilocali e attici da 219.000 €. Prenota la visita in ufficio vendite.', 'One-beds to penthouses from €219,000. Book a sales-office visit.') + '</p></div>'; F = [[t('Parola chiave', 'Keyword'), t('nuove costruzioni parma', 'new builds parma')], [t('Posizione media', 'Avg. position'), dec(1.4)], ctr, cpc]; }
+    else { P = '<div class="dx_car"><span style="background-image:url(' + IMG + 'site-hd-int-render.webp)"></span><span style="background-image:url(' + IMG + 'site-hd-ext-render.webp)"></span></div>'; F = [[t('Formato', 'Format'), t('12 asset', '12 assets')], [t('Reti', 'Networks'), 'Search · YouTube'], ctr, cpc]; }
+    return th(t('Annuncio', 'Ad'), c.pl + ' · ' + c.ty, '<span class="dx_st">' + t('Attiva', 'Active') + '</span>')
+      + '<div class="dx_ad ' + lay + '"><div class="pv dt_in" style="--i:1">' + P + '</div><div class="dx_fa dt_in" style="--i:2">' + F.map(function (f) { return '<span><small>' + f[0] + '</small><b>' + f[1] + '</b></span>'; }).join('') + '</div></div>';
   }
   function vCamp() {
-    var h = '<div class="dt_fx">' + hd(t('Campagne', 'Campaigns'), 'Residenze Verdi · ' + t('Meta e Google, misurate fino alla visita', 'Meta and Google, measured to the visit'), '<span class="dt_rng">' + t('Ultimo mese', 'Last month') + '</span>') + '<div class="dt_cg">';
-    h += '<div class="dt_card dt_ct dt_in" style="--i:1"><div class="dt_ch"><span>' + t('Campagna', 'Campaign') + '</span><span>' + t('Spesa', 'Spend') + '</span><span>' + t('Contatti', 'Leads') + '</span><span>' + t('Visite', 'Visits') + '</span><span>€/' + t('visita', 'visit') + '</span></div>'
-      + CP.map(function (c, i) { return '<div class="dt_cr' + (i ? '' : ' on') + '" data-c="' + i + '"><span class="n">' + ICO[c[0]] + '<div><b>' + c[1] + '</b><small>' + c[2] + '</small></div></span><span>' + eur(c[3]) + '</span><span>' + c[4] + '</span><span>' + c[5] + '</span><span class="v">' + (i ? '' : '<u>TOP</u>') + eur(c[6]) + '</span></div>'; }).join('')
-      + '<div class="dt_cb"><small>' + t('Costo per visita · più corta è meglio', 'Cost per visit · shorter is better') + '</small>' + CP.map(function (c, i) { return '<div class="dt_br' + (i ? '' : ' best') + '">' + ICO[c[0]] + '<span>' + c[1] + '</span><span class="dt_trk"><i data-w="' + Math.round(c[6] / 86 * 100) + '"></i></span><span class="v">' + eur(c[6]) + '</span></div>'; }).join('') + '</div></div>';
-    h += '<div class="dt_card dt_cd dt_in" style="--i:2">' + cpDet(0) + '</div></div></div>';
-    return h;
+    var body = '<div class="dx_t dx_tc dt_in" style="--i:2"><div class="dx_r h"><span>#</span><span>' + t('Campagna', 'Campaign') + '</span><span>' + t('Tipo', 'Type') + '</span><span class="num">' + t('Spesa', 'Spend') + '</span><span class="num">' + t('Contatti', 'Leads') + '</span><span class="num">' + t('Visite', 'Visits') + '</span><span class="num">' + t('Contatto → visita', 'Lead → visit') + '</span><span class="num">€/' + t('visita', 'visit') + '</span></div>'
+      + CP.map(function (c, i) { return '<div class="dx_r' + (i ? '' : ' on') + '" data-c="' + i + '"><span class="i">' + (i + 1) + '</span><span class="n">' + ICO[c.ic] + c.n + '</span><span><i class="dx_tag ' + c.tg + '">' + c.ty + '</i></span><span class="num">' + eur(c.sp) + '</span><span class="num">' + c.le + '</span><span class="num">' + c.vi + '</span><span class="num">' + pct(c.vi, c.le) + '</span><span class="num"><span class="dx_box">' + eur(c.cv) + '</span>' + arw(c.d) + '</span></div>'; }).join('') + '</div>'
+      + '<div class="dx_s"><div class="dx_sw dx_cfun">' + cpFun(0) + '</div><div class="dx_sw dx_cad">' + cpAd(0) + '</div></div>';
+    return shell('Campagne', t('Campagne', 'Campaigns'), t('Il Reel dal cantiere porta visite a 54 €', 'The site Reel brings visits at €54'), [
+      kpi(t('Spesa', 'Spend'), num(2193, ' €'), t('−3%', '−3%'), 'n', [24, 23, 25, 22, 23, 21, 22, 21]),
+      kpi(t('Contatti', 'Leads'), num(266, '', 80), '+18%', 'g', [12, 14, 13, 17, 18, 21, 22, 26]),
+      kpi(t('Visite in ufficio', 'Office visits'), num(33, '', 160), '+5', 'g', [18, 19, 22, 21, 25, 26, 28, 33]),
+      kpi(t('Costo per visita', 'Cost per visit'), num(66, ' €', 240), t('−4 €', '−€4'), 'g', [84, 80, 79, 75, 72, 71, 70, 66])
+    ], body);
   }
-  var V = { Campagne: vCamp, Portali: vPort, Landing: vLand, Calendario: vCal };
+
+  /* ---------- Portali (6 visite, 84 € per visita: come in Panoramica) ---------- */
+  var PA = [4, 3, 2];
+  function plDet(i) {
+    var g = TG[i], b = best(g.c), mx = g.c[b];
+    return '<div class="dt_stage dt_in" style="--i:0"><em class="l">' + t('Planimetria', 'Floor plan') + '</em><em class="r">' + g.u + ' ' + t('disponibili', 'available') + '</em>' + plan(g.k, 1) + '</div>'
+      + '<div class="dx_ph dt_in" style="--i:1"><div><b>' + g.n + ' · ' + g.m + ' m²</b><small>' + g.s + '</small></div><b>' + from(g.p) + '</b></div>'
+      + '<div class="dx_bs dt_in" style="--i:2">' + PO.map(function (p, j) { return '<div class="dx_b3' + (j === b ? ' best' : '') + (PF > -1 && j !== PF ? ' dim' : '') + '">' + lg(p[0]) + '<span>' + p[1] + '</span><span class="dx_fb"><i class="dx_w" data-w="' + Math.max(g.c[j] ? 6 : 0, Math.round(g.c[j] / mx * 100)) + '"></i></span><b>' + g.c[j] + '</b></div>'; }).join('') + '</div>';
+  }
+  function vPort() {
+    var Vw = sum(PO.map(function (p) { return p[2]; })), L = sum(PO.map(function (p) { return p[3]; })), Z = sum(PO.map(function (p) { return p[4]; }));
+    var body = '<div class="dx_t dx_tp dt_in" style="--i:2"><div class="dx_r h"><span>#</span><span>' + t('Portale', 'Portal') + '</span><span class="num">' + t('Annunci live', 'Live ads') + '</span><span class="num">' + t('Visualizzazioni', 'Views') + '</span><span class="num">' + t('Contatti', 'Leads') + '</span><span class="num">' + t('Vista → contatto', 'View → lead') + '</span><span class="num">' + t('Visite', 'Visits') + '</span><span class="num">' + t('Prezzo', 'Price') + '</span></div>'
+      + PO.map(function (p, j) { return '<div class="dx_r" data-p="' + p[0] + '"><span class="i">' + (j + 1) + '</span><span class="n">' + lg(p[0]) + p[1] + '</span><span class="num">' + PA[j] + '</span><span class="num">' + fmt(p[2]) + '</span><span class="num">' + p[3] + '</span><span class="num">' + pct(p[3], p[2]) + '</span><span class="num">' + p[4] + '</span><span class="num"><i class="dx_ok">' + CHK + t('Allineato', 'Aligned') + '</i></span></div>'; }).join('')
+      + '<div class="dx_r tot"><span></span><span>' + t('Totale', 'Total') + '</span><span class="num">' + sum(PA) + '</span><span class="num">' + fmt(Vw) + '</span><span class="num">' + L + '</span><span class="num">' + pct(L, Vw) + '</span><span class="num">' + Z + '</span><span></span></div></div>'
+      + '<div class="dx_s"><div>' + th(t('Tagli in vendita', 'Layouts on sale'), '<span class="dx_tsub">Residenze Verdi · ' + t('contatti da tutti i portali', 'leads from all portals') + '</span>', '<span class="dx_st">' + t('Live su 3 portali', 'Live on 3 portals') + '</span>')
+      + '<div class="dx_t dx_tt"><div class="dx_r h"><span>' + t('Taglio', 'Layout') + '</span><span class="num">' + t('Prezzo', 'Price') + '</span><span class="num">' + t('Disponibili', 'Available') + '</span><span class="num">' + t('Contatti', 'Leads') + '</span><span class="num">' + t('Visite', 'Visits') + '</span></div>'
+      + TG.map(function (g, i) { return '<div class="dx_r' + (i ? '' : ' on') + '" data-t="' + i + '"><span class="n"><span class="dx_pt">' + plan(g.k) + '</span><span class="dx_nm">' + g.n + '<small>' + g.m + ' m² · ' + g.r + '</small></span></span><span class="num">' + from(g.p) + '</span><span class="num">' + g.u + '</span><span class="num lc">' + sum(g.c) + '</span><span class="num">' + g.vi + '</span></div>'; }).join('') + '</div></div>'
+      + '<div class="dx_sw dx_pl">' + plDet(0) + '</div></div>';
+    return shell('Portali', t('Portali', 'Portals'), t('Immobiliare.it porta 4 visite su 6', 'Immobiliare.it brings 4 of 6 visits'), [
+      kpi(t('Visualizzazioni', 'Views'), num(Vw), '+9%', 'g', [61, 64, 63, 68, 71, 74, 78, 82]),
+      kpi(t('Contatti', 'Leads'), num(L, '', 80), '+6', 'g', [70, 72, 69, 75, 77, 79, 81, 85]),
+      kpi(t('Visite in ufficio', 'Office visits'), num(Z, '', 160), '−1', 'r', [5, 6, 6, 7, 6, 7, 7, 6]),
+      kpi(t('Costo per visita', 'Cost per visit'), num(84, ' €', 240), t('+2 €', '+€2'), 'r', [80, 79, 81, 80, 82, 81, 82, 84])
+    ], body);
+  }
+
+  /* ---------- Landing · tre versioni, stesso traffico ---------- */
+  var LP = [
+    { n: t('Render in apertura', 'Render first'), s: t('Il progetto prima di tutto', 'The project comes first'), u: '/a', v: 1240, c: 26, r: 2.1, w: 36 },
+    { n: t('Planimetrie in evidenza', 'Floor plans first'), s: t('Tagli e prezzi subito visibili', 'Layouts and prices up front'), u: '/b', v: 1310, c: 44, r: 3.4, w: 59 },
+    { n: t('Visita in due clic', 'Visit in two clicks'), s: t('Calendario già nella prima schermata', 'Calendar on the first screen'), u: '/c', v: 1270, c: 74, r: 5.8, w: 100 }
+  ];
+  function lpMock(i) {
+    if (i === 0) return '<div class="dx_m a"><div class="he" style="background-image:url(' + IMG + 'site-hd-ext-render.webp)"><b>' + t('Vivere nel verde,<br>a dieci minuti dal centro.', 'Live in the green,<br>ten minutes from the centre.') + '</b><em>' + t('Scopri il progetto', 'Discover the project') + '</em></div><div class="ln"><span><b>21</b>' + t('unità', 'units') + '</span><span><b>' + t('Classe A', 'Class A') + '</b>' + t('energetica', 'energy rating') + '</span><span><b>2027</b>' + t('consegna', 'handover') + '</span></div></div>';
+    if (i === 1) return '<div class="dx_m b"><b>' + t('Scegli la tua planimetria', 'Choose your floor plan') + '</b><small>' + t('4 tagli disponibili, da 219.000 €', '4 layouts available, from €219,000') + '</small><div class="g">' + TG.map(function (g) { return '<span>' + plan(g.k) + '<b>' + g.n + '</b>' + from(g.p) + '</span>'; }).join('') + '</div></div>';
+    return '<div class="dx_m c"><figure style="background-image:url(' + IMG + 'site-hd-int-render.webp)"></figure><div><b class="t">' + t('Prenota la visita', 'Book a visit') + '</b><small>' + t('Ufficio vendite · 30 min', 'Sales office · 30 min') + '</small><span class="d"><i>' + t('Ven', 'Fri') + '<br>24</i><i class="on">' + t('Sab', 'Sat') + '<br>25</i><i>' + t('Lun', 'Mon') + '<br>27</i></span><span class="d"><i>10:30</i><i class="on">11:30</i><i>15:00</i></span><span class="f">' + t('Nome e cognome', 'Full name') + '</span><span class="f">' + t('Telefono', 'Phone') + '</span><span class="k">' + t('Conferma la visita', 'Confirm the visit') + '</span><span class="s">' + t('Gratuita, senza impegno', 'Free, no commitment') + '</span></div></div>';
+  }
+  function vLand() {
+    var Vt = sum(LP.map(function (v) { return v.v; })), Ct = sum(LP.map(function (v) { return v.c; }));
+    var body = '<div class="dx_cols">' + LP.map(function (v, i) {
+      var up = i ? '+' + Math.round((v.r / LP[0].r - 1) * 100) + '% ' + t('rispetto alla A', 'vs A') : t('Riferimento', 'Baseline');
+      return '<div class="dx_col dt_in' + (i === 2 ? ' best' : '') + '" data-l="' + i + '" style="--i:' + (i + 2) + '"><div class="dx_ch"><span class="dx_lv">' + 'ABC'.charAt(i) + '</span><div><b>' + v.n + '</b><small>' + v.s + '</small></div>' + (i === 2 ? '<u class="dx_win">' + t('Vincitrice', 'Winner') + '</u>' : '') + '</div>'
+        + '<div class="dx_bw"><div class="br"><i></i><i></i><i></i><span>residenzeverdi.it' + v.u + '</span></div>' + lpMock(i) + '</div>'
+        + '<div class="dx_ml"><span>' + t('Visitatori', 'Visitors') + num(v.v, '', i * 80) + '</span><span>' + t('Contatti', 'Leads') + num(v.c, '', i * 80) + '</span><span class="cv">' + t('Conversione', 'Conversion') + '<b>' + dec(v.r) + '%</b></span></div>'
+        + '<div class="dx_lf"><span class="dx_fb"><i class="dx_w" data-w="' + v.w + '"></i></span><em class="dx_dl ' + (i ? 'g' : 'n') + '">' + up + '</em></div></div>';
+    }).join('') + '</div>';
+    return shell('Landing', 'Landing page', t('3 versioni online, traffico diviso in parti uguali', '3 versions live, traffic split evenly'), [
+      kpi(t('Visitatori', 'Visitors'), num(Vt), '+12%', 'g', [28, 30, 29, 32, 33, 35, 36, 38]),
+      kpi(t('Contatti', 'Leads'), num(Ct, '', 80), '+31%', 'g', [72, 78, 85, 96, 104, 118, 131, 144]),
+      kpi(t('Conversione media', 'Average conversion'), '<b>' + pct(Ct, Vt) + '</b>', t('+0,6 pt', '+0.6 pt'), 'g', [29, 30, 31, 33, 34, 35, 37, 38]),
+      kpi(t('Versione migliore', 'Best version'), '<b>C</b>', dec(LP[2].r) + '% ' + t('di conversione', 'conversion'), 'g')
+    ], body);
+  }
+  var V = { Campagne: vCamp, Portali: vPort, Landing: vLand };
 
   /* ---------- DOM ---------- */
   var defs = document.createElement('div'); defs.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
@@ -457,7 +449,7 @@
 
   /* ---------- pointer engine ---------- */
   var P = { x: 0, y: 0 }, anim = null, hv = null, hn = 0;
-  var HOV = '.dt_cr,.dt_lc,.dt_tg,.dt_pr[data-p],.dt_chip,.dt_ev,.dt_x,.d3_tbl .d3_r,.v2_side>span.lp-v2_side_span,.d3_seg button';
+  var HOV = '.dx_r[data-c],.dx_r[data-p],.dx_r[data-t],.dx_col,.dt_chip,.dt_ev,.dt_x,.d3_tbl .d3_r,.v2_side>span.lp-v2_side_span,.d3_seg button';
   function sc() { var w = app.offsetWidth; return w ? (app.getBoundingClientRect().width / w) || 1 : 1; }
   function hover(off) {
     var el = null;
@@ -488,7 +480,7 @@
 
   /* ---------- view logic ---------- */
   var swT = null;
-  function fill(root) { countUp(root); setTimeout(function () { [].forEach.call(root.querySelectorAll('.dt_trk i'), function (b) { b.style.width = b.getAttribute('data-w') + '%'; }); }, 80); }
+  function fill(root) { countUp(root); setTimeout(function () { [].forEach.call(root.querySelectorAll('.dt_trk i,.dx_w'), function (b) { b.style.width = b.getAttribute('data-w') + '%'; }); }, 80); }
   function show(k) {
     side.forEach(function (s) { s.classList.toggle('on', s.__k === k); });
     var pano = k === 'Panoramica'; app.classList.toggle('dt_notpano', !pano);
@@ -499,44 +491,31 @@
     if (host.classList.contains('is-on')) { host.classList.add('sw'); swT = setTimeout(function () { host.innerHTML = V[k](); void host.offsetWidth; host.classList.remove('sw'); fill(host); }, 260); } else put();
   }
   function nav(k) { go(function () { return sideEl(k); }, .32, .5, 920); click(function () { show(k); }); wait(350); }
+  function swap(el, html) { if (!el) return; el.classList.add('sw'); setTimeout(function () { el.innerHTML = html; el.classList.remove('sw'); fill(el); }, 200); }
   function selTg(i) {
-    var det = host.querySelector('.dt_det'); if (!det) return;
-    all('.dt_tg').forEach(function (r) { r.classList.toggle('on', +r.getAttribute('data-t') === i); });
-    det.classList.add('sw');
-    setTimeout(function () { det.innerHTML = detail(i); det.classList.remove('sw'); fill(det); }, 190);
+    all('.dx_r[data-t]').forEach(function (r) { r.classList.toggle('on', +r.getAttribute('data-t') === i); });
+    swap(host.querySelector('.dx_pl'), plDet(i));
   }
   function selPortal(j) {
     PF = j;
-    all('.dt_pr[data-p]').forEach(function (r, k) { r.classList.toggle('sel', k === j); r.classList.toggle('dim', j > -1 && k !== j); });
-    var lh = host.querySelector('.dt_lh'), shown = 0;
-    all('.dt_tg').forEach(function (r) {
-      var g = TG[+r.getAttribute('data-t')], on = j < 0 || g.c[j] > 0; if (on) shown++;
-      r.classList.toggle('hid', !on); var c = r.querySelector('.c'); if (c) c.innerHTML = tgLine(g);
-      r.classList.remove('pop'); if (on) { void r.offsetWidth; r.classList.add('pop'); }
-    });
-    if (lh) { lh.querySelector('.lt').textContent = j < 0 ? t('Tagli in vendita', 'Layouts on sale') : t('Annunci su ', 'Ads on ') + PO[j][1]; lh.querySelector('span').textContent = shown + ' ' + t('annunci live', 'live ads'); }
-    var on = host.querySelector('.dt_tg.on'), i = on ? +on.getAttribute('data-t') : 0;
+    all('.dx_r[data-p]').forEach(function (r, k) { r.classList.toggle('on', k === j); r.classList.toggle('dim', j > -1 && k !== j); });
+    all('.dx_r[data-t]').forEach(function (r) { var g = TG[+r.getAttribute('data-t')], n = j < 0 ? sum(g.c) : g.c[j], c = r.querySelector('.lc'); if (c) c.textContent = n; r.classList.toggle('dim', !n); });
+    var sub = host.querySelector('.dx_tsub'); if (sub) sub.textContent = 'Residenze Verdi · ' + (j < 0 ? t('contatti da tutti i portali', 'leads from all portals') : t('contatti da ', 'leads from ') + PO[j][1]);
+    var on = host.querySelector('.dx_r[data-t].on'), i = on ? +on.getAttribute('data-t') : 0;
     if (j > -1 && !TG[i].c[j]) for (var x = 0; x < TG.length; x++) if (TG[x].c[j] > 0) { i = x; break; }
     selTg(i);
   }
-  function portal(k, hold) { go(q('.dt_pr[data-p="' + k + '"]'), .4, .5, 800); click(function () { selPortal(['immo', 'idea', 'casa'].indexOf(k)); }); wait(hold); }
-  function tg(i, hold) { go(q('.dt_tg[data-t="' + i + '"]'), .62, .55, 760); click(function () { selTg(i); }); wait(hold); }
-  function filterCal(f) {
-    all('.dt_chip').forEach(function (c) { c.classList.toggle('on', c.getAttribute('data-f') === f); });
-    all('.dt_ev').forEach(function (e) { e.classList.toggle('off', f !== 'all' && e.getAttribute('data-t') !== f); });
-    var kp = host.querySelector('[data-kp="visit"]'); if (kp) kp.classList.toggle('hl', f === 'visit');
-  }
+  function portal(k, hold) { go(q('.dx_r[data-p="' + k + '"]'), .2, .5, 800); click(function () { selPortal(['immo', 'idea', 'casa'].indexOf(k)); }); wait(hold); }
+  function tg(i, hold) { go(q('.dx_r[data-t="' + i + '"]'), .3, .55, 760); click(function () { selTg(i); }); wait(hold); }
   function selLp(i, win) {
-    all('.dt_lc').forEach(function (c) { c.classList.toggle('on', +c.getAttribute('data-l') === i); });
-    if (win) { var n = host.querySelector('.dt_lw'); if (n) n.classList.add('on'); }
+    all('.dx_col').forEach(function (c) { var on = +c.getAttribute('data-l') === i; c.classList.toggle('on', on); if (on && win) c.classList.add('win'); });
   }
-  function lp(i, hold, win) { go(q('.dt_lc[data-l="' + i + '"]'), .5, .42, 780); click(function () { selLp(i, win); }); wait(hold); }
+  function lp(i, hold, win) { go(q('.dx_col[data-l="' + i + '"]'), .5, .36, 780); click(function () { selLp(i, win); }); wait(hold); }
   function selCp(i) {
-    var d = host.querySelector('.dt_cd'); if (!d) return;
-    all('.dt_cr').forEach(function (r) { r.classList.toggle('on', +r.getAttribute('data-c') === i); });
-    d.classList.add('sw'); setTimeout(function () { d.innerHTML = cpDet(i); d.classList.remove('sw'); fill(d); }, 190);
+    all('.dx_r[data-c]').forEach(function (r) { r.classList.toggle('on', +r.getAttribute('data-c') === i); });
+    swap(host.querySelector('.dx_cfun'), cpFun(i)); swap(host.querySelector('.dx_cad'), cpAd(i));
   }
-  function cp(i, hold) { go(q('.dt_cr[data-c="' + i + '"]'), .3, .5, 760); click(function () { selCp(i); }); wait(hold); }
+  function cp(i, hold) { go(q('.dx_r[data-c="' + i + '"]'), .2, .5, 760); click(function () { selCp(i); }); wait(hold); }
   function pointAt(fx, hold) {
     LOOP += 700 + hold;
     Q.push(function (n) {
@@ -545,18 +524,6 @@
       glide((x - a.left) / s, (y - a.top) / s, 700, function () { try { h.dispatchEvent(new PointerEvent('pointermove', { clientX: x, clientY: y, bubbles: true })); } catch (e) {} timer = setTimeout(n, hold); });
     });
   }
-  function chipClick(f, hold) { go(q('.dt_chip[data-f="' + f + '"]'), .5, .5, 700); click(function () { filterCal(f); }); wait(hold); }
-  function openPop() {
-    var e = host.querySelector('.dt_ev[data-k]'), pop = host.querySelector('.dt_pop'); if (!e || !pop) return;
-    e.classList.add('sel');
-    var h = host.getBoundingClientRect(), r = e.getBoundingClientRect(), s = sc(), W = pop.offsetWidth, HH = pop.offsetHeight;
-    var left = (r.left - h.left) / s - W - 12, top = (r.top - h.top) / s - 72, mx = host.clientHeight - HH - 8;
-    if (left < 8) left = Math.min((r.right - h.left) / s + 12, host.clientWidth - W - 8);
-    if (left < 8) left = 8;
-    if (top > mx) top = mx; if (top < 8) top = 8;
-    pop.style.left = Math.round(left) + 'px'; pop.style.top = Math.round(top) + 'px'; pop.classList.add('on');
-  }
-  function closePop() { var p = host.querySelector('.dt_pop'); if (p) p.classList.remove('on'); var e = host.querySelector('.dt_ev.sel'); if (e) e.classList.remove('sel'); }
   function insight(on) {
     if (!on) { ins.classList.remove('on'); return; }
     var sg = app.querySelector('.d3_seg'), bs = app.querySelectorAll('.d3_seg button'); if (!sg || !bs.length) return;
@@ -592,15 +559,15 @@
   wait(300);
   pointAt(.06, 1300); pointAt(.27, 1300); pointAt(.42, 1600); leave();
   go(row(0), .3, .5, 800); wait(1100);
-  /* 2 · Campagne: the Reel brings visits at the lowest cost; then Search */
-  nav('Campagne'); wait(500);
-  cp(0, 1800); cp(2, 1900);
-  /* 3 · Portali: pick a portal → only its ads; pick a layout → its floor plan */
-  nav('Portali'); wait(500);
-  portal('immo', 900); tg(1, 1900);
-  /* 4 · Landing: three versions, same budget → the winner gets it */
-  nav('Landing'); wait(700);
-  lp(0, 900); lp(1, 900); lp(2, 2800, 1);
+  /* 2 · Campagne: the table, then one campaign's funnel and ad */
+  nav('Campagne'); wait(1500);
+  cp(2, 2400); cp(0, 1900);
+  /* 3 · Portali: one portal, then one layout and its floor plan */
+  nav('Portali'); wait(1300);
+  portal('immo', 1300); tg(1, 2400);
+  /* 4 · Landing: three versions, same traffic, one winner */
+  nav('Landing'); wait(1300);
+  lp(0, 1000); lp(1, 1000); lp(2, 3200, 1);
   /* back to the start */
   nav('Panoramica'); wait(300);
   app.__dtLoop = LOOP;
@@ -609,6 +576,7 @@
   function start() { if (running) return; running = true; cur.classList.add('is-on'); if (!P.x) { place(app.offsetWidth * .5, app.offsetHeight * .55); } step(); }
   function stop() { running = false; clearTimeout(timer); TY.forEach(clearTimeout); TY = []; if (anim) cancelAnimationFrame(anim); anim = null; hover(1); }
 
+  app.__dt = { show: show, stop: stop, start: start, cp: selCp, portal: selPortal, tg: selTg, lp: selLp };
   var pre = new Image(); pre.src = IMG + 'render-photo.webp';
   if (window.matchMedia && (matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(max-width:767px)').matches)) { show('Panoramica'); if (matchMedia('(max-width:767px)').matches) { var pin = function () { var h = app.querySelector('.d3_hit'); if (!h) return; var b = h.getBoundingClientRect(); if (!b.width) return; try { h.dispatchEvent(new PointerEvent('pointermove', { clientX: b.left + b.width * .21, clientY: b.top + b.height * .45, bubbles: true })); } catch (e) {} }; setTimeout(pin, 400); setTimeout(pin, 1600); window.addEventListener('resize', function () { setTimeout(pin, 350); }); } return; }
   if ('IntersectionObserver' in window) {
