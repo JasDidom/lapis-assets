@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v9.2.1 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v9.2.2 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -572,13 +572,13 @@
   function row(i) { return function () { return app.querySelectorAll('.d3_tbl .d3_r:not(.d3_h)')[i]; }; }
 
   /* ---------- script: every move answers the question the last screen raised ----------
-     1 Panoramica · do visits grow?            one continuous pass along the curve, Jan → Jun, tooltip glued to the pointer; it rests on June, where Meta is first
+     1 Panoramica · do visits grow?            start on April, one calm pass through May to June, tooltip glued to the pointer; it rests on June, where Meta is first
      2 Campagne   · which campaign does that?   read the cost per visit, click the cheapest one, follow its funnel down to the office visit
      3 Portali    · and the portals?            click the portal with most visits, then the layout with most leads, look at its plan
      4 Landing    · where does the click land?  compare A, B, C; stop on the winner's conversion rate */
-  act(function () { pinAt(.02); show('Panoramica'); });
+  act(function () { pinAt(.6); show('Panoramica'); });
   wait(250);
-  sweep(3000, .02, .98); wait(1700);
+  sweep(2200, .6, .98); wait(1600);
   nav('Campagne'); wait(700);
   look(function () { return host.querySelectorAll('.dx_k>div')[3]; }, .3, .62, 1100);
   cp(0, 900);
@@ -590,7 +590,7 @@
   nav('Landing'); wait(900);
   lp(0, 900); lp(1, 900); lp(2, 700, 1);
   look(function () { return host.querySelector('.dx_col[data-l="2"] .dx_ml .cv b'); }, .2, .7, 2400, 900);
-  go(function () { return sideEl('Panoramica'); }, .32, .5, 920); click(function () { pinAt(.02); show('Panoramica'); }); wait(250);
+  go(function () { return sideEl('Panoramica'); }, .32, .5, 920); click(function () { pinAt(.6); show('Panoramica'); }); wait(250);
   app.__dtLoop = LOOP;
 
   function step() { if (!running) return; var f = Q[qi]; qi = (qi + 1) % Q.length; f(step); }
