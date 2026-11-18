@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v9.1.1 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v9.1.2 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -596,9 +596,16 @@
   function stop() { running = false; clearTimeout(timer); TY.forEach(clearTimeout); TY = []; if (anim) cancelAnimationFrame(anim); anim = null; hover(1); }
 
   app.__dt = { show: show, stop: stop, start: start, cp: selCp, portal: selPortal, tg: selTg, lp: selLp };
+  /* keep the chart tooltip inside its card: whenever the chart moves it, flip it to the left of the line if it would overflow */
   (function () {
-    var h = app.querySelector('.d3_hit'); if (!h) return;
-    h.addEventListener('pointermove', function () { requestAnimationFrame(function () { var tp = app.querySelector('.d3_tip'), pl = tp && tp.parentNode; if (tp && pl) tp.classList.toggle('dt_flip', tp.offsetLeft + tp.offsetWidth > pl.offsetWidth + 14); }); });
+    var done = 0;
+    function fix(tp) { var pl = tp.parentNode; if (pl) tp.classList.toggle('dt_flip', tp.offsetLeft + tp.offsetWidth > pl.offsetWidth + 14); }
+    function bind() {
+      var tp = app.querySelector('.d3_tip'); if (!tp || done) return !!done; done = 1;
+      if ('MutationObserver' in window) new MutationObserver(function () { fix(tp); }).observe(tp, { attributes: true, attributeFilter: ['style'] });
+      fix(tp); return true;
+    }
+    if (!bind()) { var n = 0, iv = setInterval(function () { if (bind() || ++n > 40) clearInterval(iv); }, 250); }
   })();
   var pre = new Image(); pre.src = IMG + 'render-photo.webp';
   if (window.matchMedia && (matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(max-width:767px)').matches)) { show('Panoramica'); if (matchMedia('(max-width:767px)').matches) { var pin = function () { var h = app.querySelector('.d3_hit'); if (!h) return; var b = h.getBoundingClientRect(); if (!b.width) return; try { h.dispatchEvent(new PointerEvent('pointermove', { clientX: b.left + b.width * .21, clientY: b.top + b.height * .45, bubbles: true })); } catch (e) {} }; setTimeout(pin, 400); setTimeout(pin, 1600); window.addEventListener('resize', function () { setTimeout(pin, 350); }); } return; }
