@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v9.0.0 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v9.1.0 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -205,7 +205,12 @@
     + '.dx_m.c .d{display:flex;gap:4px}.dx_m.c .d i{flex:1;height:26px;border:1px solid #ECEAE6;border-radius:7px;display:grid;place-items:center;font-style:normal;font-size:9px;color:#55524D;line-height:1.05;text-align:center}.dx_m.c .d i.on{background:#171717;border-color:#171717;color:#fff}'
     + '.dx_m.c .f{height:26px;border:1px solid #ECEAE6;border-radius:7px;display:flex;align-items:center;padding:0 9px;font-size:9px;color:#B5B0AA}.dx_m.c .k{margin-top:auto;height:28px;border-radius:999px;background:#B0573A;color:#fff;font-size:9.5px;font-weight:600;display:grid;place-items:center}.dx_m.c .s{font-size:8.5px;color:#9A958F;text-align:center}'
     + '.dx_ml{flex:none;margin-top:12px}.dx_ml span{display:flex;align-items:center;justify-content:space-between;height:34px;border-top:1px solid #F1EFEC;font-size:12.5px;color:#8A8580;white-space:nowrap}.dx_ml span:first-child{border-top:0}.dt_host .dx_ml b{font-size:14px;color:#171717;font-weight:600}.dt_host .dx_ml .cv b{font-size:19px;letter-spacing:-.02em}'
-    + '.dx_lf{flex:none;display:flex;align-items:center;gap:10px;height:26px;margin-top:2px}.dx_lf .dx_fb{flex:1}';
+    + '.dx_lf{flex:none;display:flex;align-items:center;gap:10px;height:26px;margin-top:2px}.dx_lf .dx_fb{flex:1}'
+    /* v9.1 · the pointer reads before it clicks: quiet hover states + tooltip that stays inside its card */
+    + '.dx_k>div{transition:background-color .3s}.dx_k>div.dt_hv{background:#FAF9F7}.dx_f>span:first-child,.dx_f em{transition:color .25s,background-color .25s}.dx_f.dt_hv>span:first-child{color:#171717}.dx_f.dt_hv em{background:#FDF1EC;color:#B0573A}'
+    + '.dx_ml .cv{transition:color .25s}.dx_ml .cv.dt_hv{color:#171717}.dx_box{transition:border-color .25s,box-shadow .25s}.dx_r.dt_hv .dx_box,.dx_r.on .dx_box{border-color:#DDD8D0}'
+    + '.dx_cmp{flex:1;min-height:0;padding:4px 14px 14px;display:flex;flex-direction:column;justify-content:center;gap:4px}.dx_cmp .dx_b3{grid-template-columns:22px minmax(0,150px) minmax(0,1fr) 46px;height:44px;font-size:12.5px;gap:10px}.dx_cmp .dx_b3 .dt_ic{width:20px;height:20px;border-radius:6px}.dx_cmp .dx_b3 .dx_fb{height:8px;border-radius:4px}.dx_cmp .dx_b3 .dx_fb i{border-radius:4px}.dx_cmp .dx_b3+.dx_b3{border-top:1px solid #F1EFEC}.dx_cmp .dx_b3>span:nth-child(2){overflow:hidden;text-overflow:ellipsis}'
+    + '.d3_tip{transition:transform .3s ' + E1 + '}.d3_tip.dt_flip{transform:translateX(calc(-100% - 58px))}';
 
   var st = document.createElement('style'); st.id = 'lpdashtour'; st.textContent = css; document.head.appendChild(st);
 
@@ -341,11 +346,16 @@
     { ic: 'g', n: 'Performance Max', ty: 'PMax', tg: 'se', pl: 'Google', sp: 344, le: 41, vi: 4, cv: 86, d: null, im: 21300, cl: 640 }
   ];
   function cpFun(i) {
-    var c = CP[i], w2 = Math.min(72, Math.round(38 + c.cl / c.im * 330)), w3 = Math.round(w2 * (.42 + c.le / c.cl * 2.6)), w4 = Math.round(w3 * (.28 + c.vi / c.le * 1.5));
+    var c = i < 0 ? { n: t('Tutte le campagne', 'All campaigns'), pl: 'Meta + Google', im: sum(CP.map(function (x) { return x.im; })), cl: sum(CP.map(function (x) { return x.cl; })), le: sum(CP.map(function (x) { return x.le; })), vi: sum(CP.map(function (x) { return x.vi; })), cv: 66 } : CP[i], w2 = Math.min(72, Math.round(38 + c.cl / c.im * 330)), w3 = Math.round(w2 * (.42 + c.le / c.cl * 2.6)), w4 = Math.round(w3 * (.28 + c.vi / c.le * 1.5));
     var S = [[t('Impression', 'Impressions'), c.im, 100, ''], [t('Clic', 'Clicks'), c.cl, w2, pct(c.cl, c.im)], [t('Contatti', 'Leads'), c.le, w3, pct(c.le, c.cl)], [t('Visite in ufficio', 'Office visits'), c.vi, w4, pct(c.vi, c.le)]];
     return th(t('Dal clic alla visita', 'From click to visit'), c.n + ' · ' + c.pl)
       + '<div class="dx_fn">' + S.map(function (s, j) { return '<div class="dx_f dt_in" style="--i:' + j + '"><span>' + s[0] + '</span><span class="dx_fb"><i class="dx_w" data-w="' + s[2] + '"></i></span><b>' + fmt(s[1]) + '</b><em' + (s[3] ? '>' + s[3] : ' class="z">') + '</em></div>'; }).join('') + '</div>'
       + '<div class="dt_note dt_in" style="--i:4"><i>' + CHK + '</i>' + t('1 visita ogni ', '1 visit every ') + Math.round(c.le / c.vi) + t(' contatti · ', ' leads · ') + eur(c.cv) + t(' per visita', ' per visit') + '</div>';
+  }
+  function cpCmp() {
+    var mx = Math.max.apply(null, CP.map(function (c) { return c.cv; })), b = 0; CP.forEach(function (c, j) { if (c.cv < CP[b].cv) b = j; });
+    return th(t('Costo per visita', 'Cost per visit'), t('Per campagna · più basso è meglio', 'By campaign · lower is better'))
+      + '<div class="dx_cmp">' + CP.map(function (c, j) { return '<div class="dx_b3 dt_in' + (j === b ? ' best' : '') + '" style="--i:' + (j + 1) + '">' + ICO[c.ic] + '<span>' + c.n + '</span><span class="dx_fb"><i class="dx_w" data-w="' + Math.round(c.cv / mx * 100) + '"></i></span><b>' + eur(c.cv) + '</b></div>'; }).join('') + '</div>';
   }
   function cpAd(i) {
     var c = CP[i], P, F, lay = 'v', ctr = ['CTR', pct(c.cl, c.im)], cpc = ['CPC', dec(c.sp / c.cl, 2) + ' €'];
@@ -358,9 +368,9 @@
   }
   function vCamp() {
     var body = '<div class="dx_t dx_tc dt_in" style="--i:2"><div class="dx_r h"><span>#</span><span>' + t('Campagna', 'Campaign') + '</span><span>' + t('Tipo', 'Type') + '</span><span class="num">' + t('Spesa', 'Spend') + '</span><span class="num">' + t('Contatti', 'Leads') + '</span><span class="num">' + t('Visite', 'Visits') + '</span><span class="num">' + t('Contatto → visita', 'Lead → visit') + '</span><span class="num">€/' + t('visita', 'visit') + '</span></div>'
-      + CP.map(function (c, i) { return '<div class="dx_r' + (i ? '' : ' on') + '" data-c="' + i + '"><span class="i">' + (i + 1) + '</span><span class="n">' + ICO[c.ic] + c.n + '</span><span><i class="dx_tag ' + c.tg + '">' + c.ty + '</i></span><span class="num">' + eur(c.sp) + '</span><span class="num">' + c.le + '</span><span class="num">' + c.vi + '</span><span class="num">' + pct(c.vi, c.le) + '</span><span class="num"><span class="dx_box">' + eur(c.cv) + '</span>' + arw(c.d) + '</span></div>'; }).join('') + '</div>'
-      + '<div class="dx_s"><div class="dx_sw dx_cfun">' + cpFun(0) + '</div><div class="dx_sw dx_cad">' + cpAd(0) + '</div></div>';
-    return shell('Campagne', t('Campagne', 'Campaigns'), t('Il Reel dal cantiere porta visite a 54 €', 'The site Reel brings visits at €54'), [
+      + CP.map(function (c, i) { return '<div class="dx_r" data-c="' + i + '"><span class="i">' + (i + 1) + '</span><span class="n">' + ICO[c.ic] + c.n + '</span><span><i class="dx_tag ' + c.tg + '">' + c.ty + '</i></span><span class="num">' + eur(c.sp) + '</span><span class="num">' + c.le + '</span><span class="num">' + c.vi + '</span><span class="num">' + pct(c.vi, c.le) + '</span><span class="num"><span class="dx_box">' + eur(c.cv) + '</span>' + arw(c.d) + '</span></div>'; }).join('') + '</div>'
+      + '<div class="dx_s"><div class="dx_sw dx_cfun">' + cpFun(-1) + '</div><div class="dx_sw dx_cad">' + cpCmp() + '</div></div>';
+    return shell('Campagne', t('Campagne', 'Campaigns'), t('4 campagne attive su Meta e Google', '4 campaigns live on Meta and Google'), [
       kpi(t('Spesa', 'Spend'), num(2193, ' €'), t('−3%', '−3%'), 'n', [24, 23, 25, 22, 23, 21, 22, 21]),
       kpi(t('Contatti', 'Leads'), num(266, '', 80), '+18%', 'g', [12, 14, 13, 17, 18, 21, 22, 26]),
       kpi(t('Visite in ufficio', 'Office visits'), num(33, '', 160), '+5', 'g', [18, 19, 22, 21, 25, 26, 28, 33]),
@@ -385,7 +395,7 @@
       + '<div class="dx_t dx_tt"><div class="dx_r h"><span>' + t('Taglio', 'Layout') + '</span><span class="num">' + t('Prezzo', 'Price') + '</span><span class="num">' + t('Disponibili', 'Available') + '</span><span class="num">' + t('Contatti', 'Leads') + '</span><span class="num">' + t('Visite', 'Visits') + '</span></div>'
       + TG.map(function (g, i) { return '<div class="dx_r' + (i ? '' : ' on') + '" data-t="' + i + '"><span class="n"><span class="dx_pt">' + plan(g.k) + '</span><span class="dx_nm">' + g.n + '<small>' + g.m + ' m² · ' + g.r + '</small></span></span><span class="num">' + from(g.p) + '</span><span class="num">' + g.u + '</span><span class="num lc">' + sum(g.c) + '</span><span class="num">' + g.vi + '</span></div>'; }).join('') + '</div></div>'
       + '<div class="dx_sw dx_pl">' + plDet(0) + '</div></div>';
-    return shell('Portali', t('Portali', 'Portals'), t('Immobiliare.it porta 4 visite su 6', 'Immobiliare.it brings 4 of 6 visits'), [
+    return shell('Portali', t('Portali', 'Portals'), t('3 portali, 9 annunci live, stesso prezzo ovunque', '3 portals, 9 live ads, same price everywhere'), [
       kpi(t('Visualizzazioni', 'Views'), num(Vw), '+9%', 'g', [61, 64, 63, 68, 71, 74, 78, 82]),
       kpi(t('Contatti', 'Leads'), num(L, '', 80), '+6', 'g', [70, 72, 69, 75, 77, 79, 81, 85]),
       kpi(t('Visite in ufficio', 'Office visits'), num(Z, '', 160), '−1', 'r', [5, 6, 6, 7, 6, 7, 7, 6]),
@@ -449,7 +459,7 @@
 
   /* ---------- pointer engine ---------- */
   var P = { x: 0, y: 0 }, anim = null, hv = null, hn = 0;
-  var HOV = '.dx_r[data-c],.dx_r[data-p],.dx_r[data-t],.dx_col,.dt_chip,.dt_ev,.dt_x,.d3_tbl .d3_r,.v2_side>span.lp-v2_side_span,.d3_seg button';
+  var HOV = '.dx_k>div,.dx_f,.dx_ml .cv,.dx_r[data-c],.dx_r[data-p],.dx_r[data-t],.dx_col,.dt_chip,.dt_ev,.dt_x,.d3_tbl .d3_r,.v2_side>span.lp-v2_side_span,.d3_seg button';
   function sc() { var w = app.offsetWidth; return w ? (app.getBoundingClientRect().width / w) || 1 : 1; }
   function hover(off) {
     var el = null;
@@ -492,9 +502,11 @@
   }
   function nav(k) { go(function () { return sideEl(k); }, .32, .5, 920); click(function () { show(k); }); wait(350); }
   function swap(el, html) { if (!el) return; el.classList.add('sw'); setTimeout(function () { el.innerHTML = html; el.classList.remove('sw'); fill(el); }, 200); }
-  function selTg(i) {
+  function say(txt) { var b = host.querySelector('.dx_ovl b'); if (!b || b.textContent === txt) return; b.textContent = ''; type(b, txt, 16, 120); }
+  function selTg(i, quiet) {
     all('.dx_r[data-t]').forEach(function (r) { r.classList.toggle('on', +r.getAttribute('data-t') === i); });
     swap(host.querySelector('.dx_pl'), plDet(i));
+    if (!quiet) { var g = TG[i], n = PF > -1 ? g.c[PF] : sum(g.c), art = EN ? 'the ' : (/^A/.test(g.n) ? 'l’' : 'il '), x = (PF > -1 ? t('Su ', 'On ') + PO[PF][1] + ' ' + art : art) + g.n + t(' porta ', ' brings ') + n + t(' contatti', ' leads'); say(x.charAt(0).toUpperCase() + x.slice(1)); }
   }
   function selPortal(j) {
     PF = j;
@@ -503,19 +515,23 @@
     var sub = host.querySelector('.dx_tsub'); if (sub) sub.textContent = 'Residenze Verdi · ' + (j < 0 ? t('contatti da tutti i portali', 'leads from all portals') : t('contatti da ', 'leads from ') + PO[j][1]);
     var on = host.querySelector('.dx_r[data-t].on'), i = on ? +on.getAttribute('data-t') : 0;
     if (j > -1 && !TG[i].c[j]) for (var x = 0; x < TG.length; x++) if (TG[x].c[j] > 0) { i = x; break; }
-    selTg(i);
+    selTg(i, 1);
+    if (j > -1) say(PO[j][1] + t(' porta ', ' brings ') + PO[j][4] + t(' visite su ', ' of ') + sum(PO.map(function (p) { return p[4]; })) + t('', ' visits'));
   }
-  function portal(k, hold) { go(q('.dx_r[data-p="' + k + '"]'), .2, .5, 800); click(function () { selPortal(['immo', 'idea', 'casa'].indexOf(k)); }); wait(hold); }
-  function tg(i, hold) { go(q('.dx_r[data-t="' + i + '"]'), .3, .55, 760); click(function () { selTg(i); }); wait(hold); }
+  function portal(k, hold) { go(q('.dx_r[data-p="' + k + '"]'), .835, .5, 900); click(function () { selPortal(['immo', 'idea', 'casa'].indexOf(k)); }); wait(hold); }
+  function tg(i, hold) { go(q('.dx_r[data-t="' + i + '"]'), .86, .5, 820); click(function () { selTg(i); }); wait(hold); }
   function selLp(i, win) {
     all('.dx_col').forEach(function (c) { var on = +c.getAttribute('data-l') === i; c.classList.toggle('on', on); if (on && win) c.classList.add('win'); });
+    if (win) say(t('La versione C converte quasi 3 volte la A', 'Version C converts almost 3x version A'));
   }
   function lp(i, hold, win) { go(q('.dx_col[data-l="' + i + '"]'), .5, .36, 780); click(function () { selLp(i, win); }); wait(hold); }
   function selCp(i) {
     all('.dx_r[data-c]').forEach(function (r) { r.classList.toggle('on', +r.getAttribute('data-c') === i); });
     swap(host.querySelector('.dx_cfun'), cpFun(i)); swap(host.querySelector('.dx_cad'), cpAd(i));
+    say(CP[i].n + t(' porta visite a ', ' brings visits at ') + eur(CP[i].cv));
   }
-  function cp(i, hold) { go(q('.dx_r[data-c="' + i + '"]'), .2, .5, 760); click(function () { selCp(i); }); wait(hold); }
+  function cp(i, hold) { go(q('.dx_r[data-c="' + i + '"]'), .93, .5, 820); click(function () { selCp(i); }); wait(hold); }
+  function look(getEl, fx, fy, hold, ms) { go(getEl, fx, fy, ms || 820); wait(hold); }
   function pointAt(fx, hold) {
     LOOP += 700 + hold;
     Q.push(function (n) {
@@ -553,22 +569,25 @@
   function leave() { act(function () { var h = app.querySelector('.d3_hit'); if (h) try { h.dispatchEvent(new PointerEvent('pointerleave', { bubbles: false })); } catch (e) {} }); }
   function row(i) { return function () { return app.querySelectorAll('.d3_tbl .d3_r:not(.d3_h)')[i]; }; }
 
-  /* ---------- script ---------- */
-  /* 1 · Panoramica: three calm stops on the chart, then the best channel */
+  /* ---------- script: every move answers the question the last screen raised ----------
+     1 Panoramica · do visits grow?            follow the curve Jan → Mar → Jun; June's tooltip puts Meta first
+     2 Campagne   · which campaign does that?   read the cost per visit, click the cheapest one, follow its funnel down to the office visit
+     3 Portali    · and the portals?            click the portal with most visits, then the layout with most leads, look at its plan
+     4 Landing    · where does the click land?  compare A, B, C; stop on the winner's conversion rate */
   act(function () { show('Panoramica'); });
-  wait(300);
-  pointAt(.06, 1300); pointAt(.27, 1300); pointAt(.42, 1600); leave();
-  go(row(0), .3, .5, 800); wait(1100);
-  /* 2 · Campagne: the table, then one campaign's funnel and ad */
-  nav('Campagne'); wait(1500);
-  cp(2, 2400); cp(0, 1900);
-  /* 3 · Portali: one portal, then one layout and its floor plan */
-  nav('Portali'); wait(1300);
-  portal('immo', 1300); tg(1, 2400);
-  /* 4 · Landing: three versions, same traffic, one winner */
-  nav('Landing'); wait(1300);
-  lp(0, 1000); lp(1, 1000); lp(2, 3200, 1);
-  /* back to the start */
+  wait(400);
+  pointAt(.02, 1100); pointAt(.4, 1100); pointAt(.98, 1900); leave();
+  nav('Campagne'); wait(700);
+  look(function () { return host.querySelectorAll('.dx_k>div')[3]; }, .3, .62, 1100);
+  cp(0, 900);
+  look(function () { return host.querySelectorAll('.dx_f')[3]; }, .62, .5, 1900, 900);
+  nav('Portali'); wait(700);
+  look(function () { return host.querySelectorAll('.dx_k>div')[2]; }, .22, .62, 900);
+  portal('immo', 1300); tg(1, 900);
+  look(q('.dx_pl .dt_stage'), .52, .55, 1700, 900);
+  nav('Landing'); wait(900);
+  lp(0, 900); lp(1, 900); lp(2, 700, 1);
+  look(function () { return host.querySelector('.dx_col[data-l="2"] .dx_ml .cv'); }, .86, .5, 2400, 900);
   nav('Panoramica'); wait(300);
   app.__dtLoop = LOOP;
 
@@ -577,6 +596,10 @@
   function stop() { running = false; clearTimeout(timer); TY.forEach(clearTimeout); TY = []; if (anim) cancelAnimationFrame(anim); anim = null; hover(1); }
 
   app.__dt = { show: show, stop: stop, start: start, cp: selCp, portal: selPortal, tg: selTg, lp: selLp };
+  (function () {
+    var h = app.querySelector('.d3_hit'); if (!h) return;
+    h.addEventListener('pointermove', function () { requestAnimationFrame(function () { var tp = app.querySelector('.d3_tip'), pl = tp && tp.parentNode; if (tp && pl) tp.classList.toggle('dt_flip', tp.offsetLeft + tp.offsetWidth > pl.offsetWidth + 14); }); });
+  })();
   var pre = new Image(); pre.src = IMG + 'render-photo.webp';
   if (window.matchMedia && (matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(max-width:767px)').matches)) { show('Panoramica'); if (matchMedia('(max-width:767px)').matches) { var pin = function () { var h = app.querySelector('.d3_hit'); if (!h) return; var b = h.getBoundingClientRect(); if (!b.width) return; try { h.dispatchEvent(new PointerEvent('pointermove', { clientX: b.left + b.width * .21, clientY: b.top + b.height * .45, bubbles: true })); } catch (e) {} }; setTimeout(pin, 400); setTimeout(pin, 1600); window.addEventListener('resize', function () { setTimeout(pin, 350); }); } return; }
   if ('IntersectionObserver' in window) {
