@@ -1,4 +1,4 @@
-/* Lapis · Home dashboard: self-running showcase v9.1.3 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
+/* Lapis · Home dashboard: self-running showcase v9.2.0 (one system: strip + KPI band + workspace; Panoramica → Campagne → Portali → Landing) (v7 · calm pass: one sweep, seamless view changes, simple visit card) — click → contatto → visita in ufficio vendite */
 (function () {
   var app = document.querySelector('.v2_dashsec .v2_app');
   if (!app || app.__dt) return;
@@ -570,13 +570,13 @@
   function row(i) { return function () { return app.querySelectorAll('.d3_tbl .d3_r:not(.d3_h)')[i]; }; }
 
   /* ---------- script: every move answers the question the last screen raised ----------
-     1 Panoramica · do visits grow?            follow the curve Jan → Mar → Jun; June's tooltip puts Meta first
+     1 Panoramica · do visits grow?            one continuous pass along the curve, Jan → Jun, tooltip glued to the pointer; it rests on June, where Meta is first
      2 Campagne   · which campaign does that?   read the cost per visit, click the cheapest one, follow its funnel down to the office visit
      3 Portali    · and the portals?            click the portal with most visits, then the layout with most leads, look at its plan
      4 Landing    · where does the click land?  compare A, B, C; stop on the winner's conversion rate */
   act(function () { show('Panoramica'); });
   wait(400);
-  pointAt(.02, 1100); pointAt(.4, 1100); pointAt(.98, 1900); leave();
+  sweep(3000, .02, .98); wait(1700); leave();
   nav('Campagne'); wait(700);
   look(function () { return host.querySelectorAll('.dx_k>div')[3]; }, .3, .62, 1100);
   cp(0, 900);
